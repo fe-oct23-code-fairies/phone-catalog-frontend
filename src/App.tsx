@@ -1,4 +1,5 @@
 import './App.scss';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 const App: React.FC = () => {
   return (
@@ -6,6 +7,10 @@ const App: React.FC = () => {
       <header className="App-header">
         <p>Zamn</p>
       </header>
+
+      <div className="main-container">
+        <NotFoundPage />
+      </div>
     </div>
   );
 };
