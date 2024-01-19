@@ -54,7 +54,8 @@
     "husky": "^8.0.3",
     "lint-staged": "13.2.3",
     "prettier": "^3.2.4",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "sass": "^1.70.0"
   },
   "lint-staged": {
     "*.ts": "npm run fix-code",
