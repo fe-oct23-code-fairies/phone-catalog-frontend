@@ -1,11 +1,13 @@
+import { Outlet } from 'react-router-dom';
 import './App.scss';
+import { Header } from './components/Header';
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Zamn</p>
-      </header>
+      <Header />
+
+      <Outlet />
     </div>
   );
 };

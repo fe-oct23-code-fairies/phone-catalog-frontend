@@ -1,0 +1,25 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+
+  &-link {
+    text-decoration: none;
+    line-height: 48px;
+    color: #89939A;
+
+    &:active {
+      color: #0F0F11;
+    }
+
+    &:hover {
+      color: #0F0F11;
+    }
+
+    &--active {
+      color: #0F0F11;
+
+      border-bottom: 3px solid #0F0F11
+    }
+  }
+}
