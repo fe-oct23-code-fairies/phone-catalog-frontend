@@ -5,14 +5,30 @@
 }
 
 @mixin onDesctop1200 {
-  @media (min-width: $dectop-min-width1200) {
+  @media (min-width: $dectop-min-width--1200) {
     @content;
   }
 }
 
 @mixin onDesctop1440 {
-  @media (min-width: $dectop-min-width1440) {
+  @media (min-width: $dectop-min-width--1440) {
     @content;
+  }
+}
+
+@mixin paddingInline {
+  padding-inline: 16px;
+
+  @include onTablet {
+    padding-inline: 24px;
+  }
+
+  @include onDesctop1200 {
+    padding-inline: 32px;
+  }
+
+  @include onDesctop1440 {
+    padding-inline: 152px;
   }
 }
 
@@ -92,4 +108,51 @@
   line-height: $lh100;
   letter-spacing: 0.48px;
   text-transform: uppercase;
+}
+
+@mixin hover ($property, $toVAlue) {
+  transition: #{$property} $effect-duration;
+  &:hover {
+    #{$property}: #{$toVAlue};
+  }
+}
+
+@mixin click ($property, $toVAlue) {
+  transition: #{$property} $effect-duration;
+  &:visited {
+    #{$property}: #{$toVAlue};
+  }
+}
+
+@mixin grid {
+  --columns: 4;
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 12;
+  }
+
+  @include onDesctop1200 {
+    --columns: 24;
+  }
+}
+
+
+@mixin button-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+
+  background-color: $c-accent-blue;
+  border-radius: 48px;
+
+  @include text-button;
+
+  color: $c-white;
+
+  @include hover(box-shadow, 0px 3px 13px 0px rgba(23, 32, 49, 0.40));
+  cursor: pointer;
 }
