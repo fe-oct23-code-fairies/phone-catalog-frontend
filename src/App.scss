@@ -1,4 +1,9 @@
+@import './styles//utils//vars.scss';
+@import './styles//utils//mixins.scss';
+@import './styles//ui/text/text.scss';
+
 * {
+  font-family: 'Mont';
   box-sizing: border-box;
 }
 
