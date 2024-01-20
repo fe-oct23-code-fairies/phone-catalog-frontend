@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
-import { Dispatch, SetStateAction } from 'react';
 
 const NAV_LINK_TITLES = ['home', 'phones', 'tablets', 'accessories'];
 
@@ -9,18 +8,10 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => cn(
   { 'header-link--active': isActive },
 );
 
-interface Props {
-  isMenuOpen: boolean,
-  setIsMenuOpen: Dispatch<SetStateAction<boolean>>,
-}
-
-export const Navbar: React.FC<Props> = ({
-  isMenuOpen,
-  setIsMenuOpen,
-}: Props) => {
+export const Navmenu: React.FC = () => {
   return (
-    <nav className="navbar">
-      <div className="navbar-left">
+    <div className="navmenu">
+      <div className="navmenu-top">
         {NAV_LINK_TITLES.map(title => {
           const link = title === 'home' ? '/' : `/${title}`;
 
@@ -36,31 +27,20 @@ export const Navbar: React.FC<Props> = ({
         })}
       </div>
 
-      <div className="navbar-right">
+      <div className="navmenu-bottom">
         <NavLink
           to="/favorites"
           className={getLinkClass}
         >
-          <div className="navbar-button navbar-button--favorites" />
+          <div className="navmenu-button navmenu-button--favorites" />
         </NavLink>
         <NavLink
           to="/checkout"
           className={getLinkClass}
         >
-          <div className="navbar-button navbar-button--cart" />
+          <div className="navmenu-button navmenu-button--cart" />
         </NavLink>
-        <div
-          role="presentation"
-          className={cn(
-            'navbar-button',
-            {
-              'navbar-button--menu': !isMenuOpen,
-              'navbar-button--close': isMenuOpen,
-            },
-          )}
-          onClick={() => setIsMenuOpen(prev => !prev)}
-        />
       </div>
-    </nav>
+    </div>
   );
 };

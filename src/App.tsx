@@ -7,7 +7,9 @@ export const App: React.FC = () => {
     <div className="App">
       <Header />
 
-      <Outlet />
+      <div className="App-page">
+        <Outlet />
+      </div>
     </div>
   );
 };

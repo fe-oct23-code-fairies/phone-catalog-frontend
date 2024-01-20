@@ -1,25 +1,77 @@
 .navbar {
   display: flex;
   align-items: center;
-  gap: 64px;
+  gap: 16px;
 
-  &-link {
-    text-decoration: none;
-    line-height: 48px;
-    color: #89939A;
+  @include onDesktop1200 {
+    gap: 24px
+  }
 
-    &:active {
-      color: #0F0F11;
+  &-left {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+      gap: 32px;
     }
 
-    &:hover {
-      color: #0F0F11;
+    @include onDesktop1200 {
+      gap: 64px;
+    }
+  }
+
+  &-right {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+
+  &-button {
+    display: none;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: $header-height;
+    height: $header-height;
+    cursor: pointer;
+
+    @include onDesktop1200 {
+      width: $header-height-desktop;
+      height: $header-height-desktop;
     }
 
-    &--active {
-      color: #0F0F11;
+    box-shadow: -1px 0px 0px 0px #E2E6E9;
 
-      border-bottom: 3px solid #0F0F11
+    &--favorites {
+      @include onTablet {
+        display: inline-block;
+      }
+
+      background-image: url("../../../../public/images/icons/favorite.svg");
+    }
+
+    &--cart {
+      @include onTablet {
+        display: inline-block;
+      }
+
+      background-image: url("../../../../public/images/icons/cart.svg");
+    }
+
+    &--menu {
+      display: inline-block;
+
+      @include onTablet {
+        display: none;
+      }
+
+      background-image: url("../../../../public/images/icons/menu.svg");
+    }
+
+    &--close {
+      display: inline-block;
+
+      background-image: url("../../../../public/images/icons/close.svg");
     }
   }
 }

@@ -1,6 +1,12 @@
-@import './styles//utils//vars.scss';
-@import './styles//utils//mixins.scss';
-@import './styles//ui/text/text.scss';
+@import './styles/Fonts/Mont/fonts.scss';
+@import './styles/utils/vars.scss';
+@import './styles/utils/mixins.scss';
+@import './styles/ui/text/text.scss';
+
+@import './components/Logo/Logo.scss';
+@import './components/Header/Header.scss';
+@import './components/Header/Navbar/Navbar.scss';
+@import './components/Header/Navmenu/Navmenu.scss';
 
 * {
   font-family: 'Mont';
@@ -8,16 +14,15 @@
 }
 
 .App {
-  text-align: center;
+  background-color: $c-background;
 
-  &-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+  &-page {
+    padding-top: $header-height;
+
+    @include onDesktop1200 {
+      padding-top: $header-height-desktop;
+    }
+
+    height: 100vh;
   }
 }

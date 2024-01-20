@@ -4,14 +4,14 @@
   }
 }
 
-@mixin onDesctop1200 {
-  @media (min-width: $dectop-min-width1200) {
+@mixin onDesktop1200 {
+  @media (min-width: $desktop-min-width--1200) {
     @content;
   }
 }
 
-@mixin onDesctop1440 {
-  @media (min-width: $dectop-min-width1440) {
+@mixin onDesktop1440 {
+  @media (min-width: $desktop-min-width--1440) {
     @content;
   }
 }
