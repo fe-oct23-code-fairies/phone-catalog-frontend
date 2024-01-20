@@ -1,9 +1,18 @@
-@import './styles//utils//vars.scss';
-@import './styles//utils//mixins.scss';
-@import './styles//ui/text/text.scss';
+@import './styles/utils//vars.scss';
+@import './styles/utils//mixins.scss';
+@import './styles/utils/reset.scss';
+@import './styles/ui/button/Button.scss';
+@import './styles/ui/text/text.scss';
+@import './styles/blocks/NotFoundPage.scss';
 
 * {
   font-family: 'Mont';
+  color: $c-primary-black;
+}
+
+.main-container {
+  @include paddingInline;
+  @include grid;
 }
 
 .App {
