@@ -25,7 +25,7 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {isMenuOpen && <Navmenu />}
+      {isMenuOpen && <Navmenu setIsMenuOpen={setIsMenuOpen} />}
     </header>
   );
 };
