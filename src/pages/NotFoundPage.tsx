@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const NotFoundPage: React.FC = () => {
   return (
     <div className="notFound">
@@ -18,9 +20,9 @@ export const NotFoundPage: React.FC = () => {
         className="notFound__img"
       />
 
-      <a href="/" className="button">
+      <Link to="/" className="button">
         Back to main page
-      </a>
+      </Link>
     </div>
   );
 };
