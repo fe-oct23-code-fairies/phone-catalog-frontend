@@ -1,7 +1,11 @@
+@import './styles/utils/reset.scss';
 @import './styles/Fonts/Mont/fonts.scss';
 @import './styles/utils/vars.scss';
 @import './styles/utils/mixins.scss';
+@import './styles/ui/button/Button.scss';
 @import './styles/ui/text/text.scss';
+@import './styles/blocks/NotFoundPage.scss';
+
 
 @import './components/Logo/Logo.scss';
 @import './components/Header/Header.scss';
@@ -11,6 +15,12 @@
 * {
   font-family: 'Mont';
   box-sizing: border-box;
+  color: $c-primary-black;
+}
+
+.main-container {
+  @include paddingInline;
+  @include grid;
 }
 
 .App {
