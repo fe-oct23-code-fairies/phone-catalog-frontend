@@ -13,7 +13,7 @@ export const NotFoundPage: React.FC = () => {
 
       <img
         // eslint-disable-next-line global-require
-        src={require('../../images/error-img.png')}
+        src={require('../images/error-img.png')}
         alt="404 not found"
         className="notFound__img"
       />

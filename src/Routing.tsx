@@ -8,6 +8,7 @@ import {
 import { App } from './App';
 import { Home } from './pages/Home';
 import { Phones } from './pages/Phones';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export const Routing = () => (
   <Router>
@@ -18,7 +19,7 @@ export const Routing = () => (
 
         <Route path="phones" element={<Phones />} />
 
-        <Route path="*" element={<h1 className="title">Page not found</h1>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   </Router>

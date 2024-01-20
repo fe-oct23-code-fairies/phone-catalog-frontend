@@ -1,9 +1,9 @@
+@import './styles/utils/vars.scss';
 @import './styles/utils/reset.scss';
 @import './styles/Fonts/Mont/fonts.scss';
-@import './styles/utils/vars.scss';
 @import './styles/utils/mixins.scss';
-@import './styles/ui/button/Button.scss';
 @import './styles/ui/text/text.scss';
+@import './styles/ui/button/Button.scss';
 @import './styles/blocks/NotFoundPage.scss';
 
 
@@ -18,21 +18,21 @@
   color: $c-primary-black;
 }
 
-.main-container {
-  @include paddingInline;
-  @include grid;
-}
-
 .App {
+  height: 100vh;
+
   background-color: $c-background;
 
   &-page {
-    padding-top: $header-height;
+    padding-top: calc($header-height + 24px);
 
     @include onDesktop1200 {
-      padding-top: $header-height-desktop;
+      padding-top: calc($header-height-desktop + 24px);
     }
 
-    height: 100vh;
+    @include paddingInline;
+    @include grid;
+
+    background-color: $c-background;
   }
 }
