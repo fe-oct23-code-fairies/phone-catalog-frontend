@@ -19,11 +19,11 @@
 }
 
 .App {
-  height: 100vh;
+  min-height: 100vh;
 
   background-color: $c-background;
 
-  &-page {
+  &__page {
     padding-top: calc($header-height + 24px);
 
     @include onDesktop1200 {
@@ -32,7 +32,5 @@
 
     @include paddingInline;
     @include grid;
-
-    background-color: $c-background;
   }
 }

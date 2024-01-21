@@ -7,7 +7,7 @@
     gap: 24px
   }
 
-  &-left {
+  &__left {
     display: none;
 
     @include onTablet {
@@ -20,13 +20,13 @@
     }
   }
 
-  &-right {
+  &__right {
     display: flex;
     flex-grow: 1;
     justify-content: flex-end;
   }
 
-  &-button {
+  &__button {
     display: none;
     box-sizing: border-box;
     background-repeat: no-repeat;
@@ -42,7 +42,7 @@
 
     box-shadow: -1px 0px 0px 0px #E2E6E9;
 
-    &--favorites {
+    &-favorites {
       @include onTablet {
         display: inline-block;
       }
@@ -50,7 +50,7 @@
       background-image: url("../../../../public/images/icons/favorite.svg");
     }
 
-    &--cart {
+    &-cart {
       @include onTablet {
         display: inline-block;
       }
@@ -58,7 +58,7 @@
       background-image: url("../../../../public/images/icons/cart.svg");
     }
 
-    &--menu {
+    &-menu {
       display: inline-block;
 
       @include onTablet {
@@ -68,7 +68,7 @@
       background-image: url("../../../../public/images/icons/menu.svg");
     }
 
-    &--close {
+    &-close {
       display: inline-block;
 
       background-image: url("../../../../public/images/icons/close.svg");

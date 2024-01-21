@@ -9,15 +9,16 @@ export const Header: React.FC = () => {
 
   return (
     <header className="header">
-      <div className="header-bar">
+      <div className="header__bar">
         <Link
           to="/"
-          className="header-logo"
+          className="header__logo"
+          onClick={() => setIsMenuOpen(false)}
         >
           <Logo />
         </Link>
 
-        <div className="header-right">
+        <div className="header__right">
           <Navbar
             isMenuOpen={isMenuOpen}
             setIsMenuOpen={setIsMenuOpen}

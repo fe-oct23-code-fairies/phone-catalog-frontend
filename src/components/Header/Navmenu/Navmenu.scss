@@ -7,7 +7,7 @@
     height: calc(100vh - $header-height-desktop);
   }
 
-  &-top {
+  &__top {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,7 +22,7 @@
     }
   }
 
-  &-bottom {
+  &__bottom {
     display: flex;
     height: 64px;
 
@@ -35,7 +35,7 @@
     }
   }
 
-  &-button {
+  &__button {
     box-sizing: border-box;
     background-repeat: no-repeat;
     background-position: center;
@@ -44,11 +44,11 @@
 
     box-shadow: -1px 0px 0px 0px #E2E6E9;
 
-    &--favorites {
+    &-favorites {
       background-image: url("../../../../public/images/icons/favorite.svg");
     }
 
-    &--cart {
+    &-cart {
       background-image: url("../../../../public/images/icons/cart.svg");
     }
   }

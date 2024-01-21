@@ -7,7 +7,7 @@ export const App: React.FC = () => {
     <div className="App">
       <Header />
 
-      <div className="App-page">
+      <div className="App__page">
         <Outlet />
       </div>
     </div>

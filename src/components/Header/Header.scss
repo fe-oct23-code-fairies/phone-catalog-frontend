@@ -15,7 +15,7 @@ $header-gap-desktop: 24px;
   box-sizing: border-box;
   box-shadow: 0px 1px 0px 0px #E2E6E9;
 
-  &-bar {
+  &__bar {
     display: flex;
     height: $header-height;
 
@@ -31,11 +31,11 @@ $header-gap-desktop: 24px;
     }
   }
 
-  &-right {
+  &__right {
     flex-grow: 1;
   }
 
-  &-logo {
+  &__logo {
     display: flex;
     height: $header-height;
     justify-content: center;
@@ -57,7 +57,7 @@ $header-gap-desktop: 24px;
     }
   }
 
-  &-link {
+  &__link {
     box-sizing: border-box;
     text-decoration: none;
     height: $header-height;

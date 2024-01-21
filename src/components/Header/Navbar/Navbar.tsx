@@ -5,8 +5,8 @@ import { Dispatch, SetStateAction } from 'react';
 const NAV_LINK_TITLES = ['home', 'phones', 'tablets', 'accessories'];
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => cn(
-  'header-link',
-  { 'header-link--active': isActive },
+  'header__link',
+  { 'header__link--active': isActive },
 );
 
 interface Props {
@@ -20,7 +20,7 @@ export const Navbar: React.FC<Props> = ({
 }: Props) => {
   return (
     <nav className="navbar">
-      <div className="navbar-left">
+      <div className="navbar__left">
         {NAV_LINK_TITLES.map(title => {
           const link = title === 'home' ? '/' : `/${title}`;
 
@@ -36,26 +36,26 @@ export const Navbar: React.FC<Props> = ({
         })}
       </div>
 
-      <div className="navbar-right">
+      <div className="navbar__right">
         <NavLink
           to="/favorites"
           className={getLinkClass}
         >
-          <div className="navbar-button navbar-button--favorites" />
+          <div className="navbar__button navbar__button-favorites" />
         </NavLink>
         <NavLink
           to="/checkout"
           className={getLinkClass}
         >
-          <div className="navbar-button navbar-button--cart" />
+          <div className="navbar__button navbar__button-cart" />
         </NavLink>
         <div
           role="presentation"
           className={cn(
-            'navbar-button',
+            'navbar__button',
             {
-              'navbar-button--menu': !isMenuOpen,
-              'navbar-button--close': isMenuOpen,
+              'navbar__button-menu': !isMenuOpen,
+              'navbar__button-close': isMenuOpen,
             },
           )}
           onClick={() => setIsMenuOpen(prev => !prev)}

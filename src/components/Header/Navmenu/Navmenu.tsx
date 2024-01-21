@@ -5,8 +5,8 @@ import { Dispatch, SetStateAction } from 'react';
 const NAV_LINK_TITLES = ['home', 'phones', 'tablets', 'accessories'];
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => cn(
-  'header-link',
-  { 'header-link--active': isActive },
+  'header__link',
+  { 'header__link--active': isActive },
 );
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
 export const Navmenu: React.FC<Props> = ({ setIsMenuOpen }: Props) => {
   return (
     <div className="navmenu">
-      <div className="navmenu-top">
+      <div className="navmenu__top">
         {NAV_LINK_TITLES.map(title => {
           const link = title === 'home' ? '/' : `/${title}`;
 
@@ -25,7 +25,7 @@ export const Navmenu: React.FC<Props> = ({ setIsMenuOpen }: Props) => {
               to={link}
               className={getLinkClass}
               key={title}
-              onClick={() => setIsMenuOpen((prev) => !prev)}
+              onClick={() => setIsMenuOpen(prev => !prev)}
             >
               {title}
             </NavLink>
@@ -33,20 +33,20 @@ export const Navmenu: React.FC<Props> = ({ setIsMenuOpen }: Props) => {
         })}
       </div>
 
-      <div className="navmenu-bottom">
+      <div className="navmenu__bottom">
         <NavLink
           to="/favorites"
           className={getLinkClass}
-          onClick={() => setIsMenuOpen((prev) => !prev)}
+          onClick={() => setIsMenuOpen(prev => !prev)}
         >
-          <div className="navmenu-button navmenu-button--favorites" />
+          <div className="navmenu__button navmenu__button-favorites" />
         </NavLink>
         <NavLink
           to="/checkout"
           className={getLinkClass}
-          onClick={() => setIsMenuOpen((prev) => !prev)}
+          onClick={() => setIsMenuOpen(prev => !prev)}
         >
-          <div className="navmenu-button navmenu-button--cart" />
+          <div className="navmenu__button navmenu__button-cart" />
         </NavLink>
       </div>
     </div>
