@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Button } from '../ui/Button';
 
 export const NotFoundPage: React.FC = () => {
   return (
@@ -20,9 +20,9 @@ export const NotFoundPage: React.FC = () => {
         className="notFound__img"
       />
 
-      <Link to="/" className="button">
+      <Button to="/">
         Back to main page
-      </Link>
+      </Button>
     </div>
   );
 };

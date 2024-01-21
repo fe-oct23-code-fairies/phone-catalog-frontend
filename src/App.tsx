@@ -1,6 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import './App.scss';
 import { Header } from './components/Header';
+import { CartItem } from './components/CartItem';
+import { Checkout } from './components/Checkout/Checkout';
 
 export const App: React.FC = () => {
   return (
@@ -9,6 +11,10 @@ export const App: React.FC = () => {
 
       <div className="App__page">
         <Outlet />
+
+        <CartItem />
+
+        <Checkout />
       </div>
     </div>
   );
