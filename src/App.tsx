@@ -11,10 +11,6 @@ export const App: React.FC = () => {
 
       <div className="App__page">
         <Outlet />
-
-        <CartItem />
-
-        <Checkout />
       </div>
     </div>
   );
