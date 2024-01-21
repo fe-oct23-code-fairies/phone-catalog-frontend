@@ -1,0 +1,77 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @include onDesktop1200 {
+    gap: 24px
+  }
+
+  &__left {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+      gap: 32px;
+    }
+
+    @include onDesktop1200 {
+      gap: 64px;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+
+  &__button {
+    display: none;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: $header-height;
+    height: $header-height;
+    cursor: pointer;
+
+    @include onDesktop1200 {
+      width: $header-height-desktop;
+      height: $header-height-desktop;
+    }
+
+    box-shadow: -1px 0px 0px 0px #E2E6E9;
+
+    &-favorites {
+      @include onTablet {
+        display: inline-block;
+      }
+
+      background-image: url("../../../../public/images/icons/favorite.svg");
+    }
+
+    &-cart {
+      @include onTablet {
+        display: inline-block;
+      }
+
+      background-image: url("../../../../public/images/icons/cart.svg");
+    }
+
+    &-menu {
+      display: inline-block;
+
+      @include onTablet {
+        display: none;
+      }
+
+      background-image: url("../../../../public/images/icons/menu.svg");
+    }
+
+    &-close {
+      display: inline-block;
+
+      background-image: url("../../../../public/images/icons/close.svg");
+    }
+  }
+}

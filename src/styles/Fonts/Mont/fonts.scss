@@ -2,21 +2,25 @@
   font-family: 'Mont';
   font-style: normal;
   font-weight: 600;
-  src: local(''),
-  url('./Mont-Regular.ttf') format('ttf');
+  src: url('./Mont-Regular.ttf');
 }
 @font-face {
   font-family: 'Mont';
   font-style: normal;
   font-weight: 700;
-  src: local(''),
-  url('./Mont-Semibold.ttf') format('ttf');
+  src: url('./Mont-SemiBold.ttf');
 }
 
 @font-face {
   font-family: 'Mont';
   font-style: normal;
   font-weight: 800;
-  src: local(''),
-  url('./Mont-Bold.ttf') format('ttf');
+  src: url('./Mont-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Mont';
+  font-style: normal;
+  font-weight: 900;
+  src: url('./Mont-Heavy.ttf');
 }
