@@ -1,5 +1,5 @@
 import React from 'react';
-import './CardLayout.scss'
+import './CardLayout.scss';
 
 
 export const CardLayout: React.FC = () => {
