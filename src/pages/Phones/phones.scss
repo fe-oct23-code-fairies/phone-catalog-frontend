@@ -1,0 +1,21 @@
+@import '../../styles/utils/vars.scss';
+@import '../../styles/utils/mixins.scss';
+
+.grid__container {
+  --count-columns: 1;
+
+  display: grid;
+  gap: 40px 16px;
+  padding: 40px 0;
+  grid-template-columns: repeat(var(--count-columns), 288px);
+
+  justify-content: center;
+
+  @include onTablet {
+    --count-columns: 2;
+  }
+
+  @include onDesktop1200 {
+    --count-columns: 4;
+  }
+}
