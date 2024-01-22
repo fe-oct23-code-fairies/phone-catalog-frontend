@@ -1,6 +1,18 @@
 * {
+  font-family: 'Mont';
+  box-sizing: border-box;
+  color: $c-primary-black;
+
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow: hidden;
 }
 
 button {

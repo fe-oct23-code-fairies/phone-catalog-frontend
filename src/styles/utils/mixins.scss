@@ -32,6 +32,20 @@
   }
 }
 
+@mixin hover ($property, $toVAlue) {
+  transition: #{$property} $effect-duration;
+  &:hover {
+    #{$property}: #{$toVAlue};
+  }
+}
+
+@mixin click ($property, $toVAlue) {
+  transition: #{$property} $effect-duration;
+  &:visited {
+    #{$property}: #{$toVAlue};
+  }
+}
+
 @mixin h1 {
   font-size: $h1-mobile;
   font-weight: 800;
@@ -110,18 +124,22 @@
   text-transform: uppercase;
 }
 
-@mixin hover ($property, $toVAlue) {
-  transition: #{$property} $effect-duration;
-  &:hover {
-    #{$property}: #{$toVAlue};
-  }
-}
+@mixin text-link {
+  font-family: 'Mont';
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: none;
 
-@mixin click ($property, $toVAlue) {
-  transition: #{$property} $effect-duration;
-  &:visited {
-    #{$property}: #{$toVAlue};
+  color: $c-secondary-grey;
+
+  &:active {
+    color: $c-primary-black;
   }
+
+  @include hover(color, $c-primary-black);
 }
 
 @mixin grid {
@@ -155,4 +173,39 @@
 
   @include hover(box-shadow, 0px 3px 13px 0px rgba(23, 32, 49, 0.40));
   cursor: pointer;
+}
+
+@mixin button-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 32px;
+  width: 32px;
+
+  border-radius: 50%;
+  border: 1px solid $c-icons-mid-grey;
+
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include hover(border-color, $c-primary-black);
+
+  cursor: pointer;
+
+
+
+  &:disabled {
+    cursor: default;
+
+    border-color: $c-borders-grey;
+
+    & > * {
+      fill: $c-icons-mid-grey;
+    }
+
+    &:hover {
+      border-color: $c-borders-grey;
+    }
+  }
 }

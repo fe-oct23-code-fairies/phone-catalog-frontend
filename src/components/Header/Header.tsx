@@ -8,25 +8,30 @@ export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="header">
-      <div className="header__bar">
-        <Link
-          to="/"
-          className="header__logo"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          <Logo />
-        </Link>
+    <>
+      <header className="header">
+        <div className="header__bar">
+          <Link
+            to="/"
+            className="header__logo"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <Logo />
+          </Link>
 
-        <div className="header__right">
-          <Navbar
-            isMenuOpen={isMenuOpen}
-            setIsMenuOpen={setIsMenuOpen}
-          />
+          <div className="header__right">
+            <Navbar
+              isMenuOpen={isMenuOpen}
+              setIsMenuOpen={setIsMenuOpen}
+            />
+          </div>
         </div>
-      </div>
+      </header>
 
-      {isMenuOpen && <Navmenu setIsMenuOpen={setIsMenuOpen} />}
-    </header>
+      <Navmenu
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+      />
+    </>
   );
 };

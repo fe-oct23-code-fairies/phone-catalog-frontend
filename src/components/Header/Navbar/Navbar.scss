@@ -18,12 +18,20 @@
     @include onDesktop1200 {
       gap: 64px;
     }
+
+    & > * {
+      border-bottom-width: 3px;
+    }
   }
 
   &__right {
     display: flex;
     flex-grow: 1;
     justify-content: flex-end;
+
+    & > * {
+      border-bottom-width: 3px;
+    }
   }
 
   &__button {
@@ -40,7 +48,9 @@
       height: $header-height-desktop;
     }
 
-    box-shadow: -1px 0px 0px 0px #E2E6E9;
+    box-shadow: -1px 0px 0px 0px $c-borders-grey;
+
+    @include hover (background-color, #00000005);
 
     &-favorites {
       @include onTablet {

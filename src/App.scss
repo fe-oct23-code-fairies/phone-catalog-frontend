@@ -1,36 +1,38 @@
 @import './styles/utils/vars.scss';
-@import './styles/utils/reset.scss';
 @import './styles/Fonts/Mont/fonts.scss';
+@import './styles/utils/reset.scss';
 @import './styles/utils/mixins.scss';
 @import './styles/ui/text/text.scss';
-@import './styles/ui/button/Button.scss';
-@import './styles/blocks/NotFoundPage.scss';
+@import './styles/ui/button/button.scss';
 
+@import './styles/blocks/NotFoundPage.scss';
 
 @import './components/Logo/Logo.scss';
 @import './components/Header/Header.scss';
 @import './components/Header/Navbar/Navbar.scss';
 @import './components/Header/Navmenu/Navmenu.scss';
-
-* {
-  font-family: 'Mont';
-  box-sizing: border-box;
-  color: $c-primary-black;
-}
+@import './components/Footer/Footer.scss';
 
 .App {
-  min-height: 100vh;
-
+  height: 100vh;
   background-color: $c-background;
 
   &__page {
-    padding-top: calc($header-height + 24px);
+    max-height: 100vh;
+    overflow-y: auto;
 
-    @include onDesktop1200 {
-      padding-top: calc($header-height-desktop + 24px);
+    &-content {
+      min-height: 100vh;
+      padding-top: calc($header-height + 24px);
+      padding-bottom: 64px;
+
+      @include onDesktop1200 {
+        padding-top: calc($header-height-desktop + 24px);
+        padding-bottom: 80px;
+      }
+
+      @include paddingInline;
+      @include grid;
     }
-
-    @include paddingInline;
-    @include grid;
   }
 }

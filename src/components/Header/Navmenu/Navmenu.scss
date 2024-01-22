@@ -1,10 +1,30 @@
 .navmenu {
+  position: fixed;
+  top: $header-height;
+  width: 100%;
+
+  z-index: 5;
+
   display: flex;
   flex-direction: column;
-  height: calc(100vh - $header-height);
+  height: calc(100% - $header-height);
 
   @include onDesktop1200 {
-    height: calc(100vh - $header-height-desktop);
+    top: $header-height-desktop;
+    height: calc(100% - $header-height-desktop);
+  }
+
+  background-color: $c-white;
+  opacity: 0;
+  transform: translateY(-100%);
+
+  transition: opacity, transform, $effect-duration;
+
+  &--open {
+    opacity: 1;
+    transform: translateY(0%);
+
+    pointer-events: default;
   }
 
   &__top {
@@ -19,6 +39,7 @@
     & > * {
       height: 27px;
       line-height: 27px;
+      border-bottom-width: 2px;
     }
   }
 
@@ -26,12 +47,12 @@
     display: flex;
     height: 64px;
 
-    box-shadow: 0px -1px 0px 0px #E2E6E9;
+    box-shadow: 0px -1px 0px 0px $c-borders-grey;
 
     & > * {
       flex-grow: 1;
-
       height: 64px;
+      border-bottom-width: 2px;
     }
   }
 
@@ -42,7 +63,11 @@
     height: 64px;
     line-height: 64px;
 
-    box-shadow: -1px 0px 0px 0px #E2E6E9;
+    box-shadow: -1px 0px 0px 0px $c-borders-grey;
+
+    z-index: -1;
+
+    @include hover (background-color, #00000005);
 
     &-favorites {
       background-image: url("../../../../public/images/icons/favorite.svg");

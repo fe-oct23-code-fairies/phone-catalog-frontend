@@ -7,6 +7,7 @@ const NAV_LINK_TITLES = ['home', 'phones', 'tablets', 'accessories'];
 const getLinkClass = ({ isActive }: { isActive: boolean }) => cn(
   'header__link',
   { 'header__link--active': isActive },
+  'text-link',
 );
 
 interface Props {

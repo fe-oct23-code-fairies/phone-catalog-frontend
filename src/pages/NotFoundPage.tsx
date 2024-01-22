@@ -20,7 +20,7 @@ export const NotFoundPage: React.FC = () => {
         className="notFound__img"
       />
 
-      <Link to="/" className="button">
+      <Link to="/" className="button-primary">
         Back to main page
       </Link>
     </div>

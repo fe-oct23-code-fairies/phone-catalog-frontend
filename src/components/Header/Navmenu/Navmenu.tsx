@@ -7,15 +7,25 @@ const NAV_LINK_TITLES = ['home', 'phones', 'tablets', 'accessories'];
 const getLinkClass = ({ isActive }: { isActive: boolean }) => cn(
   'header__link',
   { 'header__link--active': isActive },
+  'text-link',
 );
 
 interface Props {
-  setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
+  isMenuOpen: boolean,
+  setIsMenuOpen: Dispatch<SetStateAction<boolean>>,
 }
 
-export const Navmenu: React.FC<Props> = ({ setIsMenuOpen }: Props) => {
+export const Navmenu: React.FC<Props> = ({
+  isMenuOpen,
+  setIsMenuOpen,
+}: Props) => {
   return (
-    <div className="navmenu">
+    <aside
+      className={cn(
+        'navmenu',
+        { 'navmenu--open': isMenuOpen },
+      )}
+    >
       <div className="navmenu__top">
         {NAV_LINK_TITLES.map(title => {
           const link = title === 'home' ? '/' : `/${title}`;
@@ -49,6 +59,6 @@ export const Navmenu: React.FC<Props> = ({ setIsMenuOpen }: Props) => {
           <div className="navmenu__button navmenu__button-cart" />
         </NavLink>
       </div>
-    </div>
+    </aside>
   );
 };
