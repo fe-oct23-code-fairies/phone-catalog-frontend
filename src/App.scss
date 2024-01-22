@@ -7,6 +7,7 @@
 @import './styles/ui/icon/icon.scss';
 @import './ui/Counter/Counter.scss';
 @import './styles/blocks/NotFoundPage.scss';
+@import './styles/blocks/Cart.scss';
 
 @import './ui/Logo/Logo.scss';
 @import './components/Header/Header.scss';
@@ -15,6 +16,7 @@
 @import './components/Footer/Footer.scss';
 @import './components/CartItem/CartItem.scss';
 @import './components/Checkout/Checkout.scss';
+@import './components/CardLayout/CardLayout.scss';
 
 .App {
   height: 100vh;
@@ -23,6 +25,7 @@
   &__page {
     max-height: 100vh;
     overflow-y: auto;
+    scroll-behavior: smooth;
 
     &-content {
       min-height: 100vh;

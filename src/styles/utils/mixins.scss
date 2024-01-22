@@ -163,6 +163,8 @@
   align-items: center;
   padding: 10px 20px;
 
+  height: 40px;
+
   background-color: $c-accent-blue;
   border-radius: 48px;
 
@@ -171,5 +173,48 @@
   color: $c-white;
 
   @include hover(box-shadow, 0px 3px 13px 0px rgba(23, 32, 49, 0.40));
+
+  &:active {
+    transition: $effect-duration;
+    background-color: $c-white;
+    color: $c-accent-blue;
+    border: 1px solid $c-elements-light-grey;
+  }
+
+  &--active {
+    background-color: $c-white;
+    color: $c-accent-blue;
+    border: 1px solid $c-elements-light-grey;
+  }
+
   cursor: pointer;
+}
+
+@mixin button-radio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+
+  border-radius: 48px;
+  border: 1px solid $c-elements-light-grey;
+
+  &::after {
+    content: "";
+    display: block;
+    height: 26px;
+    width: 26px;
+
+    border-radius: 48px;
+  }
+
+  cursor: pointer;
+
+  @include hover(border-color, $c-icons-mid-grey);
+
+  &:active {
+    border-color: $c-primary-black;
+  }
 }

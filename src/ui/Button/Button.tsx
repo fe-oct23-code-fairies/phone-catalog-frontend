@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -6,6 +7,7 @@ type Props = {
   btnClass?: string,
   onClick?: () => void,
   to: string,
+  isActive?: boolean,
 };
 
 export const Button: React.FC<Props> = ({
@@ -13,11 +15,15 @@ export const Button: React.FC<Props> = ({
   btnClass,
   onClick,
   to,
+  isActive = false,
 }) => {
   return (
     <Link
       to={`${to}`}
-      className={`button ${btnClass}`}
+      className={cn(
+        `button ${btnClass}`,
+        { 'button--active': isActive },
+      )}
       onClick={onClick}
     >
       {children}

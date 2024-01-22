@@ -1,0 +1,83 @@
+.card {
+  width: 288px;
+  border-radius: 5px;
+  border: 1px solid $c-elements-light-grey;
+  background: $c-white;
+  padding: 32px;
+
+  @include hover (box-shadow, 0px 2px 16px 0px #0000001A);
+
+  &__img {
+    display: flex;
+    align-items: center;
+    width: 120px;
+    height: 130px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__title {
+    color: $c-primary-black;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    margin-bottom: 4px;
+  }
+
+  &__price {
+    font-weight: 800;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__line {
+    color: $c-elements-light-grey;
+    border-top: 1px solid $c-elements-light-grey;
+    margin-bottom: 8px;
+  }
+
+  &__additional {
+    font-size: 12px;
+    font-weight: 700;
+    word-wrap: break-word;
+    margin-bottom: 8px;
+
+    &__screen, &__capacity, &__ram {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+
+      &-title {
+        color: $c-secondary-grey;
+      }
+
+      &-value {
+        color: $c-primary-black;
+      }
+    }
+  }
+
+  &__buttons {
+    gap: 8px;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__add {
+    flex-grow: 1;
+  }
+}

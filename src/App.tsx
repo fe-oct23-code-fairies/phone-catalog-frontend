@@ -8,7 +8,7 @@ export const App: React.FC = () => {
     <div className="App">
       <Header />
 
-      <div className="App__page">
+      <div className="App__page" id="app-page">
         <div className="App__page-content">
           <Outlet />
         </div>

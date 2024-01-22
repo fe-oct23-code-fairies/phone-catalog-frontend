@@ -1,23 +1,28 @@
-import React from 'react';
-import { CircleButton } from '../CircleButton';
+import React, { useState } from 'react';
 import { Icon } from '../Icons';
+import { CircleButtonWithIcon } from '../CircleButtonWithIcon';
 
 export const Counter: React.FC = () => {
-  const isMinusDisabled = true;
+  const MAX_VALUE = 5;
+
+  const [counter, setCounter] = useState(1);
+  const isMinusDisabled = counter === 1;
+  const isPlusDisabled = counter === MAX_VALUE;
+
+  const onClickMinus = () => setCounter(prev => prev - 1);
+  const onClickPlus = () => setCounter(prev => prev + 1);
 
   return (
     <div className="counter">
-      <CircleButton isDisabled={isMinusDisabled}>
+      <CircleButtonWithIcon disabled={isMinusDisabled} onClick={onClickMinus}>
         <Icon iconName="minus" />
-      </CircleButton>
+      </CircleButtonWithIcon>
 
-      <p className="text-body">
-        1
-      </p>
+      <p className="text-body">{counter}</p>
 
-      <CircleButton>
+      <CircleButtonWithIcon disabled={isPlusDisabled} onClick={onClickPlus}>
         <Icon iconName="plus" />
-      </CircleButton>
+      </CircleButtonWithIcon>
     </div>
   );
 };

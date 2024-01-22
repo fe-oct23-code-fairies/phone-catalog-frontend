@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
 import { Logo } from '../../ui/Logo';
 import { Icon } from '../../ui/Icons';
+import { CircleButtonWithIcon } from '../../ui/CircleButtonWithIcon';
 
 function scrollTop() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+  const page = document.querySelector('#app-page');
+
+  if (page) {
+    page.scrollTop = 0;
+  }
 }
 
 export const Footer: React.FC = () => {
@@ -46,15 +50,11 @@ export const Footer: React.FC = () => {
         >
           Back to top
         </label>
-        <button
-          type="button"
-          id="to-top"
-          aria-label="to-top"
-          className="button-icon"
+        <CircleButtonWithIcon
           onClick={scrollTop}
         >
           <Icon iconName="arrow-up" />
-        </button>
+        </CircleButtonWithIcon>
       </div>
     </footer>
   );
