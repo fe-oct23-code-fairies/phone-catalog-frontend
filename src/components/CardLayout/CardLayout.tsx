@@ -1,8 +1,8 @@
 import React from 'react';
-// import { HeartLikeIcon } from './icons/HeartLike.svg'
 import './CardLayout.scss';
 import { Button } from '../../ui/Button';
 import { AddToFavourite } from '../../ui/AddToFavourite/AddToFavourite';
+
 
 export const CardLayout: React.FC = () => {
   return (
