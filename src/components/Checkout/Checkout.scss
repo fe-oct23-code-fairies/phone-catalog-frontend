@@ -6,7 +6,7 @@
   gap: 16px;
 
   padding: 24px;
-  border: 1px solid $c-elements-light-grey;
+  border: 1px solid rgba($c-elements-light-grey, 0.5);
   border-radius: 16px;
 
   @include onTablet {
@@ -15,6 +15,7 @@
 
   @include onDesktop1200 {
     grid-column: 17/-1;
+    gap: 24px;
   }
 
   &__head {
@@ -30,7 +31,7 @@
   &__hr {
     display: block;
     width: 100%;
-    border: 1px solid $c-elements-light-grey;
+    border: 1px solid rgba($c-elements-light-grey, 0.3);
   }
 
   &__button {
