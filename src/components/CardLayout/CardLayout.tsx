@@ -9,7 +9,7 @@ export const CardLayout: React.FC = () => {
       <div className="card__img-wrapper">
         <img
           className="card__img"
-          src="https://s3-alpha-sig.figma.com/img/4036/d779/98ea87fdcb4fe9b1d62dd9629b0b820f?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IlCU9y~SuA~X91gWpr57EonoPK0URVHknCGJcKh3jXHpLH7qrHH8ZunoXeThhpcjsUNrV10xvA2ESfp7WYpKYjPAnxXn8Rowz47j2QvmKILkW8TZukA-247uHFUvaKLFQVY4YqqUe78YCEXlb8UMBmAj1Z7Tx7AeHMqxRAf6BbLceygOz6AqRXZvJDtEUuSED7Y6PnXKS3gZrH0KWIu4GBhRUKwWK~tUzaAxln~4LFUSRKsHvRi4yfI2JVk7lL-H8JVv1cnTTnJt8Zv~-5J28lDENQrrLGgufzO08in~LKYAiQIvUj1s-cYQKJvVzvqDsPImktwqheVswKPUIEa5XA__"
+          src="future photo here"
           alt="Iphone IMG"
         />
       </div>
