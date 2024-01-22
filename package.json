@@ -2,6 +2,7 @@
   "name": "phone-catalog-frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -16,6 +17,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "format": "prettier . --ignore-path .gitignore --write",
     "lint": "eslint . --ignore-path .gitignore --fix",
     "fix-code": "npm run format & npm run lint"
@@ -53,11 +56,12 @@
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.33.2",
+    "gh-pages": "^6.1.1",
     "husky": "^8.0.3",
     "lint-staged": "13.2.3",
     "prettier": "^3.2.4",
-    "typescript": "^4.6.3",
-    "sass": "^1.70.0"
+    "sass": "^1.70.0",
+    "typescript": "^4.6.3"
   },
   "lint-staged": {
     "*.ts": "npm run fix-code",
