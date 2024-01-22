@@ -1,7 +1,6 @@
 import React from 'react';
 import './CardLayout.scss';
 
-
 export const CardLayout: React.FC = () => {
   return (
     <div className="card">
