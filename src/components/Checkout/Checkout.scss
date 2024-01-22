@@ -6,7 +6,7 @@
   gap: 16px;
 
   padding: 24px;
-  border: 1px solid rgba($c-elements-light-grey, 0.5);
+  border: 1px solid $c-elements-light-grey, 0.5;
   border-radius: 16px;
 
   @include onTablet {
@@ -32,7 +32,7 @@
   &__hr {
     display: block;
     width: 100%;
-    border: 1px solid rgba($c-elements-light-grey, 0.3);
+    border: 1px solid $c-elements-light-grey, 0.3;
   }
 
   &__button {
