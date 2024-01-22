@@ -1,17 +1,17 @@
 .card {
-  width: 288px;
-  border-radius: 5px;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  border-radius: 8px;
   border: 1px solid $c-elements-light-grey;
   background: $c-white;
   padding: 32px;
+  gap: 8px;
 
   @include hover (box-shadow, 0px 2px 16px 0px #0000001A);
 
   &__img {
-    display: flex;
-    align-items: center;
-    width: 120px;
-    height: 130px;
+    flex-grow: 1;
     transition: transform 0.3s ease;
 
     &:hover {
@@ -22,41 +22,46 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 24px;
+
+      flex-grow: 1;
     }
   }
 
   &__title {
+    padding-top: 16px;
     color: $c-primary-black;
     font-size: 12px;
     font-weight: 500;
     line-height: 18px;
-    margin-bottom: 4px;
   }
 
   &__price {
     font-weight: 800;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8px;
+    font-size: 22px;
+    line-height: 30.8px;
   }
 
   &__line {
     color: $c-elements-light-grey;
     border-top: 1px solid $c-elements-light-grey;
-    margin-bottom: 8px;
   }
 
   &__additional {
+    display: flex;
+    flex-direction: column;
+
+    padding-block: 8px;
+    gap: 8px;
+
     font-size: 12px;
     font-weight: 700;
     word-wrap: break-word;
-    margin-bottom: 8px;
 
     &__screen, &__capacity, &__ram {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 8px;
 
       &-title {
         color: $c-secondary-grey;
@@ -69,9 +74,8 @@
   }
 
   &__buttons {
-    gap: 8px;
-
     display: flex;
+    gap: 8px;
 
     justify-content: space-between;
     align-items: center;

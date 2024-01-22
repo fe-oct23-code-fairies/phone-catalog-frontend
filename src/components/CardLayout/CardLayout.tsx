@@ -9,7 +9,11 @@ export const CardLayout: React.FC = () => {
   return (
     <div className="card">
       <div className="card__img-wrapper">
-        <img className="card__img" src="future photo here" alt="Iphone IMG" />
+        <img
+          className="card__img"
+          src="images/item.png"
+          alt="Iphone IMG"
+        />
       </div>
 
       <h2 className="card__title">APPLE IPHONE 15 (MNED2UA/A) (MNED2UA/A)</h2>
