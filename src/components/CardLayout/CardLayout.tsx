@@ -1,6 +1,8 @@
 import React from 'react';
 // import { HeartLikeIcon } from './icons/HeartLike.svg'
 import './CardLayout.scss';
+import { Button } from '../../ui/Button';
+import { AddToFavourite } from '../../ui/AddToFavourite/AddToFavourite';
 
 export const CardLayout: React.FC = () => {
   return (
@@ -33,12 +35,10 @@ export const CardLayout: React.FC = () => {
       </div>
 
       <div className="card__buttons">
-        <button type="button" className="card__buttons-add">
+        <Button to="">
           Add to cart
-        </button>
-        <button type="button" className="card__buttons-icon">
-          <img src="" alt="i" />
-        </button>
+        </Button>
+        <AddToFavourite />
       </div>
     </div>
   );
