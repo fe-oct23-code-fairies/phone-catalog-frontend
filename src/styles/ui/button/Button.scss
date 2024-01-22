@@ -1,3 +1,20 @@
 .button {
   @include button-primary;
 }
+
+.button-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+
+  width: 32px;
+  height: 32px;
+
+  border-radius: 48px;
+  border: 1px solid $c-icons-mid-grey;
+
+  cursor: pointer;
+
+  @include hover(border-color, $c-primary-black);
+}
