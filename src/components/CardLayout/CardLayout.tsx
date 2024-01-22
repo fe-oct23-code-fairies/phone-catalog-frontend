@@ -15,7 +15,7 @@ export const CardLayout: React.FC = () => {
       </div>
 
       <h2 className="card__title">
-        APPLE IPHONE 15 (MNED2UA/A)
+        APPLE IPHONE 15 (MNED2UA/A) (MNED2UA/A)
       </h2>
 
       <div className='card__price'>$999</div>
@@ -38,7 +38,7 @@ export const CardLayout: React.FC = () => {
           <p className='card__additional__ram-value'>4 GB</p>
         </div>
       </div>
-      
+
       <div className='card__buttons'>
         <button className="card__buttons-add">Add to cart</button>
         <button className='card__buttons-icon'>
