@@ -6,7 +6,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px;
+
+  width: 32px;
+  height: 32px;
+
+  @include text-body;
+
+  border-radius: 48px;
+  border: 1px solid $c-elements-light-grey;
+
+  cursor: pointer;
+
+  @include hover(border-color, $c-primary-black);
+
+  &:active {
+    background-color: $c-primary-black;
+    color: $c-white;
+  }
+}
+
+.button-circle-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   width: 32px;
   height: 32px;
@@ -17,4 +39,73 @@
   cursor: pointer;
 
   @include hover(border-color, $c-primary-black);
+
+  &:disabled {
+    border: 1px solid $c-elements-light-grey, 0.5;
+  }
+}
+
+.button-favourite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 40px;
+  height: 40px;
+
+  border-radius: 48px;
+  border: 1px solid $c-icons-mid-grey;
+
+  cursor: pointer;
+
+  @include hover(border-color, $c-primary-black);
+}
+
+.button-radio {
+  @include button-radio;
+
+  &--gold {
+    &::after {
+      background-color: #FCDBC1;
+    }
+  }
+
+  &--grey {
+    &::after {
+      background-color: #5F7170;
+    }
+  }
+
+  &--brown {
+    &::after {
+      background-color: #4C4C4C;
+    }
+  }
+
+  &--white {
+    &::after {
+      background-color: #F0F0F0;
+    }
+  }
+}
+
+.button-rectangle {
+  display: block;
+  padding: 8px;
+
+  @include text-body;
+  color: $c-primary-black;
+
+  border: 1px solid $c-icons-mid-grey;
+  border-radius: 4px;
+
+  @include hover(border-color, $c-primary-black);
+
+  &:active {
+    background-color: $c-primary-black;
+    border: none;
+    color: $c-white;
+  }
+
+  cursor: pointer;
 }
