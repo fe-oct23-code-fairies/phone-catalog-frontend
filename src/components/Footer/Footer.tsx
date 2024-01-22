@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Logo } from '../Logo';
-import { Icon } from '../Icons';
+import { Logo } from '../../ui/Logo';
+import { Icon } from '../../ui/Icons';
 
 function scrollTop() {
   document.body.scrollTop = 0;

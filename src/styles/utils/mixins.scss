@@ -157,7 +157,6 @@
   }
 }
 
-
 @mixin button-primary {
   display: flex;
   justify-content: center;
@@ -173,39 +172,4 @@
 
   @include hover(box-shadow, 0px 3px 13px 0px rgba(23, 32, 49, 0.40));
   cursor: pointer;
-}
-
-@mixin button-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  height: 32px;
-  width: 32px;
-
-  border-radius: 50%;
-  border: 1px solid $c-icons-mid-grey;
-
-  background-position: center;
-  background-repeat: no-repeat;
-
-  @include hover(border-color, $c-primary-black);
-
-  cursor: pointer;
-
-
-
-  &:disabled {
-    cursor: default;
-
-    border-color: $c-borders-grey;
-
-    & > * {
-      fill: $c-icons-mid-grey;
-    }
-
-    &:hover {
-      border-color: $c-borders-grey;
-    }
-  }
 }

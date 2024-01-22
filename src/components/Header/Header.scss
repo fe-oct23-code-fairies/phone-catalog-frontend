@@ -14,7 +14,7 @@ $header-gap-desktop: 24px;
   flex-direction: column;
 
   box-sizing: border-box;
-  box-shadow: 0px 1px 0px 0px $c-borders-grey;
+  box-shadow: 0px 1px 0px 0px $c-elements-light-grey;
 
   background-color: $c-white;
 
@@ -26,7 +26,7 @@ $header-gap-desktop: 24px;
     gap: $header-gap;
 
     box-sizing: border-box;
-    box-shadow: 0px 1px 0px 0px $c-borders-grey;
+    box-shadow: 0px 1px 0px 0px $c-elements-light-grey;
 
     @include onDesktop1200 {
       height: $header-height-desktop;
@@ -65,6 +65,11 @@ $header-gap-desktop: 24px;
     height: $header-height;
     line-height: $header-height;
 
+    border-bottom-color: transparent;
+    border-bottom-style: solid;
+
+    transition: border-bottom-color, $effect-duration;
+
     @include onDesktop1200 {
       height: $header-height-desktop;
       line-height: $header-height-desktop;
@@ -74,7 +79,6 @@ $header-gap-desktop: 24px;
       color: $c-primary-black;
 
       border-bottom-color: $c-primary-black;
-      border-bottom-style: solid;
     }
   }
 }

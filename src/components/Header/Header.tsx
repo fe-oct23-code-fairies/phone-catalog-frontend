@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar } from './Navbar';
-import { Logo } from '../Logo';
+import { Logo } from '../../ui/Logo';
 import { Navmenu } from './Navmenu/Navmenu';
 
 export const Header: React.FC = () => {

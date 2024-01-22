@@ -7,8 +7,10 @@
   height: 16px;
 
   cursor: pointer;
-}
 
-.icon {
-  display: block;
+  & > svg {
+    fill: $c-icons-mid-grey;
+
+    @include hover(fill, $c-primary-black)
+  }
 }

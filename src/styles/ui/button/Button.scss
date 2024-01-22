@@ -1,4 +1,4 @@
-.button-primary {
+.button {
   @include button-primary;
 }
 
@@ -6,15 +6,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px;
 
   width: 32px;
   height: 32px;
 
   border-radius: 48px;
-  border: 1px solid $c-icons-mid-grey;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $c-icons-mid-grey;
 
   cursor: pointer;
 
   @include hover(border-color, $c-primary-black);
+
+  & > svg {
+    fill: $c-primary-black;
+  }
+
+  &:disabled {
+    cursor: default;
+
+    border-color: $c-elements-light-grey;
+
+    & > svg {
+      fill: $c-icons-mid-grey;
+    }
+  }
 }

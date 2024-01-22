@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import { Dispatch, SetStateAction } from 'react';
+import { Icon } from '../../../ui/Icons';
 
 const NAV_LINK_TITLES = ['home', 'phones', 'tablets', 'accessories'];
 
@@ -49,14 +50,18 @@ export const Navmenu: React.FC<Props> = ({
           className={getLinkClass}
           onClick={() => setIsMenuOpen(prev => !prev)}
         >
-          <div className="navmenu__button navmenu__button-favorites" />
+          <div className="navmenu__button">
+            <Icon iconName="heart" />
+          </div>
         </NavLink>
         <NavLink
           to="/checkout"
           className={getLinkClass}
           onClick={() => setIsMenuOpen(prev => !prev)}
         >
-          <div className="navmenu__button navmenu__button-cart" />
+          <div className="navmenu__button">
+            <Icon iconName="cart" />
+          </div>
         </NavLink>
       </div>
     </aside>

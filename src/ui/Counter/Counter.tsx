@@ -1,15 +1,14 @@
 import React from 'react';
 import { CircleButton } from '../CircleButton';
+import { Icon } from '../Icons';
 
 export const Counter: React.FC = () => {
+  const isMinusDisabled = true;
+
   return (
     <div className="counter">
-      <CircleButton>
-        <img
-          src="images/icons/minus-grey.svg"
-          alt="remove"
-          className="icon"
-        />
+      <CircleButton isDisabled={isMinusDisabled}>
+        <Icon iconName="minus" />
       </CircleButton>
 
       <p className="text-body">
@@ -17,11 +16,7 @@ export const Counter: React.FC = () => {
       </p>
 
       <CircleButton>
-        <img
-          src="images/icons/plus.svg"
-          alt="add"
-          className="icon"
-        />
+        <Icon iconName="plus" />
       </CircleButton>
     </div>
   );
