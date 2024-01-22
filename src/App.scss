@@ -3,8 +3,9 @@
 @import './styles/utils/reset.scss';
 @import './styles/utils/mixins.scss';
 @import './styles/ui/text/text.scss';
-@import './styles/ui/button/button.scss';
-
+@import './styles/ui/button/Button.scss';
+@import './styles/ui/icon/icon.scss';
+@import './ui/Counter/Counter.scss';
 @import './styles/blocks/NotFoundPage.scss';
 
 @import './components/Logo/Logo.scss';
@@ -12,6 +13,8 @@
 @import './components/Header/Navbar/Navbar.scss';
 @import './components/Header/Navmenu/Navmenu.scss';
 @import './components/Footer/Footer.scss';
+@import './components/CartItem/CartItem.scss';
+@import './components/Checkout/Checkout.scss';
 
 .App {
   height: 100vh;
