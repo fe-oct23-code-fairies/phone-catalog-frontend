@@ -1,0 +1,92 @@
+.card {
+  width: 288px;
+  border-radius: 5px;
+  border: 1px solid #f3f3f3;
+  background: #fff;
+  padding: 32px;
+
+  &__img {
+    display: flex;
+    align-items: center;
+    width: 120px;
+    height: 130px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__title {
+    color: #060b35;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    margin-bottom: 4px;
+  }
+
+  &__price {
+    font-weight: 800;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__line {
+    color: #E2E6E9;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 8px;
+  }
+
+  &__additional {
+    font-size: 12px;
+    font-weight: 700;
+    word-wrap: break-word;
+    margin-bottom: 8px;
+
+    &__screen, &__capacity, &__ram {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+
+      &-title {
+        color: #89939A;
+      }
+
+      &-value {
+        color: #0F0F11;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+
+    &-add {
+      display: block;
+      height: 40px;
+      line-height: 21px;
+      border-radius: 48px;
+      text-align: center;
+      background-color: #4219D0;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid #4219D0;
+      margin-right: 8px;
+      width: 100%;
+
+      &:hover {
+        color: #4219D0;
+        background-color: #fff;
+      }
+    }
+  }
+}
