@@ -11,7 +11,6 @@
   @include hover (box-shadow, 0px 2px 16px 0px #0000001A);
 
   &__img {
-    flex-grow: 1;
     transition: transform 0.3s ease;
 
     &:hover {
@@ -22,8 +21,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
-      flex-grow: 1;
     }
   }
 
