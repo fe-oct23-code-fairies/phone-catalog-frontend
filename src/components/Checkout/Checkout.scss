@@ -16,6 +16,7 @@
   @include onDesktop1200 {
     grid-column: 17/-1;
     gap: 24px;
+    max-height: 206px;
   }
 
   &__head {

@@ -9,6 +9,7 @@ import { App } from './App';
 import { Home } from './pages/Home';
 import { Phones } from './pages/Phones';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { Cart } from './pages/Cart';
 
 export const Routing = () => (
   <Router>
@@ -18,6 +19,8 @@ export const Routing = () => (
         <Route path="home" element={<Navigate to=".." />} />
 
         <Route path="phones" element={<Phones />} />
+
+        <Route path="favorites" element={<Cart />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>
