@@ -19,8 +19,8 @@ export const client = {
   getAccessoryById: (id: string) => get(`accessories/${id}`),
 
   getPhones: () => get('phones'),
-  getPhonesById: (id: string) => get(`phones/${id}`),
+  getPhoneById: (id: string) => get(`phones/${id}`),
 
   getTablets: () => get('tablets'),
-  getTabletsById: (id: string) => get(`tablets/${id}`),
+  getTabletById: (id: string) => get(`tablets/${id}`),
 };
