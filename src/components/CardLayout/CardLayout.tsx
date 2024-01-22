@@ -1,5 +1,4 @@
 import React from 'react';
-// import { HeartLikeIcon } from './icons/HeartLike.svg'
 import './CardLayout.scss'
 
 

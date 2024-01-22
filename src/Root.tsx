@@ -7,7 +7,7 @@ import {
 
 import { App } from './App';
 import { Home } from './pages/Home';
-import { Phones } from './pages/Phones';
+import { Phones } from './pages/Phones/Phones';
 import { Tablets } from './pages/Tablets';
 import { Accessories } from './pages/Accessories';
 import { NotFoundPage } from './pages/NotFoundPage';
