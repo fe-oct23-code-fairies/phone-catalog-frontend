@@ -177,6 +177,8 @@
 
   @include hover(box-shadow, 0px 3px 13px 0px rgba(23, 32, 49, 0.40));
 
+  transition: $effect-duration;
+
   &:active {
     transition: $effect-duration;
     background-color: $c-white;
@@ -185,6 +187,7 @@
   }
 
   &--active {
+    transition: $effect-duration;
     background-color: $c-white;
     color: $c-accent-blue;
     border: 1px solid $c-elements-light-grey;
