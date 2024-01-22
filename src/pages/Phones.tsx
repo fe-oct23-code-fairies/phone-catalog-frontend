@@ -1,4 +1,4 @@
-import { CardLayout } from "../components/CardLayout";
+import { CardLayout } from '../components/CardLayout';
 
 export const Phones: React.FC = () => {
   return (
