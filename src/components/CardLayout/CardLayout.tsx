@@ -1,6 +1,6 @@
 import React from 'react';
-// import { HeartLikeIcon } from './icons/HeartLike.svg'
 import './CardLayout.scss';
+
 
 export const CardLayout: React.FC = () => {
   return (
