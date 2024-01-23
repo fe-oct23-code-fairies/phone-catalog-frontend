@@ -1,0 +1,63 @@
+@import '../../styles/utils/vars.scss';
+@import '../../styles/utils/mixins';
+
+
+
+.container {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include onTablet {
+    flex-direction: row;
+  }
+}
+
+.photo__block {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  order: 1;
+
+  @include onTablet {
+    flex-direction: column;
+    order: 0;
+  }
+
+  @include onDesktop1200 {
+    gap: 16px;
+  }
+
+
+  &-img {
+    border-radius: 4px;
+    height: 40px;
+    width: 40px;
+
+    @include onDesktop1200 {
+      height: 66px;
+      width: 66px;
+    }
+
+    &:hover {
+      border: 1px solid #C4C4C4;
+    }
+  }
+
+  &-main {
+    height: 275px;
+    width: 275px;
+    padding: 10px;
+
+    @include onDesktop1200 {
+      height: 440px;
+      width: 440px;
+      padding: 23px;
+    }
+  }
+}
+
+.selected {
+  border: 1px solid #C4C4C4;
+}
