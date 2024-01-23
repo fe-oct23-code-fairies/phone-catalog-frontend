@@ -6,7 +6,6 @@ export const App: React.FC = () => {
   return (
     <div className="App">
       <Header />
-
       <div className="App__page">
         <Outlet />
       </div>

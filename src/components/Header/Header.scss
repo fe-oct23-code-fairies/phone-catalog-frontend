@@ -8,6 +8,7 @@ $header-gap-desktop: 24px;
   top: 0;
   width: 100vw;
   background-color: $c-white;
+  z-index: 2;
 
   display: flex;
   flex-direction: column;
