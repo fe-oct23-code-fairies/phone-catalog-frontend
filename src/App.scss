@@ -24,17 +24,24 @@
   background-color: $c-background;
 
   &__page {
-    max-height: 100vh;
+    margin-top: $header-height;
+
+    height: calc(100% - $header-height);
     overflow-y: auto;
     scroll-behavior: smooth;
 
+    @include onDesktop1200 {
+      margin-top: $header-height-desktop;
+
+      height: calc(100% - $header-height-desktop);
+    }
+
     &-content {
       min-height: 100vh;
-      padding-top: calc($header-height + 24px);
+      padding-top: 24px;
       padding-bottom: 64px;
 
       @include onDesktop1200 {
-        padding-top: calc($header-height-desktop + 24px);
         padding-bottom: 80px;
       }
 
