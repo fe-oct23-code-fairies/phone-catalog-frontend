@@ -1,6 +1,5 @@
 .card {
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
   border-radius: 8px;
   border: 1px solid $c-elements-light-grey;
@@ -8,9 +7,13 @@
   padding: 32px;
   gap: 8px;
 
-  @include hover(box-shadow, 0px 2px 16px 0px #0000001a);
+  @include hover (box-shadow, 0px 2px 16px 0px #0000001A);
 
   &__img {
+    flex-shrink: 1;
+    max-height: 200px;
+    max-width: 200px;
+
     transition: transform 0.3s ease;
 
     &:hover {
@@ -21,6 +24,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
+      flex-shrink: 1;
     }
   }
 
