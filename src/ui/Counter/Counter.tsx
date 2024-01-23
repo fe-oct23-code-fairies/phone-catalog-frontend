@@ -14,13 +14,23 @@ export const Counter: React.FC = () => {
 
   return (
     <div className="counter">
-      <CircleButtonWithIcon disabled={isMinusDisabled} onClick={onClickMinus}>
+      <CircleButtonWithIcon
+        additionalClass={isMinusDisabled
+          ? 'button-circle-icon--disabled'
+          : ''}
+        onClick={onClickMinus}
+      >
         <Icon iconName="minus" />
       </CircleButtonWithIcon>
 
       <p className="text-body counter__number">{counter}</p>
 
-      <CircleButtonWithIcon disabled={isPlusDisabled} onClick={onClickPlus}>
+      <CircleButtonWithIcon
+        additionalClass={isPlusDisabled
+          ? 'button-circle-icon--disabled'
+          : ''}
+        onClick={onClickPlus}
+      >
         <Icon iconName="plus" />
       </CircleButtonWithIcon>
     </div>
