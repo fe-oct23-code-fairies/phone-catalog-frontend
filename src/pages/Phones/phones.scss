@@ -1,0 +1,31 @@
+.grid__container {
+  grid-column: 1 / -1;
+
+  --count-columns: 1;
+
+  display: grid;
+  gap: 40px 16px;
+  padding: 40px 0;
+
+  grid-template-columns: repeat(var(--count-columns), 1fr);
+
+  justify-content: center;
+
+  @include onTablet {
+    --count-columns: 2;
+  }
+
+  @media (min-width: 768px) {
+    --count-columns: 3;
+  }
+
+  @include onDesktop1200 {
+    --count-columns: 4;
+  }
+}
+
+.phones {
+  &__title {
+    grid-column: 1 / -1;
+  }
+}

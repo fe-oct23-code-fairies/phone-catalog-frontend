@@ -2,17 +2,14 @@ import React from 'react';
 import { ButtonWithIcon } from '../../ui/ButtonWithIcon';
 import { CartItemPhoto } from '../../ui/CartItemPhoto';
 import { Counter } from '../../ui/Counter';
+import { Icon } from '../../ui/Icons';
 
 export const CartItem: React.FC = () => {
   return (
     <div className="cart-item">
       <div className="cart-item__head">
         <ButtonWithIcon>
-          <img
-            src="images/icons/delete.svg"
-            alt="delete product from cart"
-            className="icon"
-          />
+          <Icon iconName="close" />
         </ButtonWithIcon>
 
         <CartItemPhoto photo="item" />

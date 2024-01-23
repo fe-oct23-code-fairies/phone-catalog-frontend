@@ -6,15 +6,17 @@ $header-gap-desktop: 24px;
 .header {
   position: fixed;
   top: 0;
-  width: 100vw;
-  background-color: $c-white;
-  z-index: 2;
+  width: 100%;
+
+  z-index: 10;
 
   display: flex;
   flex-direction: column;
 
   box-sizing: border-box;
-  box-shadow: 0px 1px 0px 0px #E2E6E9;
+  box-shadow: 0px 1px 0px 0px $c-elements-light-grey;
+
+  background-color: $c-white;
 
   &__bar {
     display: flex;
@@ -24,7 +26,7 @@ $header-gap-desktop: 24px;
     gap: $header-gap;
 
     box-sizing: border-box;
-    box-shadow: 0px 1px 0px 0px #E2E6E9;
+    box-shadow: 0px 1px 0px 0px $c-elements-light-grey;
 
     @include onDesktop1200 {
       height: $header-height-desktop;
@@ -60,36 +62,23 @@ $header-gap-desktop: 24px;
 
   &__link {
     box-sizing: border-box;
-    text-decoration: none;
     height: $header-height;
-
-    font-family: 'Mont';
-    font-size: 12px;
-    font-weight: 800;
     line-height: $header-height;
-    letter-spacing: 0.04em;
-    text-align: left;
-    text-transform: uppercase;
+
+    border-bottom-color: transparent;
+    border-bottom-style: solid;
+
+    transition: border-bottom-color, $effect-duration;
 
     @include onDesktop1200 {
       height: $header-height-desktop;
       line-height: $header-height-desktop;
     }
 
-    color: $c-secondary-grey;
-
-    &:active {
-      color: $c-primary-black;
-    }
-
-    &:hover {
-      color: $c-primary-black;
-    }
-
     &--active {
       color: $c-primary-black;
 
-      border-bottom: 2px solid $c-primary-black
+      border-bottom-color: $c-primary-black;
     }
   }
 }

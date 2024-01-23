@@ -1,22 +1,19 @@
 import { FC } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Pagination, Navigation } from 'swiper/modules';
+import { Icon } from '../../ui/Icons';
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
-// import 'swiper/css/pagination';
-// import 'swiper/css/navigation';
 import './MainSlider.scss';
-
-import { FreeMode, Pagination, Navigation } from 'swiper/modules';
-import { CircleButtonWithIcon } from '../../ui/CircleButtonWithIcon';
 
 export const MainSlider: FC = () => {
   return (
     <div className="swiper-grid-container">
       <div className="swiper-button-prev">
-        <CircleButtonWithIcon>
+        <div className="wrapper-slider-icon">
           <Icon iconName="arrow-left" />
-        </CircleButtonWithIcon>
+        </div>
       </div>
       <Swiper
         slidesPerView={1}
@@ -86,7 +83,11 @@ export const MainSlider: FC = () => {
           </a>
         </SwiperSlide>
       </Swiper>
-      <div className="swiper-button-next" />
+      <div className="swiper-button-next">
+        <div className="wrapper-slider-icon">
+          <Icon iconName="arrow-right" />
+        </div>
+      </div>
       <div className="swiper-pagination" />
     </div>
   );

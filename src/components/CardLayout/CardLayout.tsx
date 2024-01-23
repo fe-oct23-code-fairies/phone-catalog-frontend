@@ -1,12 +1,19 @@
-import React from 'react';
-// import { HeartLikeIcon } from './icons/HeartLike.svg'
-import './CardLayout.scss';
+import React, { useState } from 'react';
+import { Button } from '../../ui/Button';
+import { AddToFavourite } from '../../ui/AddToFavourite/AddToFavourite';
 
 export const CardLayout: React.FC = () => {
+  const [isAdded, setIsAdded] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+
   return (
     <div className="card">
       <div className="card__img-wrapper">
-        <img className="card__img" src="future photo here" alt="Iphone IMG" />
+        <img
+          className="card__img"
+          src="images/item.png"
+          alt="Iphone IMG"
+        />
       </div>
 
       <h2 className="card__title">APPLE IPHONE 15 (MNED2UA/A) (MNED2UA/A)</h2>
@@ -33,12 +40,18 @@ export const CardLayout: React.FC = () => {
       </div>
 
       <div className="card__buttons">
-        <button type="button" className="card__buttons-add">
-          Add to cart
-        </button>
-        <button type="button" className="card__buttons-icon">
-          <img src="" alt="i" />
-        </button>
+        <Button
+          to=""
+          btnClass="card__add"
+          isActive={isAdded}
+          onClick={() => setIsAdded(prev => !prev)}
+        >
+          {isAdded ? 'Added' : 'Add to cart'}
+        </Button>
+        <AddToFavourite
+          isFavorite={isFavorite}
+          onClick={() => setIsFavorite(prev => !prev)}
+        />
       </div>
     </div>
   );
