@@ -1,4 +1,6 @@
 .grid__container {
+  justify-content: center;
+
   grid-column: 1 / -1;
 
   --count-columns: 1;
@@ -9,9 +11,13 @@
 
   grid-template-columns: repeat(var(--count-columns), 1fr);
 
-  justify-content: center;
+  &-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-  @include onTablet {
+  @media (min-width: 512px) {
     --count-columns: 2;
   }
 
@@ -19,7 +25,7 @@
     --count-columns: 3;
   }
 
-  @include onDesktop1200 {
+  @media (min-width: 1024px) {
     --count-columns: 4;
   }
 }
