@@ -1,7 +1,7 @@
 import React from 'react';
 
 type Props = {
-  gigabytesAmount: number,
+  gigabytesAmount: number;
 };
 
 export const CapacitySelect: React.FC<Props> = ({ gigabytesAmount }) => {
