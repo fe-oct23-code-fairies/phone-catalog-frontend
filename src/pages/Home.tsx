@@ -4,6 +4,6 @@ export const Home: React.FC = () => {
   return (
     <div>
       <PhotoBlock />
-    </div >
+    </div>
   );
 };
