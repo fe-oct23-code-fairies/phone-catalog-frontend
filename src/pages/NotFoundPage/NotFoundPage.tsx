@@ -1,4 +1,4 @@
-import { Button } from '../ui/Button';
+import { Button } from '../../ui/Button';
 
 export const NotFoundPage: React.FC = () => {
   return (
@@ -14,8 +14,7 @@ export const NotFoundPage: React.FC = () => {
       </div>
 
       <img
-        // eslint-disable-next-line global-require
-        src={require('../images/error-img.png')}
+        src="images/error-img.png"
         alt="404 not found"
         className="notFound__img"
       />

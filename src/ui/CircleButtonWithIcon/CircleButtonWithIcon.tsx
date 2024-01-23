@@ -3,19 +3,18 @@ import React from 'react';
 type Props = {
   children: React.ReactNode;
   onClick?: () => void;
-  disabled?: boolean;
+  additionalClass?: string;
 };
 
 export const CircleButtonWithIcon: React.FC<Props> = ({
   children,
   onClick = () => {},
-  disabled,
+  additionalClass,
 }) => {
   return (
     <button
       type="button"
-      className="button-circle-icon"
-      disabled={disabled}
+      className={`button-circle-icon ${additionalClass}`}
       onClick={onClick}
     >
       {children}
@@ -25,14 +24,13 @@ export const CircleButtonWithIcon: React.FC<Props> = ({
 
 export const CircleButton: React.FC<Props> = ({
   children,
-  disabled,
   onClick = () => {},
+  additionalClass,
 }) => {
   return (
     <button
       type="button"
-      className="button-circle"
-      disabled={disabled}
+      className={`button-circle ${additionalClass}`}
       onClick={onClick}
     >
       {children}

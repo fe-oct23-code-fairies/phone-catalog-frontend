@@ -14,8 +14,6 @@ export const Phones: React.FC = () => {
         <div className="grid__container-item"><CardLayout /></div>
         <div className="grid__container-item"><CardLayout /></div>
         <div className="grid__container-item"><CardLayout /></div>
-        <div className="grid__container-item"><CardLayout /></div>
-        <div className="grid__container-item"><CardLayout /></div>
       </div>
     </>
   );

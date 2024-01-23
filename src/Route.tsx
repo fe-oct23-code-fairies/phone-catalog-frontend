@@ -13,6 +13,7 @@ import { Accessories } from './pages/Accessories';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Cart } from './pages/Cart';
 import { Favorites } from './pages/Favorites';
+import { CatalogContextProvider } from './context';
 
 export const Root = () => (
   <Router>
@@ -21,7 +22,16 @@ export const Root = () => (
         <Route index element={<Home />} />
         <Route path="home" element={<Navigate to=".." />} />
 
-        <Route path="phones" element={<Phones />} />
+        <Route
+          path="phones"
+          element={
+            (
+              <CatalogContextProvider>
+                <Phones />
+              </CatalogContextProvider>
+            )
+          }
+        />
         <Route path="tablets" element={<Tablets />} />
         <Route path="accessories" element={<Accessories />} />
         <Route path="favorites" element={<Favorites />} />

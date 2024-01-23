@@ -19,7 +19,7 @@
 
   @include hover(border-color, $c-primary-black);
 
-  &:active {
+  &--active {
     background-color: $c-primary-black;
     color: $c-white;
   }
@@ -46,8 +46,9 @@
     fill: $c-primary-black;
   }
 
-  &:disabled {
-    cursor: default;
+  &--disabled {
+    cursor: none;
+    pointer-events: none;
 
     border-color: $c-elements-light-grey;
 
