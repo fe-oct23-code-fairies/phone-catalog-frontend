@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import { Dispatch, SetStateAction } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Icon } from '../../../ui/Icons';
 import { getLinkClass } from '../helper';
 
 const NAV_LINK_TITLES = ['home', 'phones', 'tablets', 'accessories'];
@@ -30,10 +31,14 @@ export const Navbar: React.FC<Props> = ({
 
       <div className="navbar__right">
         <NavLink to="/favorites" className={getLinkClass}>
-          <div className="navbar__button navbar__button-favorites" />
+          <div className="navbar__button navbar__button-main">
+            <Icon iconName="heart" />
+          </div>
         </NavLink>
         <NavLink to="/checkout" className={getLinkClass}>
-          <div className="navbar__button navbar__button-cart" />
+          <div className="navbar__button navbar__button-main">
+            <Icon iconName="cart" />
+          </div>
         </NavLink>
         <div
           role="presentation"
@@ -42,7 +47,9 @@ export const Navbar: React.FC<Props> = ({
             'navbar__button-close': isMenuOpen,
           })}
           onClick={() => setIsMenuOpen((prev) => !prev)}
-        />
+        >
+          <Icon iconName={isMenuOpen ? 'close' : 'menu'} />
+        </div>
       </div>
     </nav>
   );

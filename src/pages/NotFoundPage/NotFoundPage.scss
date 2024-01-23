@@ -1,0 +1,32 @@
+.notFound {
+  grid-column: span 4;
+  transform: translateY(20%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 44px;
+
+  @include onTablet {
+    grid-column: 3/11;
+    gap: 36px;
+  }
+
+  @include onDesktop1200 {
+    grid-column: 9/17;
+    gap: 36px;
+  }
+
+  &__text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__img {
+    display: block;
+    object-fit: contain;
+    width: 100%;
+  }
+}

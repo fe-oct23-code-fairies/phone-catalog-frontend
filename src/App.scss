@@ -1,43 +1,67 @@
+<<<<<<< HEAD
+@import "./styles/utils/vars.scss";
+@import "./styles/Fonts/Mont/fonts.scss";
+@import "./styles/utils/reset.scss";
+@import "./styles/utils/mixins.scss";
+@import "./styles/ui/text/text.scss";
+@import "./styles/ui/button/Button.scss";
+@import "./styles/ui/icon/icon.scss";
+@import "./ui/Counter/Counter.scss";
+@import "./styles/blocks/NotFoundPage.scss";
+@import "./styles/blocks/Cart.scss";
+@import "./pages/Phones/phones.scss";
+=======
 @import './styles/utils/vars.scss';
-@import './styles/utils/reset.scss';
 @import './styles/Fonts/Mont/fonts.scss';
+@import './styles/utils/reset.scss';
 @import './styles/utils/mixins.scss';
 @import './styles/ui/text/text.scss';
 @import './styles/ui/button/Button.scss';
 @import './styles/ui/icon/icon.scss';
 @import './ui/Counter/Counter.scss';
+@import './ui/Pagination/Pagination.scss';
+@import './pages/Phones/phones.scss';
+@import './pages/NotFoundPage/NotFoundPage.scss';
+@import './pages/Cart/Cart.scss';
+>>>>>>> main
 
-
-@import './styles/blocks/NotFoundPage.scss';
-@import './styles/blocks/Cart.scss';
-
-
-@import './components/Logo/Logo.scss';
-@import './components/Header/Header.scss';
-@import './components/Header/Navbar/Navbar.scss';
-@import './components/Header/Navmenu/Navmenu.scss';
-@import './components/CartItem/CartItem.scss';
-@import './components/Checkout/Checkout.scss';
-
-* {
-  font-family: 'Mont';
-  box-sizing: border-box;
-  color: $c-primary-black;
-}
+@import "./ui/Logo/Logo.scss";
+@import "./components/Header/Header.scss";
+@import "./components/Header/Navbar/Navbar.scss";
+@import "./components/Header/Navmenu/Navmenu.scss";
+@import "./components/Footer/Footer.scss";
+@import "./components/CartItem/CartItem.scss";
+@import "./components/Checkout/Checkout.scss";
+@import "./components/CardLayout/CardLayout.scss";
 
 .App {
-  min-height: 100vh;
-
+  height: 100vh;
   background-color: $c-background;
 
   &__page {
-    padding-top: calc($header-height + 24px);
+    margin-top: $header-height;
+
+    height: calc(100% - $header-height);
+    overflow-y: auto;
+    scroll-behavior: smooth;
 
     @include onDesktop1200 {
-      padding-top: calc($header-height-desktop + 24px);
+      margin-top: $header-height-desktop;
+
+      height: calc(100% - $header-height-desktop);
     }
 
-    @include paddingInline;
-    @include grid;
+    &-content {
+      min-height: 100vh;
+      padding-top: 24px;
+      padding-bottom: 64px;
+
+      @include onDesktop1200 {
+        padding-bottom: 80px;
+      }
+
+      @include paddingInline;
+      @include grid;
+    }
   }
 }

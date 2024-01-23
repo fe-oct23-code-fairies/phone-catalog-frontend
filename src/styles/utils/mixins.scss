@@ -28,7 +28,21 @@
   }
 
   @include onDesktop1440 {
-    padding-inline: 152px;
+    padding-inline: 0px;
+  }
+}
+
+@mixin hover($property, $toVAlue) {
+  transition: #{$property} $effect-duration;
+  &:hover {
+    #{$property}: #{$toVAlue};
+  }
+}
+
+@mixin click($property, $toVAlue) {
+  transition: #{$property} $effect-duration;
+  &:visited {
+    #{$property}: #{$toVAlue};
   }
 }
 
@@ -110,17 +124,28 @@
   text-transform: uppercase;
 }
 
-@mixin hover ($property, $toVAlue) {
-  transition: #{$property} $effect-duration;
+@mixin text-link {
+  font-family: "Mont";
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: none;
 
-  &:hover {
-    #{$property}: #{$toVAlue};
+  color: $c-secondary-grey;
+
+  &:active {
+    color: $c-primary-black;
   }
+
+  @include hover(color, $c-primary-black);
 }
 
 @mixin grid {
   --columns: 4;
   display: grid;
+  justify-content: center;
   column-gap: 16px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
@@ -130,15 +155,16 @@
 
   @include onDesktop1200 {
     --columns: 24;
+
+    grid-template-columns: repeat(var(--columns), 32px);
   }
 }
-
 
 @mixin button-primary {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 15px;
 
   height: 40px;
 
@@ -149,13 +175,22 @@
 
   color: $c-white;
 
-  @include hover(box-shadow, 0px 3px 13px 0px rgba(23, 32, 49, 0.40));
+  @include hover(box-shadow, 0px 3px 13px 0px rgba(23, 32, 49, 0.4));
+
+  transition: $effect-duration;
 
   &:active {
     transition: $effect-duration;
     background-color: $c-white;
     color: $c-accent-blue;
-    border: 1px solid rgba($c-elements-light-grey, 0.5);
+    border: 1px solid $c-elements-light-grey;
+  }
+
+  &--active {
+    transition: $effect-duration;
+    background-color: $c-white;
+    color: $c-accent-blue;
+    border: 1px solid $c-elements-light-grey;
   }
 
   cursor: pointer;

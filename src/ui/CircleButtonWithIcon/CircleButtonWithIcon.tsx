@@ -2,23 +2,37 @@ import React from 'react';
 
 type Props = {
   children: React.ReactNode;
-  disabled?: boolean;
+  onClick?: () => void;
+  additionalClass?: string;
 };
 
 export const CircleButtonWithIcon: React.FC<Props> = ({
   children,
-  disabled,
+  onClick = () => {},
+  additionalClass,
 }) => {
   return (
-    <button type="button" disabled={disabled} className="button-circle-icon">
+    <button
+      type="button"
+      className={`button-circle-icon ${additionalClass}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
 };
 
-export const CircleButton: React.FC<Props> = ({ children, disabled }) => {
+export const CircleButton: React.FC<Props> = ({
+  children,
+  onClick = () => {},
+  additionalClass,
+}) => {
   return (
-    <button type="button" className="button-circle" disabled={disabled}>
+    <button
+      type="button"
+      className={`button-circle ${additionalClass}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

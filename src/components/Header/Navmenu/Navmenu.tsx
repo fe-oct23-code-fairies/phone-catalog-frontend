@@ -1,16 +1,22 @@
 import { Dispatch, SetStateAction } from 'react';
 import { NavLink } from 'react-router-dom';
+import cn from 'classnames';
+import { Icon } from '../../../ui/Icons';
 import { getLinkClass } from '../helper';
 
 const NAV_LINK_TITLES = ['home', 'phones', 'tablets', 'accessories'];
 
 interface Props {
+  isMenuOpen: boolean;
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export const Navmenu: React.FC<Props> = ({ setIsMenuOpen }: Props) => {
+export const Navmenu: React.FC<Props> = ({
+  isMenuOpen,
+  setIsMenuOpen,
+}: Props) => {
   return (
-    <div className="navmenu">
+    <aside className={cn('navmenu', { 'navmenu--open': isMenuOpen })}>
       <div className="navmenu__top">
         {NAV_LINK_TITLES.map((title) => {
           const link = title === 'home' ? '/' : `/${title}`;
@@ -34,16 +40,20 @@ export const Navmenu: React.FC<Props> = ({ setIsMenuOpen }: Props) => {
           className={getLinkClass}
           onClick={() => setIsMenuOpen((prev) => !prev)}
         >
-          <div className="navmenu__button navmenu__button-favorites" />
+          <div className="navmenu__button">
+            <Icon iconName="heart" />
+          </div>
         </NavLink>
         <NavLink
           to="/checkout"
           className={getLinkClass}
           onClick={() => setIsMenuOpen((prev) => !prev)}
         >
-          <div className="navmenu__button navmenu__button-cart" />
+          <div className="navmenu__button">
+            <Icon iconName="cart" />
+          </div>
         </NavLink>
       </div>
-    </div>
+    </aside>
   );
 };

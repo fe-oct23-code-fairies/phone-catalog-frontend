@@ -19,7 +19,7 @@
 
   @include hover(border-color, $c-primary-black);
 
-  &:active {
+  &--active {
     background-color: $c-primary-black;
     color: $c-white;
   }
@@ -34,14 +34,27 @@
   height: 32px;
 
   border-radius: 48px;
-  border: 1px solid $c-icons-mid-grey;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $c-icons-mid-grey;
 
   cursor: pointer;
 
   @include hover(border-color, $c-primary-black);
 
-  &:disabled {
-    border: 1px solid $c-elements-light-grey, 0.5;
+  & > svg {
+    fill: $c-primary-black;
+  }
+
+  &--disabled {
+    cursor: none;
+    pointer-events: none;
+
+    border-color: $c-elements-light-grey;
+
+    & > svg {
+      fill: $c-icons-mid-grey;
+    }
   }
 }
 
@@ -59,6 +72,31 @@
   cursor: pointer;
 
   @include hover(border-color, $c-primary-black);
+
+  transition: border-color, transform, fill, $effect-duration;
+
+  & > svg {
+    fill: $c-primary-black;
+
+    transition: transform, $effect-duration;
+  }
+
+  &:active {
+    transform: scale(1.1);
+
+    & > svg {
+      fill: $c-secondary-accent-yellow;
+      transform: scale(1.2);
+    }
+  }
+
+  &--active {
+    border-color: $c-elements-light-grey;
+
+    & > svg {
+      fill: $c-secondary-accent-yellow;
+    }
+  }
 }
 
 .button-radio {
@@ -66,25 +104,25 @@
 
   &--gold {
     &::after {
-      background-color: #FCDBC1;
+      background-color: #fcdbc1;
     }
   }
 
   &--grey {
     &::after {
-      background-color: #5F7170;
+      background-color: #5f7170;
     }
   }
 
   &--brown {
     &::after {
-      background-color: #4C4C4C;
+      background-color: #4c4c4c;
     }
   }
 
   &--white {
     &::after {
-      background-color: #F0F0F0;
+      background-color: #f0f0f0;
     }
   }
 }

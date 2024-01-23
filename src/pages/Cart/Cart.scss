@@ -1,0 +1,26 @@
+.cart {
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include onDesktop1200 {
+    @include grid;
+  }
+
+  &__products {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      grid-column: span 12;
+    }
+
+    @include onDesktop1200 {
+      grid-column: 1/17;
+    }
+  }
+}
