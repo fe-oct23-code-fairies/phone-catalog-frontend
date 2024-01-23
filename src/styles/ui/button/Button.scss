@@ -19,7 +19,7 @@
 
   @include hover(border-color, $c-primary-black);
 
-  &:active {
+  &--active {
     background-color: $c-primary-black;
     color: $c-white;
   }
@@ -46,8 +46,9 @@
     fill: $c-primary-black;
   }
 
-  &:disabled {
-    cursor: default;
+  &--disabled {
+    cursor: none;
+    pointer-events: none;
 
     border-color: $c-elements-light-grey;
 
@@ -103,25 +104,25 @@
 
   &--gold {
     &::after {
-      background-color: #FCDBC1;
+      background-color: #fcdbc1;
     }
   }
 
   &--grey {
     &::after {
-      background-color: #5F7170;
+      background-color: #5f7170;
     }
   }
 
   &--brown {
     &::after {
-      background-color: #4C4C4C;
+      background-color: #4c4c4c;
     }
   }
 
   &--white {
     &::after {
-      background-color: #F0F0F0;
+      background-color: #f0f0f0;
     }
   }
 }

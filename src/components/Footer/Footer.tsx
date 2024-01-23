@@ -24,38 +24,24 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="footer__items">
-          <a
-            href={ghRef}
-            className="text-link"
-          >
+          <a href={ghRef} className="text-link">
             Github
           </a>
 
-          <Link
-            to="/contacts"
-            className="text-link"
-          >
+          <Link to="/contacts" className="text-link">
             Contacts
           </Link>
 
-          <Link
-            to="/rights"
-            className="text-link"
-          >
+          <Link to="/rights" className="text-link">
             Rights
           </Link>
         </div>
 
         <div className="footer__scroll-up">
-          <label
-            htmlFor="to-top"
-            className="text-small footer__button-label"
-          >
+          <label htmlFor="to-top" className="text-small footer__button-label">
             Back to top
           </label>
-          <CircleButtonWithIcon
-            onClick={scrollTop}
-          >
+          <CircleButtonWithIcon onClick={scrollTop}>
             <Icon iconName="arrow-up" />
           </CircleButtonWithIcon>
         </div>

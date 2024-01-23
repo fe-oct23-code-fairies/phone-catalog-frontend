@@ -9,7 +9,7 @@
 
   min-height: 440px;
 
-  @include hover (box-shadow, 0px 2px 16px 0px #0000001A);
+  @include hover(box-shadow, 0px 2px 16px 0px #0000001a);
 
   &__img {
     flex-shrink: 1;
@@ -63,7 +63,9 @@
     font-weight: 700;
     word-wrap: break-word;
 
-    &__screen, &__capacity, &__ram {
+    &__screen,
+    &__capacity,
+    &__ram {
       display: flex;
       justify-content: space-between;
 
