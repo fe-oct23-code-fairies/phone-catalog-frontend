@@ -9,7 +9,7 @@
 
   min-height: 440px;
 
-  @include hover(box-shadow, 0px 2px 16px 0px #0000001a);
+  @include hover (box-shadow, 0px 2px 16px 0px #0000001A);
 
   &__img {
     flex-shrink: 1;
