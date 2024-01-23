@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
 import cn from 'classnames';
+import React, { useState } from 'react';
 import './PhotoBlock.scss';
 
 const photos = [
   'https://img.jabko.ua/image/cache/catalog'
-  + '/products/2024/01/221734/kjhgbnv-1397x1397.jpg.webp',
+    + '/products/2024/01/221734/kjhgbnv-1397x1397.jpg.webp',
   'https://img.jabko.ua/image/cache/catalog/prod'
-  + 'ucts/2024/01/221734/vlvhghg-1397x1397.jpg.webp',
+    + 'ucts/2024/01/221734/vlvhghg-1397x1397.jpg.webp',
   'https://img.jabko.ua/image/cache/catalog/produ'
-  + 'cts/2024/01/221734/lojghf-1397x1397.jpg.webp',
+    + 'cts/2024/01/221734/lojghf-1397x1397.jpg.webp',
   'https://img.jabko.ua/image/cache/catalog/product'
-  + 's/2024/01/221734/fokvjgjhg-1397x1397.jpg.webp',
+    + 's/2024/01/221734/fokvjgjhg-1397x1397.jpg.webp',
   'https://img.jabko.ua/image/cache/catalog/produc'
-  + 'ts/2024/01/221734/flovkjg-1397x1397.jpg.webp',
+    + 'ts/2024/01/221734/flovkjg-1397x1397.jpg.webp',
 ];
 
 export const PhotoBlock: React.FC = () => {
@@ -26,15 +26,20 @@ export const PhotoBlock: React.FC = () => {
     <div className="container">
       <div className="photo__block">
         {photos.map((photo, index) => (
-          <img
-            key={photo}
-            className={cn('photo__block-img', {
-              selected: selectedPhoto === photo,
+          <button
+            className={cn('photo__block-button', {
+              'photo__block-button--selected': selectedPhoto === photo,
             })}
+            type="button"
+            key={photo}
             onClick={() => handlePhotoClick(photo)}
-            src={photo}
-            alt={`Thumbnail ${index + 1}`}
-          />
+          >
+            <img
+              className="photo__block-img"
+              src={photo}
+              alt={`Thumbnail ${index + 1}`}
+            />
+          </button>
         ))}
       </div>
 
@@ -43,7 +48,7 @@ export const PhotoBlock: React.FC = () => {
           <img
             className="photo__block-main"
             src={selectedPhoto}
-            alt="selected photo"
+            alt={selectedPhoto}
           />
         )}
       </div>
