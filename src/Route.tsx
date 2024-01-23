@@ -24,13 +24,11 @@ export const Root = () => (
 
         <Route
           path="phones"
-          element={
-            (
-              <CatalogContextProvider>
-                <Phones />
-              </CatalogContextProvider>
-            )
-          }
+          element={(
+            <CatalogContextProvider>
+              <Phones />
+            </CatalogContextProvider>
+          )}
         />
         <Route path="tablets" element={<Tablets />} />
         <Route path="accessories" element={<Accessories />} />

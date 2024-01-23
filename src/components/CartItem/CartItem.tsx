@@ -22,9 +22,7 @@ export const CartItem: React.FC = () => {
       <div className="cart-item__body">
         <Counter />
 
-        <p className="h3">
-          $1099
-        </p>
+        <p className="h3">$1099</p>
       </div>
     </div>
   );
