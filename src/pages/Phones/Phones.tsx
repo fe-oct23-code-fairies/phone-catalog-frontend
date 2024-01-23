@@ -1,10 +1,9 @@
-import { CardLayout } from "../../components/CardLayout";
-import './phones.scss'
+import { CardLayout } from '../../components/CardLayout';
 
 export const Phones: React.FC = () => {
   return (
-    <div>
-      <h1 className="title">Mobile phones</h1>
+    <>
+      <h1 className="phones__title">Mobile phones</h1>
 
       <div className="grid__container">
         <div className="grid__container-item"><CardLayout /></div>
@@ -18,6 +17,6 @@ export const Phones: React.FC = () => {
         <div className="grid__container-item"><CardLayout /></div>
         <div className="grid__container-item"><CardLayout /></div>
       </div>
-    </div>
+    </>
   );
 };

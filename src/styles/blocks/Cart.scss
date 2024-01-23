@@ -1,15 +1,12 @@
 .cart {
-  grid-column: span 4;
-  @include grid;
-  row-gap: 32px;
+  grid-column: 1 / -1;
 
-  @include onTablet {
-    grid-column: span 12;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 
   @include onDesktop1200 {
-    grid-column: span 24;
-    row-gap: 0;
+    @include grid;
   }
 
   &__products {

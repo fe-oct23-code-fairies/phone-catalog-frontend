@@ -29,3 +29,7 @@
 .text-uppercase {
   @include text-uppercase;
 }
+
+.text-link {
+  @include text-link;
+}

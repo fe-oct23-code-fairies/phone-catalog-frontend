@@ -34,14 +34,26 @@
   height: 32px;
 
   border-radius: 48px;
-  border: 1px solid $c-icons-mid-grey;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $c-icons-mid-grey;
 
   cursor: pointer;
 
   @include hover(border-color, $c-primary-black);
 
+  & > svg {
+    fill: $c-primary-black;
+  }
+
   &:disabled {
-    border: 1px solid $c-elements-light-grey, 0.5;
+    cursor: default;
+
+    border-color: $c-elements-light-grey;
+
+    & > svg {
+      fill: $c-icons-mid-grey;
+    }
   }
 }
 
@@ -59,6 +71,31 @@
   cursor: pointer;
 
   @include hover(border-color, $c-primary-black);
+
+  transition: border-color, transform, fill, $effect-duration;
+
+  & > svg {
+    fill: $c-primary-black;
+
+    transition: transform, $effect-duration;
+  }
+
+  &:active {
+    transform: scale(1.1);
+
+    & > svg {
+      fill: $c-secondary-accent-yellow;
+      transform: scale(1.2);
+    }
+  }
+
+  &--active {
+    border-color: $c-elements-light-grey;
+
+    & > svg {
+      fill: $c-secondary-accent-yellow;
+    }
+  }
 }
 
 .button-radio {
