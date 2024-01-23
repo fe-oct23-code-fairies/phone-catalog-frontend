@@ -4,13 +4,9 @@ export const NotFoundPage: React.FC = () => {
   return (
     <div className="notFound">
       <div className="notFound__text-container">
-        <div className="h2">
-          Oooops...
-        </div>
+        <div className="h2">Oooops...</div>
 
-        <div className="text-body">
-          Page you’re looking not found
-        </div>
+        <div className="text-body">Page you’re looking not found</div>
       </div>
 
       <img
@@ -20,9 +16,7 @@ export const NotFoundPage: React.FC = () => {
         className="notFound__img"
       />
 
-      <Button to="/">
-        Back to main page
-      </Button>
+      <Button to="/">Back to main page</Button>
     </div>
   );
 };

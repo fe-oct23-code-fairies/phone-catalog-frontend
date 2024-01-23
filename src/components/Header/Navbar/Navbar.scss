@@ -4,7 +4,7 @@
   gap: 16px;
 
   @include onDesktop1200 {
-    gap: 24px
+    gap: 24px;
   }
 
   &__left {
@@ -56,7 +56,7 @@
 
     box-shadow: -1px 0px 0px 0px $c-elements-light-grey;
 
-    @include hover (background-color, #00000005);
+    @include hover(background-color, #00000005);
 
     &-main {
       @include onTablet {
