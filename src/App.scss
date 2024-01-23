@@ -6,6 +6,8 @@
 @import './styles/ui/button/Button.scss';
 @import './styles/ui/icon/icon.scss';
 @import './ui/Counter/Counter.scss';
+@import './ui/Dropdown/Dropdown.scss';
+
 @import './styles/blocks/NotFoundPage.scss';
 @import './styles/blocks/Cart.scss';
 @import './pages/Phones/phones.scss';
@@ -37,7 +39,7 @@
     }
 
     &-content {
-      min-height: 100vh;
+      min-height: 100%;
       padding-top: 24px;
       padding-bottom: 64px;
 
