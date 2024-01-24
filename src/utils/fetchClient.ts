@@ -1,3 +1,5 @@
+import { Product } from '../types/Product';
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function get<T>(url: string): Promise<T> {
@@ -12,15 +14,15 @@ function get<T>(url: string): Promise<T> {
 }
 
 export const client = {
-  getProducts: () => get('products'),
-  getProductById: (id: string) => get(`products/${id}`),
+  getProducts: () => get<Product[]>('products'),
+  getProductById: (id: string) => get<Product>(`products/${id}`),
 
-  getAccessories: () => get('accessories'),
-  getAccessoryById: (id: string) => get(`accessories/${id}`),
+  getAccessories: () => get<Product[]>('accessories'),
+  getAccessoryById: (id: string) => get<Product>(`accessories/${id}`),
 
-  getPhones: () => get('phones'),
-  getPhoneById: (id: string) => get(`phones/${id}`),
+  getPhones: () => get<Product[]>('phones'),
+  getPhoneById: (id: string) => get<Product>(`phones/${id}`),
 
-  getTablets: () => get('tablets'),
-  getTabletById: (id: string) => get(`tablets/${id}`),
+  getTablets: () => get<Product[]>('tablets'),
+  getTabletById: (id: string) => get<Product>(`tablets/${id}`),
 };
