@@ -17,7 +17,7 @@ export const MainSlider: FC = () => {
       </div>
       <Swiper
         slidesPerView={1}
-        spaceBetween={30}
+        spaceBetween={0}
         loop
         navigation={{
           nextEl: '.swiper-button-next',
