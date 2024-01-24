@@ -13,7 +13,9 @@ import { Accessories } from './pages/Accessories';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Cart } from './pages/Cart';
 import { Favorites } from './pages/Favorites';
-import { CatalogContextProvider } from './context';
+import { CatalogContextProvider }
+  from './context/CatalogContext/CatalogContext';
+import { CartContextProvider } from './context/CartContext';
 
 export const Routing = () => (
   <Router>
@@ -34,7 +36,14 @@ export const Routing = () => (
         <Route path="accessories" element={<Accessories />} />
         <Route path="favorites" element={<Favorites />} />
 
-        <Route path="checkout" element={<Cart />} />
+        <Route
+          path="checkout"
+          element={(
+            <CartContextProvider>
+              <Cart />
+            </CartContextProvider>
+          )}
+        />
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>
