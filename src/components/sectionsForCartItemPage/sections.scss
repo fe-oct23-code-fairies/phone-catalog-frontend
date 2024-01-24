@@ -1,0 +1,85 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins.scss";
+
+.grid-section-container {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include onDesktop1200 {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+}
+
+.about {
+  padding-bottom: 56px;
+
+  @include onTablet {
+    padding-bottom: 64px;
+  }
+
+  // @include onDesktop1200 {
+  //   display: grid;
+  //   grid-template-columns: 1fr 1fr;
+  // }
+}
+
+.section__title {
+  color: $c-primary-black;
+  font-size: 20px;
+  font-weight: 800;
+  padding: 16px 0;
+
+  @include onTablet {
+    font-size: 22px;
+  }
+
+
+  &-name {
+    padding-top: 32px;
+    padding-bottom: 16px;
+
+    @include onTablet {
+      font-size: 20px;
+    }
+
+    &-description {
+      color: $c-secondary-grey;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+    }
+  }
+}
+
+.underline {
+  color: $c-elements-light-grey;
+  border-top: 1px solid $c-elements-light-grey;
+}
+
+.specifics {
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 30px;
+  gap: 8px;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+
+    &-title {
+      color: $c-secondary-grey;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+    }
+
+    &-value {
+      color: $c-primary-black;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+    }
+  }
+}
