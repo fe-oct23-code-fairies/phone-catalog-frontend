@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client';
 
-import { Root as Route } from './Route';
+import { Routing as Route } from './Routing';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
