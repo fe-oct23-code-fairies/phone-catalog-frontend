@@ -37,15 +37,13 @@ export const MainSlider: FC = () => {
         <SwiperSlide className="custom-slide">
           <a href="/#" aria-label="banner" className="slide-for-tablet">
             <img
-              // eslint-disable-next-line global-require
-              src={require('../../images/banner-tablet.png')}
+              src="images/banner-tablet.png"
               alt="banner"
             />
           </a>
           <a href="/#" aria-label="banner" className="slide-for-mobile">
             <img
-              // eslint-disable-next-line global-require
-              src={require('../../images/banner-phone.png')}
+              src="images/banner-phone.png"
               alt="banner"
             />
           </a>
@@ -53,15 +51,13 @@ export const MainSlider: FC = () => {
         <SwiperSlide className="custom-slide">
           <a href="/#" aria-label="banner" className="slide-for-tablet">
             <img
-              // eslint-disable-next-line global-require
-              src={require('../../images/banner-tablet.png')}
+              src="images/banner-tablet.png"
               alt="banner"
             />
           </a>
           <a href="/#" aria-label="banner" className="slide-for-mobile">
             <img
-              // eslint-disable-next-line global-require
-              src={require('../../images/banner-phone.png')}
+              src="images/banner-phone.png"
               alt="banner"
             />
           </a>
@@ -69,15 +65,13 @@ export const MainSlider: FC = () => {
         <SwiperSlide className="custom-slide">
           <a href="/#" aria-label="banner" className="slide-for-tablet">
             <img
-              // eslint-disable-next-line global-require
-              src={require('../../images/banner-tablet.png')}
+              src="images/banner-tablet.png"
               alt="banner"
             />
           </a>
           <a href="/#" aria-label="banner" className="slide-for-mobile">
             <img
-              // eslint-disable-next-line global-require
-              src={require('../../images/banner-phone.png')}
+              src="images/banner-phone.png"
               alt="banner"
             />
           </a>
