@@ -15,7 +15,7 @@ import { Cart } from './pages/Cart';
 import { Favorites } from './pages/Favorites';
 import { CatalogContextProvider } from './context';
 
-export const Root = () => (
+export const Routing = () => (
   <Router>
     <Routes>
       <Route path="/" element={<App />}>
