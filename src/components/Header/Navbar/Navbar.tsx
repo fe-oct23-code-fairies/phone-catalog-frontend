@@ -30,32 +30,23 @@ export const Navbar: React.FC<Props> = ({
       </div>
 
       <div className="navbar__right">
-        <NavLink
-          to="/favorites"
-          className={getLinkClass}
-        >
+        <NavLink to="/favorites" className={getLinkClass}>
           <div className="navbar__button navbar__button-main">
             <Icon iconName="heart" />
           </div>
         </NavLink>
-        <NavLink
-          to="/checkout"
-          className={getLinkClass}
-        >
+        <NavLink to="/checkout" className={getLinkClass}>
           <div className="navbar__button navbar__button-main">
             <Icon iconName="cart" />
           </div>
         </NavLink>
         <div
           role="presentation"
-          className={cn(
-            'navbar__button',
-            {
-              'navbar__button-menu': !isMenuOpen,
-              'navbar__button-close': isMenuOpen,
-            },
-          )}
-          onClick={() => setIsMenuOpen(prev => !prev)}
+          className={cn('navbar__button', {
+            'navbar__button-menu': !isMenuOpen,
+            'navbar__button-close': isMenuOpen,
+          })}
+          onClick={() => setIsMenuOpen((prev) => !prev)}
         >
           <Icon iconName={isMenuOpen ? 'close' : 'menu'} />
         </div>

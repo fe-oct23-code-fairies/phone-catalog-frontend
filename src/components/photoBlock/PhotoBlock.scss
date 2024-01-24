@@ -1,0 +1,86 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins";
+
+.container {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include onTablet {
+    flex-direction: row;
+    align-items: start;
+  }
+}
+
+.photo__block {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  order: 1;
+
+  @include onTablet {
+    flex-direction: column;
+    order: 0;
+  }
+
+  @include onDesktop1200 {
+    gap: 16px;
+  }
+
+  &-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 50px;
+    width: 50px;
+
+    border: 1px solid $c-elements-light-grey;
+
+    transition-duration: 0.3s;
+    transition-property: border-color;
+
+    @include onTablet {
+      height: 35px;
+      width: 35px;
+    }
+
+    @include onDesktop1200 {
+      height: 80px;
+      width: 80px;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      border-color: $c-icons-mid-grey;
+    }
+
+    &--selected {
+      border-color: $c-primary-black;
+
+      &:hover {
+        border-color: $c-primary-black;
+      }
+    }
+  }
+
+  &-img {
+    border-radius: 4px;
+    height: 82.5%;
+    width: 82.5%;
+  }
+
+  &-main {
+    width: 275px;
+    height: 275px;
+    padding: 10px;
+
+    @include onDesktop1200 {
+      height: 440px;
+      width: 440px;
+      padding: 23px;
+    }
+  }
+}

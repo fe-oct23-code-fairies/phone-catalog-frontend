@@ -7,8 +7,8 @@ import { getLinkClass } from '../helper';
 const NAV_LINK_TITLES = ['home', 'phones', 'tablets', 'accessories'];
 
 interface Props {
-  isMenuOpen: boolean,
-  setIsMenuOpen: Dispatch<SetStateAction<boolean>>,
+  isMenuOpen: boolean;
+  setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export const Navmenu: React.FC<Props> = ({
@@ -16,12 +16,7 @@ export const Navmenu: React.FC<Props> = ({
   setIsMenuOpen,
 }: Props) => {
   return (
-    <aside
-      className={cn(
-        'navmenu',
-        { 'navmenu--open': isMenuOpen },
-      )}
-    >
+    <aside className={cn('navmenu', { 'navmenu--open': isMenuOpen })}>
       <div className="navmenu__top">
         {NAV_LINK_TITLES.map((title) => {
           const link = title === 'home' ? '/' : `/${title}`;

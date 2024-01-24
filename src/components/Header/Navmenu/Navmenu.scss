@@ -71,7 +71,7 @@
 
     z-index: -1;
 
-    @include hover (background-color, #00000005);
+    @include hover(background-color, #00000005);
 
     & > * {
       fill: $c-primary-black;
