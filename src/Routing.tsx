@@ -13,7 +13,7 @@ import { Accessories } from './pages/Accessories';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Cart } from './pages/Cart';
 import { Favorites } from './pages/Favorites';
-import { CatalogContextProvider } from './context';
+import { CatalogContextProvider } from './context/CatalogContext';
 import { ProductCard } from './pages/ProductCard/ProductCard';
 
 export const Routing = () => (
@@ -32,16 +32,25 @@ export const Routing = () => (
               </CatalogContextProvider>
             )}
           />
-          <Route path=":itemId" element={<ProductCard />} />
+          <Route
+            path=":itemId"
+            element={<ProductCard productType="phones" />}
+          />
         </Route>
         <Route path="tablets">
           <Route index element={<Tablets />} />
-          <Route path=":itemId" element={<ProductCard />} />
+          <Route
+            path=":itemId"
+            element={<ProductCard productType="tablets" />}
+          />
         </Route>
 
         <Route path="accessories">
           <Route index element={<Accessories />} />
-          <Route path=":itemId" element={<ProductCard />} />
+          <Route
+            path=":itemId"
+            element={<ProductCard productType="accessories" />}
+          />
         </Route>
 
         <Route path="favorites" element={<Favorites />} />

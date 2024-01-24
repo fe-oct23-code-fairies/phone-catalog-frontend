@@ -1,6 +1,5 @@
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import React, { useEffect, useState } from 'react';
-import { getProducts } from '../../api/products';
 import { getPhoneById } from '../../api/phones';
 import { getTabletById } from '../../api/tablets';
 import { getAccessorieById } from '../../api/accessories';
@@ -27,50 +26,54 @@ const defaultItem = {
   cell: [],
 };
 
-export const ProductCard: React.FC = () => {
+type Props = {
+  productType: string
+};
+
+export const ProductCard: React.FC<Props> = ({ productType }) => {
   const { itemId } = useParams();
   const [foundProduct, setFoundProduct] = useState<Item>(defaultItem);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const products = await getProducts();
-        const product = products
-          .find(productToFind => productToFind.itemId === itemId) || null;
-
-        if (product) {
-          switch (product.category) {
+        if (itemId) {
+          switch (productType) {
             case 'phones':
-              getPhoneById(product.itemId)
+              getPhoneById(itemId)
                 .then(phone => setFoundProduct(phone));
               break;
 
             case 'tablets':
-              getTabletById(product.itemId)
+              getTabletById(itemId)
                 .then(tablet => setFoundProduct(tablet));
               break;
 
             default:
-              getAccessorieById(product.itemId)
+              getAccessorieById(itemId)
                 .then(accessorie => setFoundProduct(accessorie));
               break;
           }
         }
       } catch (error) {
-        throw new Error("Can't find a product");
+        navigate('/');
       }
     };
 
     fetchData();
-  }, [itemId]);
+  });
 
   return (
     <div className="productCard">
-      <p className="h2">
-        {foundProduct?.id}
+      <p className="h2 product-title">
+        {`Product id: ${foundProduct?.id}`}
       </p>
-      <p className="h2">
-        {foundProduct?.capacity}
+
+      <br />
+
+      <p className="h2 product-title">
+        {`Product capasity: ${foundProduct?.capacity}`}
       </p>
     </div>
   );
