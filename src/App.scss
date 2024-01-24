@@ -21,6 +21,7 @@
 @import "./components/CartItem/CartItem.scss";
 @import "./components/Checkout/Checkout.scss";
 @import "./components/CardLayout/CardLayout.scss";
+@import "./components/Sections/SectionCategories.scss";
 
 .App {
   height: 100vh;
@@ -40,16 +41,20 @@
     }
 
     &-content {
+      display: flex;
+      flex-direction: column;
+
       min-height: 100%;
       padding-top: 24px;
       padding-bottom: 64px;
 
       @include onDesktop1200 {
         padding-bottom: 80px;
+
+        align-items: center;
       }
 
       @include paddingInline;
-      @include grid;
     }
   }
 }
