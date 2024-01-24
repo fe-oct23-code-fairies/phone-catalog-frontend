@@ -1,24 +1,26 @@
-@import './styles/utils/vars.scss';
-@import './styles/Fonts/Mont/fonts.scss';
-@import './styles/utils/reset.scss';
-@import './styles/utils/mixins.scss';
-@import './styles/ui/text/text.scss';
-@import './styles/ui/button/Button.scss';
-@import './styles/ui/icon/icon.scss';
-@import './ui/Counter/Counter.scss';
+@import "./styles/utils/vars.scss";
+@import "./styles/Fonts/Mont/fonts.scss";
+@import "./styles/utils/reset.scss";
+@import "./styles/utils/mixins.scss";
+@import "./styles/ui/text/text.scss";
+@import "./styles/ui/button/Button.scss";
+@import "./styles/ui/icon/icon.scss";
+@import "./ui/Counter/Counter.scss";
+@import './ui/Dropdown/Dropdown.scss';
 @import './ui/Pagination/Pagination.scss';
+
 @import './pages/Phones/phones.scss';
 @import './pages/NotFoundPage/NotFoundPage.scss';
 @import './pages/Cart/Cart.scss';
 
-@import './ui/Logo/Logo.scss';
-@import './components/Header/Header.scss';
-@import './components/Header/Navbar/Navbar.scss';
-@import './components/Header/Navmenu/Navmenu.scss';
-@import './components/Footer/Footer.scss';
-@import './components/CartItem/CartItem.scss';
-@import './components/Checkout/Checkout.scss';
-@import './components/CardLayout/CardLayout.scss';
+@import "./ui/Logo/Logo.scss";
+@import "./components/Header/Header.scss";
+@import "./components/Header/Navbar/Navbar.scss";
+@import "./components/Header/Navmenu/Navmenu.scss";
+@import "./components/Footer/Footer.scss";
+@import "./components/CartItem/CartItem.scss";
+@import "./components/Checkout/Checkout.scss";
+@import "./components/CardLayout/CardLayout.scss";
 
 .App {
   height: 100vh;
@@ -38,7 +40,7 @@
     }
 
     &-content {
-      min-height: 100vh;
+      min-height: 100%;
       padding-top: 24px;
       padding-bottom: 64px;
 

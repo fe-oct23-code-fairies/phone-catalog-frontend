@@ -3,11 +3,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 type Props = {
-  children: React.ReactNode,
-  btnClass?: string,
-  onClick?: () => void,
-  to: string,
-  isActive?: boolean,
+  children: React.ReactNode;
+  btnClass?: string;
+  onClick?: () => void;
+  to: string;
+  isActive?: boolean;
 };
 
 export const Button: React.FC<Props> = ({
@@ -20,10 +20,7 @@ export const Button: React.FC<Props> = ({
   return (
     <Link
       to={`${to}`}
-      className={cn(
-        `button ${btnClass}`,
-        { 'button--active': isActive },
-      )}
+      className={cn(`button ${btnClass}`, { 'button--active': isActive })}
       onClick={onClick}
     >
       {children}
