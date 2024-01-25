@@ -1,5 +1,5 @@
 @import "./styles/utils/vars.scss";
-@import "./styles/Fonts/Mont/fonts.scss";
+@import "./styles/Fonts/fonts.scss";
 @import "./styles/utils/reset.scss";
 @import "./styles/utils/mixins.scss";
 @import "./styles/ui/text/text.scss";
@@ -23,6 +23,7 @@
 @import "./components/Checkout/Checkout.scss";
 @import "./components/CardLayout/CardLayout.scss";
 @import "./components/Sections/SectionCategories.scss";
+@import "./components/popUp/Popup.scss";
 
 .App {
   height: 100vh;

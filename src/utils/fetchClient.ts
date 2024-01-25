@@ -12,15 +12,15 @@ function get<T>(url: string): Promise<T> {
 }
 
 export const client = {
-  getProducts: () => get('products'),
-  getProductById: (id: string) => get(`products/${id}`),
+  getProducts: <T>() => get<T>('products'),
+  getProductById: <T>(id: string) => get<T>(`products/${id}`),
 
-  getAccessories: () => get('accessories'),
-  getAccessoryById: (id: string) => get(`accessories/${id}`),
+  getAccessories: <T>() => get<T>('accessories'),
+  getAccessoryById: <T>(id: string) => get<T>(`accessories/${id}`),
 
-  getPhones: () => get('phones'),
-  getPhoneById: (id: string) => get(`phones/${id}`),
+  getPhones: <T>() => get<T>('phones'),
+  getPhoneById: <T>(id: string) => get<T>(`phones/${id}`),
 
-  getTablets: () => get('tablets'),
-  getTabletById: (id: string) => get(`tablets/${id}`),
+  getTablets: <T>() => get<T>('tablets'),
+  getTabletById: <T>(id: string) => get<T>(`tablets/${id}`),
 };

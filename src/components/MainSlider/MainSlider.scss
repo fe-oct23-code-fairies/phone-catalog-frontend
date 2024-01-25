@@ -8,6 +8,7 @@
   margin-inline: -16px;
 
   @include onTablet {
+    grid-column: span 12;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: 16px;
