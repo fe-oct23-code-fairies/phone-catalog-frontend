@@ -1,0 +1,16 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins";
+
+.photos-and-additional-info {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include onTablet {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @include onDesktop1200 {
+    gap: 40px;
+  }
+}

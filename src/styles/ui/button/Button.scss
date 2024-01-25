@@ -147,3 +147,16 @@
 
   cursor: pointer;
 }
+
+.selectedCapacity {
+  background-color: $c-primary-black;
+  border: none;
+  color: $c-white;
+}
+
+.selectedColor {
+  border-color: $c-primary-black;
+  &:hover {
+    border-color: $c-primary-black;
+  }
+}
