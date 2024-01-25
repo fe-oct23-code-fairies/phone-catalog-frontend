@@ -1,6 +1,7 @@
 import { MainSlider } from '../components/MainSlider/MainSlider';
 import { SectionCategories } from '../components/Sections';
-import { PhonesSection } from '../components/PhonesSection/PhoneSection';
+import { PhonesSection }
+  from '../components/Sections/PhonesSection/PhoneSection';
 
 export const Home: React.FC = () => {
   return (

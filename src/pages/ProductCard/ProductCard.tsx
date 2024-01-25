@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { getPhoneById } from '../../api/phones';
 import { getTabletById } from '../../api/tablets';
@@ -52,7 +52,7 @@ export const ProductCard: React.FC<Props> = ({ productType }) => {
 
             default:
               getAccessorieById(itemId)
-                .then(accessorie => setFoundProduct(accessorie));
+                .then(accessories => setFoundProduct(accessories));
               break;
           }
         }

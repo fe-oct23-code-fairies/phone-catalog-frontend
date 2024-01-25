@@ -8,13 +8,13 @@
 @import "./ui/Counter/Counter.scss";
 @import './ui/Dropdown/Dropdown.scss';
 @import './ui/Pagination/Pagination.scss';
+@import "./ui/Logo/Logo.scss";
 
 @import './pages/Home.scss';
 @import './pages/Phones/phones.scss';
 @import './pages/NotFoundPage/NotFoundPage.scss';
 @import './pages/Cart/Cart.scss';
 
-@import "./ui/Logo/Logo.scss";
 @import "./components/Header/Header.scss";
 @import "./components/Header/Navbar/Navbar.scss";
 @import "./components/Header/Navmenu/Navmenu.scss";
@@ -22,7 +22,7 @@
 @import "./components/CartItem/CartItem.scss";
 @import "./components/Checkout/Checkout.scss";
 @import "./components/CardLayout/CardLayout.scss";
-@import "./components/Sections/SectionCategories.scss";
+@import "./components/Sections/CategoriesSection/SectionCategories.scss";
 @import "./components/popUp/Popup.scss";
 
 .App {
