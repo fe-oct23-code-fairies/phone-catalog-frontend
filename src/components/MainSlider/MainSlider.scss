@@ -77,13 +77,16 @@
 
   @include onTablet {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     justify-content: center;
     height: 100%;
     min-width: 32px;
     border-radius: 24px;
-    border: 1px solid $c-icons-mid-grey;
+    border: 1px solid;
+    border-color: $c-icons-mid-grey;
     cursor: pointer;
+
+    @include hover(border-color, $c-primary-black)
   }
 }
 
@@ -125,7 +128,7 @@
 
   }
 
-  & img {
+  & > img {
     max-width: 100%;
     align-self: center;
     height: 100%;
@@ -137,7 +140,7 @@
     display: none;
   }
 
-  & img {
+  & > img {
     width: 100%;
   }
 }

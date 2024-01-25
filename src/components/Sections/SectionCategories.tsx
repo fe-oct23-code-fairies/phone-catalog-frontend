@@ -14,8 +14,12 @@ export const SectionCategories: React.FC = () => {
             <Link to="/phones" className="categories__img-link">
               <img src="images/category-phones.png" alt="Phones Category" />
             </Link>
+
             <div className="categories__text-wrapper">
-              <p className="categories__title">Mobile phones</p>
+              <Link to="/phones" className="categories__title">
+                Mobile phones
+              </Link>
+
               <p className="categories__counter">{`${PHONES_COUNT} models`}</p>
             </div>
           </div>
@@ -24,8 +28,12 @@ export const SectionCategories: React.FC = () => {
             <Link to="/tablets" className="categories__img-link">
               <img src="images/category-tablets.png" alt="Tablets Category" />
             </Link>
+
             <div className="categories__text-wrapper">
-              <p className="categories__title">Tablets</p>
+              <Link to="/tablets" className="categories__title">
+                Tablets
+              </Link>
+
               <p className="categories__counter">{`${TABLETS_COUNT} models`}</p>
             </div>
           </div>
@@ -37,8 +45,12 @@ export const SectionCategories: React.FC = () => {
                 alt="Accessories Category"
               />
             </Link>
+
             <div className="categories__text-wrapper">
-              <p className="categories__title">Accessories</p>
+              <Link to="/accessories" className="categories__title">
+                Accessories
+              </Link>
+
               <p className="categories__counter">{`${ACCESSORIES_COUNT} models`}</p>
             </div>
           </div>

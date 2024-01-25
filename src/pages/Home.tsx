@@ -4,10 +4,13 @@ import { SectionCategories } from '../components/Sections';
 
 export const Home: React.FC = () => {
   return (
-    <>
-      <MainSlider />
+    <div className="home">
+      <div>
+        <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
+        <MainSlider />
+      </div>
       <PhotoBlock />
       <SectionCategories />
-    </>
+    </div>
   );
 };

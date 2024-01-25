@@ -9,6 +9,7 @@
 @import './ui/Dropdown/Dropdown.scss';
 @import './ui/Pagination/Pagination.scss';
 
+@import './pages/Home.scss';
 @import './pages/Phones/phones.scss';
 @import './pages/NotFoundPage/NotFoundPage.scss';
 @import './pages/Cart/Cart.scss';
@@ -41,8 +42,12 @@
     }
 
     &-content {
-      display: flex;
-      flex-direction: column;
+      @include grid;
+
+      & > * {
+        grid-column: 1 / -1;
+        margin-bottom: auto;
+      }
 
       min-height: 100%;
       padding-top: 24px;
