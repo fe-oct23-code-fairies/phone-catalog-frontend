@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Icon } from '../../../ui/Icons';
 import { getLinkClass } from '../helper';
+import { useAppContext } from '../../../context/AppContext';
 
 const NAV_LINK_TITLES = ['home', 'phones', 'tablets', 'accessories'];
 
@@ -15,6 +16,8 @@ export const Navbar: React.FC<Props> = ({
   isMenuOpen,
   setIsMenuOpen,
 }: Props) => {
+  const { cartProductsAmount } = useAppContext();
+
   return (
     <nav className="navbar">
       <div className="navbar__left">
@@ -38,6 +41,12 @@ export const Navbar: React.FC<Props> = ({
         <NavLink to="/checkout" className={getLinkClass}>
           <div className="navbar__button navbar__button-main">
             <Icon iconName="cart" />
+
+            {cartProductsAmount > 0 && (
+              <p className="navbar__text-amount-of-products">
+                {cartProductsAmount}
+              </p>
+            )}
           </div>
         </NavLink>
         <div
