@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import { SwiperSlide } from 'swiper/react';
 import { CardLayout } from '../CardLayout';
+import { CircleButtonWithIcon } from '../../ui/CircleButtonWithIcon';
+import { Icon } from '../../ui/Icons';
 
 import { SliderSettingsPhone }
   from '../SliderSettingsPhones/SliderSettingsPhones';
 
 import './PhoneSection.scss';
 import 'swiper/css';
-import { CircleButtonWithIcon } from '../../ui/CircleButtonWithIcon';
-import { Icon } from '../../ui/Icons';
 
 type Props = {
   title: string,
