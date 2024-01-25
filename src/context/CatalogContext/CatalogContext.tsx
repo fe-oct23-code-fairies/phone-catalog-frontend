@@ -1,8 +1,8 @@
 import React, {
   createContext, useContext, useMemo, useState,
 } from 'react';
-import { ItemsPerPage } from '../types/ItemsPerPage';
-import { Product } from '../types/Product';
+import { ItemsPerPage } from '../../types/ItemsPerPage';
+import { Product } from '../../types/Product';
 
 interface CatalogContextType {
   currentPage: number;
