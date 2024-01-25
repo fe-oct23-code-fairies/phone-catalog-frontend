@@ -1,0 +1,49 @@
+@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/vars.scss';
+
+.phones-wrapper{
+  grid-column: 1 / -1;
+}
+
+.wrapper-card{
+  grid-column: 1 / -1;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  & .card {
+    max-width: 272px;
+    min-width: 212px;
+  }
+}
+
+.phones-slider-wrapper{
+  margin-top: 24px;
+}
+
+.swiper-slide{
+  width: auto;
+}
+
+.arrow-absolute-right {
+  position: absolute;
+  right: 0;
+  top : -60px;
+}
+
+.arrow-absolute-left {
+  position: absolute;
+  right: 58px;
+  top : -60px;
+}
+
+.phones-wrapper{
+  margin-top: 56px;
+  @include onTablet{
+    margin-top: 64px;
+  }
+  @include onDesktop1200{
+    margin-top: 80px;
+  }
+}

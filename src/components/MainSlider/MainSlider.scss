@@ -3,11 +3,12 @@
 
 .swiper-grid-container {
   position: relative;
-  grid-column: span 12;
+  grid-column: 1 / span 4;
   max-width: 100%;
   margin-top: 25px;
 
   @include onTablet {
+    grid-column: span 12;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 16px;
