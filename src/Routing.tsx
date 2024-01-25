@@ -13,7 +13,8 @@ import { Accessories } from './pages/Accessories';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Cart } from './pages/Cart';
 import { Favorites } from './pages/Favorites';
-import { CatalogContextProvider } from './context';
+import { CatalogContextProvider } from './context/CatalogContext';
+import { ProductCard } from './pages/ProductCard/ProductCard';
 
 export const Routing = () => (
   <Router>
@@ -22,16 +23,36 @@ export const Routing = () => (
         <Route index element={<Home />} />
         <Route path="home" element={<Navigate to=".." />} />
 
-        <Route
-          path="phones"
-          element={(
-            <CatalogContextProvider>
-              <Phones />
-            </CatalogContextProvider>
-          )}
-        />
-        <Route path="tablets" element={<Tablets />} />
-        <Route path="accessories" element={<Accessories />} />
+        <Route path="phones">
+          <Route
+            index
+            element={(
+              <CatalogContextProvider>
+                <Phones />
+              </CatalogContextProvider>
+            )}
+          />
+          <Route
+            path=":itemId"
+            element={<ProductCard productType="phones" />}
+          />
+        </Route>
+        <Route path="tablets">
+          <Route index element={<Tablets />} />
+          <Route
+            path=":itemId"
+            element={<ProductCard productType="tablets" />}
+          />
+        </Route>
+
+        <Route path="accessories">
+          <Route index element={<Accessories />} />
+          <Route
+            path=":itemId"
+            element={<ProductCard productType="accessories" />}
+          />
+        </Route>
+
         <Route path="favorites" element={<Favorites />} />
 
         <Route path="checkout" element={<Cart />} />
