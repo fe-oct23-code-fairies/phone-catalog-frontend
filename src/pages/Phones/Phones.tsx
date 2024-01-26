@@ -3,17 +3,24 @@ import { CardLayout } from '../../components/CardLayout';
 import { client } from '../../utils/fetchClient';
 import { Product } from '../../types/Product';
 import { Loader } from '../../components/Loader/Loader';
+import { ErrorNotification } from '../../components/ErrorNotification';
 
 export const Phones: React.FC = () => {
-  const [toShow, setToShow] = useState<Product[]>([]);
+  const [phonesToShow, setPhonesToShow] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleError = (errorMessage: string) => {
+    setError(errorMessage);
+  };
 
   useEffect(() => {
     client
       .getPhones()
       .then((data) => {
-        setToShow(data);
+        setPhonesToShow(data);
       })
+      .catch(() => handleError('Unable to load phones'))
       .finally(() => {
         setIsLoading(false);
       });
@@ -26,7 +33,7 @@ export const Phones: React.FC = () => {
         ? <Loader />
         : (
           <div className="grid__container">
-            {toShow.map((phone) => (
+            {phonesToShow.map((phone) => (
               <CardLayout
                 key={phone.id}
                 phoneName={phone.name}
@@ -38,6 +45,8 @@ export const Phones: React.FC = () => {
             ))}
           </div>
         )}
+
+      {error && <ErrorNotification error={error} />}
     </>
   );
 };
