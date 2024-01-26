@@ -1,12 +1,23 @@
 import React from 'react';
+import cn from 'classnames';
 
 type Props = {
-  gigabytesAmount: number;
+  gigabytesAmount: string;
+  onClick: (capacity: string) => void;
+  selectedCapacity: string;
 };
 
-export const CapacitySelect: React.FC<Props> = ({ gigabytesAmount }) => {
+export const CapacitySelect: React.FC<Props> = ({
+  gigabytesAmount, onClick, selectedCapacity,
+}) => {
+  const isSelected = gigabytesAmount === selectedCapacity;
+
   return (
-    <button type="button" className="button-rectangle">
+    <button
+      type="button"
+      onClick={() => onClick(gigabytesAmount)}
+      className={cn('button-rectangle', { selectedCapacity: isSelected })}
+    >
       {`${gigabytesAmount} GB`}
     </button>
   );
