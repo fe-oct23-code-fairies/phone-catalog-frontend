@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 
 import { App } from './App';
-import { Home } from './pages/Home/Home';
+import { Home } from './pages/Home';
 import { Phones } from './pages/Phones';
 import { Tablets } from './pages/Tablets';
 import { Accessories } from './pages/Accessories';
