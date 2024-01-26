@@ -1,0 +1,66 @@
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
+
+.phones-wrapper{
+  grid-column: 1 / -1;
+
+  margin-right: -16px;
+
+   @include onTablet {
+    margin-right: -24px;
+  }
+
+  @include onDesktop1200 {
+    margin-right: 0;
+  }
+}
+
+.wrapper-card{
+  grid-column: 1 / -1;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  & .card {
+    max-width: 272px;
+    min-width: 212px;
+  }
+}
+
+.phones-slider-wrapper{
+  margin-top: 24px;
+}
+
+.swiper-slide{
+  width: auto;
+}
+
+.arrow-absolute-right {
+  position: absolute;
+  right: 16px;
+  top : -56px;
+
+  @include onTablet {
+    right: 24px;
+  }
+
+  @include onDesktop1200 {
+    right: 0;
+  }
+}
+
+.arrow-absolute-left {
+  position: absolute;
+  right: 64px;
+  top : -56px;
+
+  @include onTablet {
+    right: 72px;
+  }
+
+  @include onDesktop1200 {
+    right: 48px;
+  }
+}

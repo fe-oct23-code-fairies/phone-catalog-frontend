@@ -36,11 +36,7 @@ export const Phones: React.FC = () => {
             {phonesToShow.map((phone) => (
               <CardLayout
                 key={phone.id}
-                phoneName={phone.name}
-                phonePrice={phone.price}
-                phoneScreen={phone.screen}
-                phoneCapacity={phone.capacity}
-                phoneRam={phone.ram}
+                product={phone}
               />
             ))}
           </div>
