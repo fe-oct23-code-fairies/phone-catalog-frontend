@@ -23,4 +23,18 @@
       grid-column: 1/17;
     }
   }
+
+  &__no-products-text {
+    grid-column: span 4;
+    text-align: center;
+
+    @include onTablet {
+      grid-column: span 12;
+      @include text-body;
+    }
+
+    @include onDesktop1200 {
+      grid-column: span 24;
+    }
+  }
 }

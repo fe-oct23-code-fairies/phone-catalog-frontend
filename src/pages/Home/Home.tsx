@@ -1,20 +1,18 @@
-import { ColorsAndGbVariants } from '../../components/ColorsAndGB';
-import { PhotoBlock } from '../../components/photoBlock';
-// import { MainSlider } from '../components/MainSlider/MainSlider';
-import { Sections } from '../../components/sectionsForCartItemPage';
-import './Home.scss';
+import { MainSlider } from '../../components/MainSlider/MainSlider';
+import { SectionCategories } from '../../components/Sections';
+import { PhonesSection }
+  from '../../components/Sections/PhonesSection/PhoneSection';
 
 export const Home: React.FC = () => {
   return (
-    <div className="container">
-      <div className="photo-and-sections">
-        <div className="photos-and-additional-info">
-          <PhotoBlock />
-          <ColorsAndGbVariants />
-        </div>
-        <Sections />
+    <div className="home">
+      <div>
+        <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
+        <MainSlider />
       </div>
-      {/* <MainSlider /> */}
+      <PhonesSection prefixSlider="models" title="Brand new model" />
+      <SectionCategories />
+      <PhonesSection prefixSlider="hot" title="Hot prices" />
     </div>
   );
 };

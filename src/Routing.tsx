@@ -13,13 +13,23 @@ import { Accessories } from './pages/Accessories';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Cart } from './pages/Cart';
 import { Favorites } from './pages/Favorites';
-import { CatalogContextProvider } from './context/CatalogContext';
+import { CatalogContextProvider }
+  from './context/CatalogContext/CatalogContext';
+import { CartContextProvider } from './context/CartContext';
 import { ProductCard } from './pages/ProductCard/ProductCard';
+import { AppContextProvider } from './context/AppContext';
 
 export const Routing = () => (
   <Router>
     <Routes>
-      <Route path="/" element={<App />}>
+      <Route
+        path="/"
+        element={(
+          <AppContextProvider>
+            <App />
+          </AppContextProvider>
+        )}
+      >
         <Route index element={<Home />} />
         <Route path="home" element={<Navigate to=".." />} />
 
@@ -55,7 +65,14 @@ export const Routing = () => (
 
         <Route path="favorites" element={<Favorites />} />
 
-        <Route path="checkout" element={<Cart />} />
+        <Route
+          path="checkout"
+          element={(
+            <CartContextProvider>
+              <Cart />
+            </CartContextProvider>
+          )}
+        />
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>

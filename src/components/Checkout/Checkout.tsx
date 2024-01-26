@@ -1,7 +1,10 @@
 import React from 'react';
 import { Button } from '../../ui/Button';
+import { useCartContext } from '../../context/CartContext';
 
 export const Checkout: React.FC = () => {
+  const { setIsCheckoutSuccessful } = useCartContext();
+
   return (
     <div className="checkout">
       <div className="checkout__head">
@@ -12,7 +15,11 @@ export const Checkout: React.FC = () => {
 
       <hr className="checkout__hr" />
 
-      <Button to="/" btnClass="checkout__button">
+      <Button
+        to="/checkout"
+        btnClass="checkout__button"
+        onClick={() => setIsCheckoutSuccessful(true)}
+      >
         Checkout
       </Button>
     </div>
