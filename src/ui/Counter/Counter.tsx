@@ -1,22 +1,70 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Icon } from '../Icons';
 import { CircleButtonWithIcon } from '../CircleButtonWithIcon';
+import { CartProduct } from '../../types/CartProduct';
+import { useAppContext } from '../../context/AppContext';
+import { useCartContext } from '../../context/CartContext';
 
-export const Counter: React.FC = () => {
+type Props = {
+  product: CartProduct
+};
+
+export const Counter: React.FC<Props> = ({ product }) => {
   const MAX_VALUE = 12;
+
+  const { count, id } = product;
+  const { addedToCartProducts } = useAppContext();
+  const { setTotalPrice, totalPrice } = useCartContext();
 
   const [counter, setCounter] = useState(1);
   const isMinusDisabled = counter === 1;
   const isPlusDisabled = counter === MAX_VALUE;
 
-  const onClickMinus = () => setCounter((prev) => prev - 1);
-  const onClickPlus = () => setCounter((prev) => prev + 1);
+  useEffect(() => setCounter(count), [count]);
+
+  const productTochangeIndex = addedToCartProducts.findIndex(
+    productToFind => productToFind.id === id,
+  );
+
+  const increaseCount = () => {
+    setCounter(prev => prev + 1);
+
+    const updatedPrice = totalPrice + product.priceRegular;
+
+    setTotalPrice(updatedPrice);
+
+    addedToCartProducts[productTochangeIndex] = {
+      ...addedToCartProducts[productTochangeIndex],
+      count: counter + 1,
+    };
+
+    const productsToSet = JSON.stringify(addedToCartProducts);
+
+    localStorage.setItem('addedToCartProducts', productsToSet);
+  };
+
+  const decreaseCount = () => {
+    setCounter(prev => prev - 1);
+
+    const updatedPrice = totalPrice - product.priceRegular;
+
+    setTotalPrice(updatedPrice);
+
+    addedToCartProducts[productTochangeIndex] = {
+      ...addedToCartProducts[productTochangeIndex],
+      count: counter - 1,
+    };
+
+    const productsToSet = JSON.stringify(addedToCartProducts);
+
+    localStorage.setItem('addedToCartProducts', productsToSet);
+  };
 
   return (
     <div className="counter">
       <CircleButtonWithIcon
         additionalClass={isMinusDisabled ? 'button-circle-icon--disabled' : ''}
-        onClick={onClickMinus}
+        onClick={decreaseCount}
       >
         <Icon iconName="minus" />
       </CircleButtonWithIcon>
@@ -25,7 +73,7 @@ export const Counter: React.FC = () => {
 
       <CircleButtonWithIcon
         additionalClass={isPlusDisabled ? 'button-circle-icon--disabled' : ''}
-        onClick={onClickPlus}
+        onClick={increaseCount}
       >
         <Icon iconName="plus" />
       </CircleButtonWithIcon>

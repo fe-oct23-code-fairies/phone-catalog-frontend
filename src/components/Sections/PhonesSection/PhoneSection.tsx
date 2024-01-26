@@ -1,6 +1,5 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { SwiperSlide } from 'swiper/react';
-import { CardLayout } from '../../CardLayout';
 import { CircleButtonWithIcon } from '../../../ui/CircleButtonWithIcon';
 import { Icon } from '../../../ui/Icons';
 
@@ -9,6 +8,9 @@ import { SliderSettingsPhone }
 
 import './PhoneSection.scss';
 import 'swiper/css';
+import { Item } from '../../../types/Item';
+import { getPhones } from '../../../api/phones';
+import { CardLayout } from '../../CardLayout';
 
 type Props = {
   title: string,
@@ -17,6 +19,12 @@ type Props = {
 
 export const PhonesSection: FC<Props> = ({ title, prefixSlider }) => {
   const createPrefixSlider = prefixSlider;
+  const [products, setProducts] = useState<Item[]>([]);
+
+  useEffect(() => {
+    getPhones()
+      .then(setProducts);
+  }, []);
 
   return (
     <div className="phones-wrapper">
@@ -35,21 +43,15 @@ export const PhonesSection: FC<Props> = ({ title, prefixSlider }) => {
             </CircleButtonWithIcon>
           </div>
           <SliderSettingsPhone sliderPrefixArrow={createPrefixSlider}>
-            <SwiperSlide>
-              <CardLayout />
-            </SwiperSlide>
-            <SwiperSlide>
-              <CardLayout />
-            </SwiperSlide>
-            <SwiperSlide>
-              <CardLayout />
-            </SwiperSlide>
-            <SwiperSlide>
-              <CardLayout />
-            </SwiperSlide>
-            <SwiperSlide>
-              <CardLayout />
-            </SwiperSlide>
+            {products.map(
+              product => (
+                <SwiperSlide
+                  key={product.id}
+                >
+                  <CardLayout product={product} />
+                </SwiperSlide>
+              ),
+            )}
           </SliderSettingsPhone>
         </div>
       </div>
