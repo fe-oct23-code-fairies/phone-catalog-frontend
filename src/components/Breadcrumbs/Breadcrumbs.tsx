@@ -1,36 +1,50 @@
+import { Link, useLocation } from 'react-router-dom';
 import { Icon } from '../../ui/Icons';
 import './breadcrumbs.scss';
+import { GoBack } from './GoBack';
 
 export const Breadcrumbs = () => {
+  const location = useLocation();
+  const pathCrumbs
+    = location.pathname.split('/').filter(segment => segment !== '');
+
   return (
     <div className="breadcrumbs-wrapper">
       <ul className="breadcrumbs">
         <li className="breadcrumbs__item">
-          <a href="/#" aria-label="home" className="breadcrumbs__link">
+          <Link to="/#" aria-label="home" className="breadcrumbs__link">
             <Icon iconName="home" />
-          </a>
+          </Link>
           <span className="breadcrumbs__icon">
             <Icon iconName="arrow-right" />
           </span>
         </li>
-        <li className="breadcrumbs__item">
-          <a href="/#" aria-label="home" className="breadcrumbs__link">
-            Phone
-          </a>
-          <span className="breadcrumbs__icon">
-            <Icon iconName="arrow-right" />
-          </span>
-        </li>
-        <li className="breadcrumbs__item ">
-          <span className="breadcrumbs__text-over">
-            Phone iphnes max s5 full hd max prices s5 full hd max prices
-          </span>
-        </li>
+        {
+          pathCrumbs.map((item, ind) => {
+            if (ind === pathCrumbs.length - 1) {
+              return (
+                <li className="breadcrumbs__item " key={`${item + ind}`}>
+                  <span className="breadcrumbs__text-over">
+                    {item}
+                  </span>
+                </li>
+              );
+            }
+
+            return (
+              <li className="breadcrumbs__item" key={`${item + ind}`}>
+                <Link to={`/${item}`} aria-label="home" className="breadcrumbs__link">
+                  {item}
+                </Link>
+                <span className="breadcrumbs__icon">
+                  <Icon iconName="arrow-right" />
+                </span>
+              </li>
+            );
+          })
+        }
       </ul>
-      <a href="/#" className="back-link">
-        <Icon iconName="arrow-left" />
-        <span className="back-link__text">Back</span>
-      </a>
+      <GoBack />
     </div>
   );
 };

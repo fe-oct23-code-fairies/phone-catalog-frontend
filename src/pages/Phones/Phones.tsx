@@ -1,10 +1,11 @@
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { CardLayout } from '../../components/CardLayout';
 
 export const Phones: React.FC = () => {
   return (
     <>
       <h1 className="phones__title">Mobile phones</h1>
-
+      <Breadcrumbs />
       <div className="grid__container">
         <CardLayout />
         <CardLayout />

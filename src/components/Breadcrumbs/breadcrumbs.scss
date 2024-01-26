@@ -41,14 +41,16 @@
       flex-shrink: 1;
       padding-right: 10px;
     }
-
-
   }
-
 
   &__link {
     font-size: 13px;
     line-height: 1;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
   }
 
   &__text-over {
@@ -56,23 +58,31 @@
     overflow: hidden;
     text-overflow: ellipsis;
     color: $c-secondary-grey;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 }
 
 .back-link {
   margin-top: 16px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 4px;
 
-  @include onTablet{
+  &:hover>* {
+    transition: color $effect-duration;
+    color: $c-primary-black;
+  }
+
+  @include onTablet {
     margin-top: 25px;
   }
 
-  @include onDesktop1200{
+  @include onDesktop1200 {
     margin-top: 40px;
   }
-
 
   &__text {
     font-size: 13px;
