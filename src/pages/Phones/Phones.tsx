@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CardLayout } from '../../components/CardLayout';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { client } from '../../utils/fetchClient';
 import { Product } from '../../types/Product';
 import { Loader } from '../../components/Loader/Loader';
@@ -29,6 +30,7 @@ export const Phones: React.FC = () => {
   return (
     <>
       <h1 className="phones__title">Mobile phones</h1>
+      <Breadcrumbs />
       {isLoading
         ? <Loader />
         : (

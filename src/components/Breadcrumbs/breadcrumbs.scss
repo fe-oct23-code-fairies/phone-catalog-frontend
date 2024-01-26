@@ -1,0 +1,92 @@
+@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/vars.scss';
+
+.breadcrumbs-wrapper {
+  grid-column: 1 / -1;
+  margin-bottom: 16px;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  &__icon {
+    display: inline-block;
+    margin: 0 8px;
+    padding-left: 5px;
+
+    & svg {
+      fill: $c-secondary-grey;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    ;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-wrap: nowrap;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+
+    @include onTablet {
+      font-weight: 600;
+    }
+
+    &:last-child {
+      flex-shrink: 1;
+      padding-right: 10px;
+    }
+  }
+
+  &__link {
+    font-size: 13px;
+    line-height: 1;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
+  }
+
+  &__text-over {
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $c-secondary-grey;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.back-link {
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  &:hover>* {
+    transition: color $effect-duration;
+    color: $c-primary-black;
+  }
+
+  @include onTablet {
+    margin-top: 25px;
+  }
+
+  @include onDesktop1200 {
+    margin-top: 40px;
+  }
+
+  &__text {
+    font-size: 13px;
+    color: $c-secondary-grey;
+    line-height: 16px;
+  }
+}
