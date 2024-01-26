@@ -37,6 +37,7 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
         <img className="card__img" src="images/item.png" alt="Iphone IMG" />
       </div>
 
+
       <h2 className="card__title">{product.name}</h2>
 
       <div className="card__price">{`$${product.priceRegular}`}</div>
@@ -46,16 +47,19 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
       <div className="card__additional">
         <div className="card__additional__screen">
           <p className="card__additional__screen-title">Screen</p>
+
           <p className="card__additional__screen-value">{product.screen}</p>
         </div>
 
         <div className="card__additional__capacity">
           <p className="card__additional__capacity-title">Capacity</p>
+
           <p className="card__additional__capacity-value">{product.capacity}</p>
         </div>
 
         <div className="card__additional__ram">
           <p className="card__additional__ram-title">RAM</p>
+
           <p className="card__additional__ram-value">{product.ram}</p>
         </div>
       </div>
