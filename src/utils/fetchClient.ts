@@ -1,3 +1,5 @@
+import { Product } from '../types/Product';
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function get<T>(url: string): Promise<T> {
