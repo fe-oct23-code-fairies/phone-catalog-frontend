@@ -1,16 +1,18 @@
-import { PhotoBlock } from '../components/photoBlock';
 import { MainSlider } from '../components/MainSlider/MainSlider';
-import { PhonesSection } from '../components/PhonesSection/PhoneSection';
-import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
+import { SectionCategories } from '../components/Sections';
+import { PhonesSection }
+  from '../components/Sections/PhonesSection/PhoneSection';
 
 export const Home: React.FC = () => {
   return (
-    <>
-      <Breadcrumbs />
-      <PhotoBlock />
-      <MainSlider />
+    <div className="home">
+      <div>
+        <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
+        <MainSlider />
+      </div>
       <PhonesSection prefixSlider="models" title="Brand new model" />
+      <SectionCategories />
       <PhonesSection prefixSlider="hot" title="Hot prices" />
-    </>
+    </div>
   );
 };

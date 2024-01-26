@@ -23,8 +23,17 @@ export const SliderSettingsPhone: FC<Props> = ({
       prevEl: `.${sliderPrefixArrow}-button-prev`,
     },
     modules: [Navigation],
+
+    classNames: '.phones-slider',
   };
 
   // eslint-disable-next-line no-return-assign, no-sequences
-  return <Swiper slidesPerView="auto" {...params}>{children}</Swiper>;
+  return (
+    <Swiper
+      slidesPerView="auto"
+      {...params}
+    >
+      {children}
+    </Swiper>
+  );
 };

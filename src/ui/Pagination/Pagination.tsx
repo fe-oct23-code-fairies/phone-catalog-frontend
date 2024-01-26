@@ -1,5 +1,5 @@
+import { useCatalogContext } from '../../context/CatalogContext/CatalogContext';
 import { getNumbers } from '../../helpers/getNumbers';
-import { useCatalogContext } from '../../context';
 import { CircleButton } from '../CircleButtonWithIcon';
 import { Icon } from '../Icons';
 
