@@ -3,11 +3,11 @@ import { ButtonWithIcon } from '../../ui/ButtonWithIcon';
 import { CartItemPhoto } from '../../ui/CartItemPhoto';
 import { Counter } from '../../ui/Counter';
 import { Icon } from '../../ui/Icons';
-import { Item } from '../../types/Item';
 import { useAppContext } from '../../context/AppContext';
+import { CartProduct } from '../../types/CartProduct';
 
 type Props = {
-  product: Item
+  product: CartProduct
 };
 
 export const CartItem: React.FC<Props> = ({ product }) => {
@@ -53,7 +53,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="cart-item__body">
-        <Counter />
+        <Counter product={product} />
 
         <p className="h3">{product.priceRegular}</p>
       </div>

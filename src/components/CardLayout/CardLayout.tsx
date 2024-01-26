@@ -19,15 +19,40 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
   } = useAppContext();
 
   const addProduct = () => {
-    setIsAdded(prev => !prev);
+    setIsAdded(true);
 
-    const updatedItems = [...parsedCartProducts, { ...product }];
+    setTimeout(() => setIsAdded(false), 500);
+
+    const isAlreadyInCart = parsedCartProducts.find(
+      productToFind => productToFind.id === product.id,
+    );
+
+    if (isAlreadyInCart) {
+      const productTochangeIndex = parsedCartProducts.findIndex(
+        productToFind => productToFind.id === product.id,
+      );
+
+      parsedCartProducts[productTochangeIndex] = {
+        ...parsedCartProducts[productTochangeIndex],
+        count: parsedCartProducts[productTochangeIndex].count + 1,
+      };
+
+      const productsToSet = JSON.stringify(parsedCartProducts);
+
+      localStorage.setItem('addedToCartProducts', productsToSet);
+
+      return;
+    }
+
+    const updatedItems = [...parsedCartProducts, { ...product, count: 1 }];
     const updatedCartProductsAmount = parsedCartProductsAmount + 1;
 
     localStorage
       .setItem('addedToCartProducts', JSON.stringify(updatedItems));
     localStorage
-      .setItem('cartProductsAmount', JSON.stringify(updatedCartProductsAmount));
+      .setItem(
+        'cartProductsAmount', JSON.stringify(updatedCartProductsAmount),
+      );
     setCartProductsAmount(updatedCartProductsAmount);
   };
 

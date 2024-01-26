@@ -4,14 +4,14 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { Item } from '../../types/Item';
+import { CartProduct } from '../../types/CartProduct';
 
 interface AppContextType {
-  addedToCartProducts: Item[],
-  setAddedToCartProducts: (arg: Item[]) => void,
+  addedToCartProducts: CartProduct[],
+  setAddedToCartProducts: (arg: CartProduct[]) => void,
   cartProductsAmount: number,
   setCartProductsAmount: (arg: number) => void,
-  parsedCartProducts: Item[],
+  parsedCartProducts: CartProduct[],
   parsedCartProductsAmount: number,
 }
 
@@ -30,7 +30,8 @@ type AppContextProviderType = {
 
 export const AppContextProvider: React.FC<AppContextProviderType>
   = ({ children }) => {
-    const [addedToCartProducts, setAddedToCartProducts] = useState<Item[]>([]);
+    const [addedToCartProducts, setAddedToCartProducts]
+    = useState<CartProduct[]>([]);
     const [cartProductsAmount, setCartProductsAmount] = useState(0);
 
     const cartProductsInStorage = localStorage
