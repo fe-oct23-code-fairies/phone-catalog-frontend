@@ -17,11 +17,19 @@ import { CatalogContextProvider }
   from './context/CatalogContext/CatalogContext';
 import { CartContextProvider } from './context/CartContext';
 import { ProductCard } from './pages/ProductCard/ProductCard';
+import { AppContextProvider } from './context/AppContext';
 
 export const Routing = () => (
   <Router>
     <Routes>
-      <Route path="/" element={<App />}>
+      <Route
+        path="/"
+        element={(
+          <AppContextProvider>
+            <App />
+          </AppContextProvider>
+        )}
+      >
         <Route index element={<Home />} />
         <Route path="home" element={<Navigate to=".." />} />
 

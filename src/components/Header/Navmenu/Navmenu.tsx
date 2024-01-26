@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import { Icon } from '../../../ui/Icons';
 import { getLinkClass } from '../helper';
+import { useAppContext } from '../../../context/AppContext';
 
 const NAV_LINK_TITLES = ['home', 'phones', 'tablets', 'accessories'];
 
@@ -15,6 +16,8 @@ export const Navmenu: React.FC<Props> = ({
   isMenuOpen,
   setIsMenuOpen,
 }: Props) => {
+  const { cartProductsAmount } = useAppContext();
+
   return (
     <aside className={cn('navmenu', { 'navmenu--open': isMenuOpen })}>
       <div className="navmenu__top">
@@ -51,6 +54,12 @@ export const Navmenu: React.FC<Props> = ({
         >
           <div className="navmenu__button">
             <Icon iconName="cart" />
+
+            {cartProductsAmount > 0 && (
+              <p className="navmenu__text-amount-of-products">
+                {cartProductsAmount}
+              </p>
+            )}
           </div>
         </NavLink>
       </div>
