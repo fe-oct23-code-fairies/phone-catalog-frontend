@@ -29,7 +29,7 @@ export const Counter: React.FC<Props> = ({ product }) => {
   const increaseCount = () => {
     setCounter(prev => prev + 1);
 
-    const updatedPrice = totalPrice + product.priceRegular;
+    const updatedPrice = totalPrice + product.fullPrice;
 
     setTotalPrice(updatedPrice);
 
@@ -46,7 +46,7 @@ export const Counter: React.FC<Props> = ({ product }) => {
   const decreaseCount = () => {
     setCounter(prev => prev - 1);
 
-    const updatedPrice = totalPrice - product.priceRegular;
+    const updatedPrice = totalPrice - product.fullPrice;
 
     setTotalPrice(updatedPrice);
 

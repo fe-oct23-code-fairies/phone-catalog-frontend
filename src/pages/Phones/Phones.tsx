@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { CardLayout } from '../../components/CardLayout';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
-import { client } from '../../utils/fetchClient';
-import { Product } from '../../types/Product';
 import { Loader } from '../../components/Loader/Loader';
 import { ErrorNotification } from '../../components/ErrorNotification';
+import { getPhones } from '../../api/phones';
+import { Pagination } from '../../ui/Pagination';
+import { useCatalogContext } from '../../context/CatalogContext';
 
 export const Phones: React.FC = () => {
-  const [phonesToShow, setPhonesToShow] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -15,17 +15,19 @@ export const Phones: React.FC = () => {
     setError(errorMessage);
   };
 
+  const { setTotalItems, setProducts, visibleProducts } = useCatalogContext();
+
   useEffect(() => {
-    client
-      .getPhones()
-      .then((data) => {
-        setPhonesToShow(data);
+    getPhones()
+      .then(data => {
+        setTotalItems(data.length);
+        setProducts(data);
       })
       .catch(() => handleError('Unable to load phones'))
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  });
 
   return (
     <>
@@ -35,7 +37,7 @@ export const Phones: React.FC = () => {
         ? <Loader />
         : (
           <div className="grid__container">
-            {phonesToShow.map((phone) => (
+            {visibleProducts.map((phone) => (
               <CardLayout
                 key={phone.id}
                 product={phone}
@@ -43,6 +45,8 @@ export const Phones: React.FC = () => {
             ))}
           </div>
         )}
+
+      <Pagination />
 
       {error && <ErrorNotification error={error} />}
     </>

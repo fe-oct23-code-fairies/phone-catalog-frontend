@@ -16,7 +16,7 @@ export const Navbar: React.FC<Props> = ({
   isMenuOpen,
   setIsMenuOpen,
 }: Props) => {
-  const { cartProductsAmount } = useAppContext();
+  const { cartProductsAmount, favoriteProductsAmount } = useAppContext();
 
   return (
     <nav className="navbar">
@@ -36,6 +36,12 @@ export const Navbar: React.FC<Props> = ({
         <NavLink to="/favorites" className={getLinkClass}>
           <div className="navbar__button navbar__button-main">
             <Icon iconName="heart" />
+
+            {favoriteProductsAmount > 0 && (
+              <p className="navbar__text-amount-of-products">
+                {favoriteProductsAmount}
+              </p>
+            )}
           </div>
         </NavLink>
         <NavLink to="/checkout" className={getLinkClass}>

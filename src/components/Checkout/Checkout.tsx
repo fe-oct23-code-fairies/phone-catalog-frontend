@@ -12,7 +12,7 @@ export const Checkout: React.FC = () => {
   useEffect(() => {
     const totalPurchasePrice = parsedCartProducts.reduce(
       (accumulator, currentItem) => accumulator
-        + (currentItem.priceRegular * currentItem.count),
+        + (currentItem.fullPrice * currentItem.count),
       0,
     );
 

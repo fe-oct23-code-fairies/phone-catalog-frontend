@@ -12,7 +12,7 @@ import { Tablets } from './pages/Tablets';
 import { Accessories } from './pages/Accessories';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Cart } from './pages/Cart';
-import { Favorites } from './pages/Favorites';
+import { Favorites } from './pages/Favorites/Favorites';
 import { CatalogContextProvider }
   from './context/CatalogContext/CatalogContext';
 import { CartContextProvider } from './context/CartContext';

@@ -36,7 +36,7 @@ export const CatalogContextProvider = ({
   children,
 }: CatalogContextProviderProps) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(ItemsPerPage.eight);
+  const [itemsPerPage, setItemsPerPage] = useState(ItemsPerPage.sixteen);
   const [totalItems, setTotalItems] = useState(0);
   const [products, setProducts] = useState<Product[]>([]);
 
