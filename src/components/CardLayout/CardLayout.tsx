@@ -19,7 +19,8 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
     setAreFavorites,
   } = useAppContext();
 
-  useEffect(() => setAreFavorites(parsedFavorites));
+  useEffect(() => setAreFavorites(parsedFavorites),
+    [setAreFavorites]);
 
   const addToCart = (productToAdd: Product) => {
     addProductToCart(productToAdd);
