@@ -95,8 +95,6 @@ export const CatalogContextProvider = ({
         }
       }
 
-      // const preparedProducts = productsToSort.slice(firstItem - 1, lastItem);
-
       return productsToSort;
     }, [firstItem, lastItem],
   );
@@ -111,12 +109,14 @@ export const CatalogContextProvider = ({
   const parsedSortBy
     = parseDataFromStorage<string, string>('sortBy', 'Newest');
 
-  const selectItemsPerPage = (selectedItem: number | string) => {
-    setItemsPerPage(+selectedItem);
-    localStorage.setItem(
-      'itemsPerPage', JSON.stringify(selectedItem),
-    );
-  };
+  const selectItemsPerPage = useCallback(
+    (selectedItem: number | string) => {
+      setItemsPerPage(+selectedItem);
+      localStorage.setItem(
+        'itemsPerPage', JSON.stringify(selectedItem),
+      );
+    }, [],
+  );
 
   const selectSortBy = (selectedItem: number | string) => {
     setSortBy(selectedItem.toString());
@@ -161,6 +161,7 @@ export const CatalogContextProvider = ({
       parsedItemsPerPage,
       sortBy,
       parsedSortBy,
+      selectItemsPerPage,
     ],
   );
 
