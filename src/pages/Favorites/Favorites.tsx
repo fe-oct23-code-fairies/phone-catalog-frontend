@@ -24,7 +24,7 @@ export const Favorites: React.FC = () => {
       {favoritesIsntEmpty
         ? (
           <>
-            <p className="text-body favorites__secondary-text">
+            <p className="text-body section-text">
               {`${favoritesAmount} items`}
             </p>
             <div className="grid__container">

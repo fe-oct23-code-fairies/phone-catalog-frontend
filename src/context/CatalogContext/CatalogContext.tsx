@@ -1,5 +1,5 @@
 import React, {
-  createContext, useContext, useMemo, useState,
+  createContext, useCallback, useContext, useMemo, useState,
 } from 'react';
 import { ItemsPerPage } from '../../types/ItemsPerPage';
 import { Product } from '../../types/Product';
@@ -11,9 +11,12 @@ interface CatalogContextType {
   setItemsPerPage: (perPage: ItemsPerPage) => void;
   totalItems: number;
   setTotalItems: (page: number) => void;
-  products: Product[];
-  setProducts: (arg: Product[]) => void;
-  visibleProducts: Product[];
+  isLoading: boolean,
+  setIsLoading: (arg: boolean) => void,
+  error: string | null,
+  setError: (arg: string | null) => void,
+  handleError: (arg: string) => void,
+  prepareProductForPage: (arg: Product[]) => Product[]
 }
 
 interface CatalogContextProviderProps {
@@ -22,14 +25,17 @@ interface CatalogContextProviderProps {
 
 export const CatalogContext = createContext<CatalogContextType>({
   currentPage: 1,
-  setCurrentPage: () => {},
+  setCurrentPage: () => { },
   itemsPerPage: ItemsPerPage.eight,
-  setItemsPerPage: () => {},
+  setItemsPerPage: () => { },
   totalItems: 0,
-  setTotalItems: () => {},
-  products: [],
-  setProducts: () => {},
-  visibleProducts: [],
+  setTotalItems: () => { },
+  isLoading: true,
+  setIsLoading: () => { },
+  error: null,
+  setError: () => {},
+  handleError: () => {},
+  prepareProductForPage: () => [],
 });
 
 export const CatalogContextProvider = ({
@@ -38,14 +44,26 @@ export const CatalogContextProvider = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(ItemsPerPage.sixteen);
   const [totalItems, setTotalItems] = useState(0);
-  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const firstItem = itemsPerPage * currentPage - itemsPerPage + 1;
   const lastItem
     = currentPage * itemsPerPage > totalItems
       ? totalItems
       : currentPage * itemsPerPage;
-  const visibleProducts = products.slice(firstItem - 1, lastItem);
+
+  const prepareProductForPage = useCallback(
+    (productsToPrepare: Product[]) => {
+      const preparedProducts = productsToPrepare.slice(firstItem - 1, lastItem);
+
+      return preparedProducts;
+    }, [firstItem, lastItem],
+  );
+
+  const handleError = (errorMessage: string) => {
+    setError(errorMessage);
+  };
 
   const value: CatalogContextType = useMemo(
     () => ({
@@ -55,9 +73,12 @@ export const CatalogContextProvider = ({
       setItemsPerPage,
       totalItems,
       setTotalItems,
-      products,
-      setProducts,
-      visibleProducts,
+      isLoading,
+      setIsLoading,
+      error,
+      setError,
+      handleError,
+      prepareProductForPage,
     }),
     [
       currentPage,
@@ -66,8 +87,11 @@ export const CatalogContextProvider = ({
       totalItems,
       setItemsPerPage,
       setTotalItems,
-      visibleProducts,
-      products,
+      isLoading,
+      setIsLoading,
+      error,
+      setError,
+      prepareProductForPage,
     ],
   );
 

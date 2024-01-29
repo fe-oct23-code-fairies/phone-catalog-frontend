@@ -48,7 +48,14 @@ export const Routing = () => (
           />
         </Route>
         <Route path="tablets">
-          <Route index element={<Tablets />} />
+          <Route
+            index
+            element={(
+              <CatalogContextProvider>
+                <Tablets />
+              </CatalogContextProvider>
+            )}
+          />
           <Route
             path=":itemId"
             element={<ProductCard productType="tablets" />}
@@ -56,7 +63,14 @@ export const Routing = () => (
         </Route>
 
         <Route path="accessories">
-          <Route index element={<Accessories />} />
+          <Route
+            index
+            element={(
+              <CatalogContextProvider>
+                <Accessories />
+              </CatalogContextProvider>
+            )}
+          />
           <Route
             path=":itemId"
             element={<ProductCard productType="accessories" />}
