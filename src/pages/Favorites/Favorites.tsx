@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useAppContext } from '../../context/AppContext';
 import { CardLayout } from '../../components/CardLayout';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
 export const Favorites: React.FC = () => {
   const {
@@ -20,6 +21,7 @@ export const Favorites: React.FC = () => {
 
   return (
     <div className="favorites">
+      <Breadcrumbs />
       <p className="h1">Favorites</p>
       {favoritesIsntEmpty
         ? (

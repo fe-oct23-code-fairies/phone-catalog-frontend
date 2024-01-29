@@ -6,6 +6,7 @@ import { useCatalogContext } from '../context/CatalogContext';
 import { Pagination } from '../ui/Pagination';
 import { getAccessories } from '../api/accessories';
 import { Product } from '../types/Product';
+import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 
 export const Accessories: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,6 +35,7 @@ export const Accessories: React.FC = () => {
 
   return (
     <>
+      <Breadcrumbs />
       <h1 className="h1">Accessories Page</h1>
 
       {isLoading

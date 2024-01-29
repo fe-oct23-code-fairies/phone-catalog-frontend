@@ -44,7 +44,10 @@ export const Breadcrumbs = () => {
           })
         }
       </ul>
-      <GoBack />
+      {
+        pathCrumbs.length > 1 && <GoBack />
+      }
+
     </div>
   );
 };
