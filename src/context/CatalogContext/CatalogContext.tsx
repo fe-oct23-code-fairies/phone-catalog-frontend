@@ -1,14 +1,14 @@
 import React, {
   createContext, useCallback, useContext, useMemo, useState,
 } from 'react';
-import { ItemsPerPage } from '../../types/ItemsPerPage';
 import { Product } from '../../types/Product';
+import { parseDataFromStorage } from '../../helpers/parseDataFromStorage';
 
 interface CatalogContextType {
   currentPage: number;
   setCurrentPage: (page: number) => void;
   itemsPerPage: number;
-  setItemsPerPage: (perPage: ItemsPerPage) => void;
+  setItemsPerPage: (perPage: number) => void;
   totalItems: number;
   setTotalItems: (page: number) => void;
   isLoading: boolean,
@@ -16,7 +16,13 @@ interface CatalogContextType {
   error: string | null,
   setError: (arg: string | null) => void,
   handleError: (arg: string) => void,
-  prepareProductForPage: (arg: Product[]) => Product[]
+  prepareProductForPage: (arg: Product[], arg2: string) => Product[],
+  parsedItemsPerPage: number,
+  parsedSortBy: string,
+  selectItemsPerPage: (arg: number | string) => void | undefined,
+  selectSortBy: (arg: number | string) => void | undefined,
+  sortBy: string,
+  setSortBy: (arg: string) => void,
 }
 
 interface CatalogContextProviderProps {
@@ -26,26 +32,33 @@ interface CatalogContextProviderProps {
 export const CatalogContext = createContext<CatalogContextType>({
   currentPage: 1,
   setCurrentPage: () => { },
-  itemsPerPage: ItemsPerPage.eight,
+  itemsPerPage: 16,
   setItemsPerPage: () => { },
   totalItems: 0,
   setTotalItems: () => { },
   isLoading: true,
   setIsLoading: () => { },
   error: null,
-  setError: () => {},
-  handleError: () => {},
+  setError: () => { },
+  handleError: () => { },
   prepareProductForPage: () => [],
+  parsedItemsPerPage: 16,
+  parsedSortBy: 'Newest',
+  selectItemsPerPage: () => { },
+  selectSortBy: () => { },
+  sortBy: 'Newest',
+  setSortBy: () => { },
 });
 
 export const CatalogContextProvider = ({
   children,
 }: CatalogContextProviderProps) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(ItemsPerPage.sixteen);
+  const [itemsPerPage, setItemsPerPage] = useState(16);
   const [totalItems, setTotalItems] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [sortBy, setSortBy] = useState('Newest');
 
   const firstItem = itemsPerPage * currentPage - itemsPerPage + 1;
   const lastItem
@@ -54,15 +67,62 @@ export const CatalogContextProvider = ({
       : currentPage * itemsPerPage;
 
   const prepareProductForPage = useCallback(
-    (productsToPrepare: Product[]) => {
-      const preparedProducts = productsToPrepare.slice(firstItem - 1, lastItem);
+    (
+      productsToPrepare: Product[],
+      sort: string,
+    ) => {
+      let productsToSort = productsToPrepare.slice(firstItem - 1, lastItem);
 
-      return preparedProducts;
+      if (sort) {
+        switch (sort) {
+          case 'Cheapest':
+            productsToSort = productsToSort.sort(
+              (product1, product2) => product1.fullPrice - product2.fullPrice,
+            );
+            break;
+
+          case 'Alphabetically':
+            productsToSort = productsToSort.sort(
+              (product1, product2) => product1.name
+                .localeCompare(product2.name),
+            );
+            break;
+
+          default:
+            productsToSort = productsToSort.sort(
+              (product1, product2) => product1.year - product2.year,
+            );
+        }
+      }
+
+      return productsToSort;
     }, [firstItem, lastItem],
   );
 
   const handleError = (errorMessage: string) => {
     setError(errorMessage);
+  };
+
+  const parsedItemsPerPage
+    = parseDataFromStorage<number, number>('itemsPerPage', 16);
+
+  const parsedSortBy
+    = parseDataFromStorage<string, string>('sortBy', 'Newest');
+
+  const selectItemsPerPage = useCallback(
+    (selectedItem: number | string) => {
+      setItemsPerPage(+selectedItem);
+      localStorage.setItem(
+        'itemsPerPage', JSON.stringify(selectedItem),
+      );
+    }, [],
+  );
+
+  const selectSortBy = (selectedItem: number | string) => {
+    setSortBy(selectedItem.toString());
+    localStorage.setItem(
+      'sortBy', JSON.stringify(selectedItem),
+    );
   };
 
   const value: CatalogContextType = useMemo(
@@ -79,6 +139,12 @@ export const CatalogContextProvider = ({
       setError,
       handleError,
       prepareProductForPage,
+      parsedItemsPerPage,
+      selectItemsPerPage,
+      sortBy,
+      setSortBy,
+      selectSortBy,
+      parsedSortBy,
     }),
     [
       currentPage,
@@ -92,6 +158,10 @@ export const CatalogContextProvider = ({
       error,
       setError,
       prepareProductForPage,
+      parsedItemsPerPage,
+      sortBy,
+      parsedSortBy,
+      selectItemsPerPage,
     ],
   );
 

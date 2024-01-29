@@ -6,6 +6,7 @@ import { getPhones } from '../../api/phones';
 import { Pagination } from '../../ui/Pagination';
 import { useCatalogContext } from '../../context/CatalogContext';
 import { Product } from '../../types/Product';
+import { Dropdown } from '../../ui/Dropdown';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
 export const Phones: React.FC = () => {
@@ -17,6 +18,10 @@ export const Phones: React.FC = () => {
     handleError,
     error,
     prepareProductForPage,
+    itemsPerPage,
+    selectItemsPerPage,
+    sortBy,
+    selectSortBy,
   } = useCatalogContext();
 
   useEffect(() => {
@@ -31,19 +36,37 @@ export const Phones: React.FC = () => {
       });
   });
 
-  const visiblePhones = prepareProductForPage(phones);
+  const visiblePhones = prepareProductForPage(phones, sortBy);
 
   return (
     <>
       <Breadcrumbs />
-      <h1 className="h1">Mobile phones</h1>
       {isLoading
         ? <Loader />
         : (
           <>
-            <p className="text-body section-text">
-              {`${phones.length} models`}
-            </p>
+            <div className="section-top">
+              <h1 className="h1">Mobile phones</h1>
+              <p className="text-body section-text">
+                {`${phones.length} models`}
+              </p>
+            </div>
+
+            <div className="section-dropdowns">
+              <Dropdown
+                items={['Newest', 'Alphabetically', 'Cheapest']}
+                description="Sort by"
+                startValue={sortBy}
+                onSelection={selectSortBy}
+              />
+
+              <Dropdown
+                items={[16, 8, 4]}
+                description="Items on page"
+                startValue={itemsPerPage}
+                onSelection={selectItemsPerPage}
+              />
+            </div>
             <div className="grid__container">
               {visiblePhones.map((phone) => (
                 <CardLayout

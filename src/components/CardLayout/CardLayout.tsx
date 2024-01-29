@@ -4,6 +4,7 @@ import { Button } from '../../ui/Button';
 import { AddToFavourite } from '../../ui/AddToFavourite/AddToFavourite';
 import { useAppContext } from '../../context/AppContext';
 import { Product } from '../../types/Product';
+import { BASE_URL } from '../../utils/fetchClient';
 
 type Props = {
   product: Product
@@ -18,6 +19,8 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
     parsedFavorites,
     areFavorites,
     setAreFavorites,
+    addedToFavoriteProducts,
+    setAddedToFavoriteProducts,
   } = useAppContext();
 
   useEffect(() => setAreFavorites(parsedFavorites),
@@ -40,6 +43,12 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
       const favoritesToSet = parsedFavorites.filter(
         favorite => favorite !== product.id,
       );
+
+      const changedFavorites = addedToFavoriteProducts.filter(
+        favoriteProduct => favoriteProduct.id !== productToAdd.id,
+      );
+
+      setAddedToFavoriteProducts(changedFavorites);
 
       localStorage.setItem('favorites', JSON.stringify(favoritesToSet));
       setAreFavorites(favoritesToSet);

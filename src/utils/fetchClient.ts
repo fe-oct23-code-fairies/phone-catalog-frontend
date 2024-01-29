@@ -1,4 +1,4 @@
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function get<T>(url: string): Promise<T> {
   return fetch(BASE_URL + url)
@@ -12,15 +12,15 @@ function get<T>(url: string): Promise<T> {
 }
 
 export const client = {
-  getProducts: <T>() => get<T>('products'),
-  getProductById: <T>(id: string) => get<T>(`products/${id}`),
+  getProducts: <T>() => get<T>('/products'),
+  getProductById: <T>(id: string) => get<T>(`/products/${id}`),
 
-  getAccessories: <T>() => get<T>('accessories'),
-  getAccessoryById: <T>(id: string) => get<T>(`accessories/${id}`),
+  getAccessories: <T>() => get<T>('/accessories'),
+  getAccessoryById: <T>(id: string) => get<T>(`/accessories/${id}`),
 
-  getPhones: <T>() => get<T>('phones'),
-  getPhoneById: <T>(id: string) => get<T>(`phones/${id}`),
+  getPhones: <T>() => get<T>('/phones'),
+  getPhoneById: <T>(id: string) => get<T>(`/phones/${id}`),
 
-  getTablets: <T>() => get<T>('tablets'),
-  getTabletById: <T>(id: string) => get<T>(`tablets/${id}`),
+  getTablets: <T>() => get<T>('/tablets'),
+  getTabletById: <T>(id: string) => get<T>(`/tablets/${id}`),
 };

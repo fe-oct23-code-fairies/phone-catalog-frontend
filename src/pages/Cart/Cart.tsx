@@ -16,7 +16,7 @@ export const Cart: React.FC = () => {
 
   useEffect(() => {
     setAddedToCartProducts(parsedCartProducts);
-  });
+  }, []);
 
   const cartIsntEmpty = addedToCartProducts && addedToCartProducts.length > 0;
 
