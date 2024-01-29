@@ -1,14 +1,14 @@
-import { FC, useEffect, useState } from "react";
-import { SwiperSlide } from "swiper/react";
-import { CircleButtonWithIcon } from "../../../ui/CircleButtonWithIcon";
-import { Icon } from "../../../ui/Icons";
-import { CardLayout } from "../../CardLayout";
-import { SliderSettingsPhone } from "../../SliderSettingsPhones/SliderSettingsPhones";
-import "swiper/css";
-import { getPhones } from "../../../api/phones";
-import "./PhoneSection.scss";
-import { Product } from "../../../types/Product";
-import { Loader } from "../../Loader/Loader";
+import { FC, useEffect, useState } from 'react';
+import { SwiperSlide } from 'swiper/react';
+import { CircleButtonWithIcon } from '../../../ui/CircleButtonWithIcon';
+import { Icon } from '../../../ui/Icons';
+import { CardLayout } from '../../CardLayout';
+import { SliderSettingsPhone } from '../../SliderSettingsPhones/SliderSettingsPhones';
+import 'swiper/css';
+import { getPhones } from '../../../api/phones';
+import './PhoneSection.scss';
+import { Product } from '../../../types/Product';
+import { Loader } from '../../Loader/Loader';
 
 type Props = {
   title: string;
