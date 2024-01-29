@@ -18,7 +18,7 @@ export const CardItemPage: React.FC = () => {
 
         setPhone(data);
       } catch (error) {
-        console.error('Error fetching phone data:', error);
+        // console.error('Error fetching phone data:', error);
       }
     };
 

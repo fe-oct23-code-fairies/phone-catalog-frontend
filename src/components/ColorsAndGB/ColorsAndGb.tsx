@@ -6,9 +6,6 @@ import { Button } from '../../ui/Button';
 import { AddToFavourite } from '../../ui/AddToFavourite/AddToFavourite';
 import { Item } from '../../types/Item';
 
-// const colors = ['gold', 'grey', 'brown', 'white'];
-// const capacities = ['128', '256', '512'];
-
 type Props = {
   colors: string[],
   availableGBs: string[],

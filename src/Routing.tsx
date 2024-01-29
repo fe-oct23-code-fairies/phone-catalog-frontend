@@ -43,10 +43,7 @@ export const Routing = () => (
               </CatalogContextProvider>
             )}
           />
-          {/* <Route
-            path=":itemId"
-            element={<ProductCard productType="phones" />}
-          /> */}
+          
           <Route
             path=":itemId"
             element={<CardItemPage />}
