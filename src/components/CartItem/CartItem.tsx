@@ -15,6 +15,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     addedToCartProducts,
     cartProductsAmount,
     setCartProductsAmount,
+    setAddedToCartProducts,
   } = useAppContext();
 
   const removeProduct = () => {
@@ -34,6 +35,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     );
 
     setCartProductsAmount(cartProductsAmount - 1);
+    setAddedToCartProducts(newProducts);
   };
 
   return (

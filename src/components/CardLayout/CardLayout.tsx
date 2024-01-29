@@ -17,6 +17,8 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
     parsedFavorites,
     areFavorites,
     setAreFavorites,
+    addedToFavoriteProducts,
+    setAddedToFavoriteProducts,
   } = useAppContext();
 
   useEffect(() => setAreFavorites(parsedFavorites),
@@ -39,6 +41,12 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
       const favoritesToSet = parsedFavorites.filter(
         favorite => favorite !== product.id,
       );
+
+      const changedFavorites = addedToFavoriteProducts.filter(
+        favoriteProduct => favoriteProduct.id !== productToAdd.id,
+      );
+
+      setAddedToFavoriteProducts(changedFavorites);
 
       localStorage.setItem('favorites', JSON.stringify(favoritesToSet));
       setAreFavorites(favoritesToSet);

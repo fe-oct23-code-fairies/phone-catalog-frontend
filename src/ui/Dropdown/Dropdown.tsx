@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { Icon } from '../Icons';
+import { useCatalogContext } from '../../context/CatalogContext';
 
 type Props = {
   startValue?: string | number,
@@ -14,7 +15,7 @@ export const Dropdown: React.FC<Props> = ({
   startValue,
   itemIdx,
   items,
-  onSelection = () => {},
+  onSelection = () => { },
   description,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,6 +23,19 @@ export const Dropdown: React.FC<Props> = ({
   const [currentIdx, setCurrentIdx] = useState(
     itemIdx === 0 ? 0 : (itemIdx || -1),
   );
+
+  const {
+    parsedItemsPerPage,
+    setItemsPerPage,
+    parsedSortBy,
+    setSortBy,
+  } = useCatalogContext();
+
+  useEffect(() => {
+    setItemsPerPage(parsedItemsPerPage);
+    setSortBy(parsedSortBy);
+  });
+
   const firstValue = startValue || items[currentIdx] || 'Select a value';
 
   const onClick = (item: string | number, i: number) => {
@@ -42,7 +56,7 @@ export const Dropdown: React.FC<Props> = ({
       <button
         type="button"
         className="dropdown__field"
-        onBlur={() => setTimeout(() => setIsMenuOpen(false), 175)}
+        onBlur={() => setTimeout(() => setIsMenuOpen(false), 500)}
         onClick={() => setIsMenuOpen(prev => !prev)}
       >
         <p className="text-button dropdown__value">

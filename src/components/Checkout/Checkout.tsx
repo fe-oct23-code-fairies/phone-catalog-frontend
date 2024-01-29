@@ -17,7 +17,7 @@ export const Checkout: React.FC = () => {
     );
 
     setTotalPrice(totalPurchasePrice);
-  }, [parsedCartProducts, setTotalPrice]);
+  }, []);
 
   const itemsAmount = parsedCartProducts.length;
 
