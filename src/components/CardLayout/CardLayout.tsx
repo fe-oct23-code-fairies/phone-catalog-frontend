@@ -3,6 +3,7 @@ import { Button } from '../../ui/Button';
 import { AddToFavourite } from '../../ui/AddToFavourite/AddToFavourite';
 import { useAppContext } from '../../context/AppContext';
 import { Product } from '../../types/Product';
+import { BASE_URL } from '../../utils/fetchClient';
 
 type Props = {
   product: Product
@@ -64,7 +65,7 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
   return (
     <div className="card">
       <div className="card__img-wrapper">
-        <img className="card__img" src="images/item.png" alt="Iphone IMG" />
+        <img className="card__img" src={`${BASE_URL}/static/${product.image}`} alt="Iphone IMG" />
       </div>
 
       <h2 className="card__title">{product.name}</h2>
