@@ -1,18 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ColorsAndGb.scss';
 import { ColorRadioButton } from '../../ui/ColorRadioButton';
 import { CapacitySelect } from '../../ui/CapacitySelect';
 import { Button } from '../../ui/Button';
 import { AddToFavourite } from '../../ui/AddToFavourite/AddToFavourite';
 
-const colors = ['gold', 'grey', 'brown', 'white'];
+// const colors = ['gold', 'grey', 'brown', 'white'];
 const capacities = ['128', '256', '512'];
 
-export const ColorsAndGbVariants: React.FC = () => {
+type Props = {
+  colors: string[],
+  avaiableGBs: string[]
+}
+
+export const ColorsAndGbVariants: React.FC<Props> = ({ colors, avaiableGBs }) => {
   const [isAdded, setIsAdded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
-  const [selectedColor, setSelectedColor] = useState(colors[0]);
+  const [availableColors] = useState<string[]>(colors);
+  const [avaliableCapacity] = useState<string[]>(avaiableGBs);
+
+  const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
   const [selectedCapacity, setSelectedCapacity] = useState(capacities[0]);
+
+  useEffect(() => {
+    console.log(availableColors, avaliableCapacity)
+  }, [])
 
   const handleColorClick = (color: string) => {
     setSelectedColor(color);
@@ -26,17 +38,17 @@ export const ColorsAndGbVariants: React.FC = () => {
     <div className="container-colors-and-Gb">
       <div className="colors">
         <div className="colors__title">Available colors</div>
-        <div className="colors__productId">ID: 802390</div>
+        <div className="colors__productId">{}</div>
       </div>
 
       <div className="colors__buttons">
-        {colors.map(color => {
+        {availableColors.map(color => {
           return (
             <ColorRadioButton
               color={color}
               key={color}
               onClick={handleColorClick}
-              selectedColor={selectedColor}
+              selectedColor={selectedColor || ''}
             />
           );
         })}
@@ -46,7 +58,7 @@ export const ColorsAndGbVariants: React.FC = () => {
       <div className="capacities__title">Select capacity</div>
 
       <div className="capacities__buttons">
-        {capacities.map(cap => {
+        {avaliableCapacity.map(cap => {
           return (
             <CapacitySelect
               key={cap}

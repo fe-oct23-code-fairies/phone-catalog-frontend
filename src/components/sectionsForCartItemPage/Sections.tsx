@@ -1,14 +1,20 @@
 import React from 'react';
 import './sections.scss';
+import { Item } from '../../types/Item';
 
-export const Sections: React.FC = () => {
+
+type Props = {
+  phone: Item
+};
+
+export const Sections: React.FC<Props> = ({ phone }) => {
   return (
     <div className="grid-section-container">
       <section className="about">
         <h3 className="section__title">About</h3>
         <div className="underline" />
 
-        <h4 className="section__title-name">And then there was Pro</h4>
+        <h4 className="section__title-name">{}</h4>
         <p className="section__title-name-description">
           Lorem ipingemom dolore quibusdam vitae corrupti
           ipsam porro aniincidunt quibusdam ea.
@@ -47,44 +53,44 @@ export const Sections: React.FC = () => {
         <div className="specifics">
           <div className="specifics__item">
             <div className="specifics__item-title">Screen</div>
-            <div className="specifics__item-value">6.5” OLED</div>
+            <div className="specifics__item-value">{phone.screen}</div>
           </div>
 
           <div className="specifics__item">
             <div className="specifics__item-title">Resolution</div>
-            <div className="specifics__item-value">2688x1242</div>
+            <div className="specifics__item-value">{phone.resolution}</div>
           </div>
 
           <div className="specifics__item">
             <div className="specifics__item-title">Processor</div>
-            <div className="specifics__item-value">Apple A12 Bionic</div>
+            <div className="specifics__item-value">{phone.processor}</div>
           </div>
 
           <div className="specifics__item">
             <div className="specifics__item-title">RAM</div>
-            <div className="specifics__item-value">3GB</div>
+            <div className="specifics__item-value">{phone.ram}</div>
           </div>
 
           <div className="specifics__item">
             <div className="specifics__item-title">Built in memory</div>
-            <div className="specifics__item-value">64GB</div>
+            <div className="specifics__item-value">{phone.capacity}</div>
           </div>
 
           <div className="specifics__item">
             <div className="specifics__item-title">Camera</div>
             <div className="specifics__item-value">
-              12 Mp + 12 Mp + 12 Mp (Triple)
+              {phone.camera}
             </div>
           </div>
 
           <div className="specifics__item">
             <div className="specifics__item-title">Zoom</div>
-            <div className="specifics__item-value">Optical, 2x</div>
+            <div className="specifics__item-value">{phone.zoom}</div>
           </div>
 
           <div className="specifics__item">
             <div className="specifics__item-title">Cell</div>
-            <div className="specifics__item-value">GSM, LTE, UMTS</div>
+            <div className="specifics__item-value">{phone.cell}</div>
           </div>
         </div>
       </section>

@@ -2,21 +2,15 @@ import cn from 'classnames';
 import React, { useState } from 'react';
 import './PhotoBlock.scss';
 
-const photos = [
-  'https://img.jabko.ua/image/cache/catalog'
-    + '/products/2024/01/221734/kjhgbnv-1397x1397.jpg.webp',
-  'https://img.jabko.ua/image/cache/catalog/prod'
-    + 'ucts/2024/01/221734/vlvhghg-1397x1397.jpg.webp',
-  'https://img.jabko.ua/image/cache/catalog/produ'
-    + 'cts/2024/01/221734/lojghf-1397x1397.jpg.webp',
-  'https://img.jabko.ua/image/cache/catalog/product'
-    + 's/2024/01/221734/fokvjgjhg-1397x1397.jpg.webp',
-  'https://img.jabko.ua/image/cache/catalog/produc'
-    + 'ts/2024/01/221734/flovkjg-1397x1397.jpg.webp',
-];
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-export const PhotoBlock: React.FC = () => {
-  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(photos[0]);
+type Props = {
+  images: string[]
+}
+
+export const PhotoBlock: React.FC<Props> = ({ images }) => {
+  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(images[0]);
+  const [photos] = useState(images);
 
   const handlePhotoClick = (photo: string) => {
     setSelectedPhoto(photo);
@@ -36,7 +30,7 @@ export const PhotoBlock: React.FC = () => {
           >
             <img
               className="photo__block-img"
-              src={photo}
+              src={`${BASE_URL}static/${photo}`}
               alt={`Thumbnail ${index + 1}`}
             />
           </button>
@@ -47,7 +41,7 @@ export const PhotoBlock: React.FC = () => {
         {selectedPhoto && (
           <img
             className="photo__block-main"
-            src={selectedPhoto}
+            src={`${BASE_URL}static/${selectedPhoto}`}
             alt={selectedPhoto}
           />
         )}

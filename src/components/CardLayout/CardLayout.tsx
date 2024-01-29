@@ -3,6 +3,7 @@ import { Button } from '../../ui/Button';
 import { AddToFavourite } from '../../ui/AddToFavourite/AddToFavourite';
 import { useAppContext } from '../../context/AppContext';
 import { Product } from '../../types/Product';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product
@@ -56,10 +57,14 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
   return (
     <div className="card">
       <div className="card__img-wrapper">
-        <img className="card__img" src="images/item.png" alt="Iphone IMG" />
+        <Link to={`/phones/${product.itemId}`}>
+          <img className="card__img" src="images/item.png" alt="Iphone IMG" />
+        </Link>
       </div>
 
-      <h2 className="card__title">{product.name}</h2>
+      <Link to={`/phones/${product.itemId}`}>
+        <h2 className="card__title">{product.name}</h2>
+      </Link>
 
       <div className="card__price">{`$${product.fullPrice}`}</div>
 
