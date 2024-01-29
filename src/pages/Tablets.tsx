@@ -7,6 +7,7 @@ import { ErrorNotification } from '../components/ErrorNotification';
 import { Loader } from '../components/Loader/Loader';
 import { Product } from '../types/Product';
 import { Dropdown } from '../ui/Dropdown';
+import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 
 export const Tablets: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,6 +40,8 @@ export const Tablets: React.FC = () => {
 
   return (
     <>
+      <Breadcrumbs />
+
       {isLoading
         ? <Loader />
         : (

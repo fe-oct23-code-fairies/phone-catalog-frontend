@@ -7,6 +7,7 @@ import { Pagination } from '../../ui/Pagination';
 import { useCatalogContext } from '../../context/CatalogContext';
 import { Product } from '../../types/Product';
 import { Dropdown } from '../../ui/Dropdown';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
 export const Phones: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,6 +40,7 @@ export const Phones: React.FC = () => {
 
   return (
     <>
+      <Breadcrumbs />
       {isLoading
         ? <Loader />
         : (

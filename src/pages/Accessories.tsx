@@ -7,6 +7,7 @@ import { Pagination } from '../ui/Pagination';
 import { getAccessories } from '../api/accessories';
 import { Product } from '../types/Product';
 import { Dropdown } from '../ui/Dropdown';
+import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 
 export const Accessories: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,6 +40,8 @@ export const Accessories: React.FC = () => {
 
   return (
     <>
+      <Breadcrumbs />
+
       {isLoading
         ? <Loader />
         : (
