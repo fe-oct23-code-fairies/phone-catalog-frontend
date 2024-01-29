@@ -12,7 +12,7 @@ export const Favorites: React.FC = () => {
 
   useEffect(() => {
     setAddedToFavoriteProducts(parsedFavoriteProducts);
-  });
+  }, []);
 
   const favoritesIsntEmpty = addedToFavoriteProducts
     && addedToFavoriteProducts.length > 0;

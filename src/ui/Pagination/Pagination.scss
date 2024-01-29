@@ -1,7 +1,19 @@
 .pagination {
+  grid-column: span 4;
+
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 16px;
+  overflow-x: auto;
+
+  @include onTablet {
+    grid-column: span 12;
+  }
+
+  @include onDesktop1200 {
+    margin: 0 auto;
+    grid-column: span 24;
+  }
 
   &__pages {
     display: flex;
