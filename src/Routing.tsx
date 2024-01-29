@@ -43,7 +43,7 @@ export const Routing = () => (
               </CatalogContextProvider>
             )}
           />
-          
+
           <Route
             path=":itemId"
             element={<CardItemPage />}

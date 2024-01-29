@@ -16,7 +16,7 @@ export const ColorRadioButton: React.FC<Props> = ({
     <input
       type="radio"
       onClick={() => onClick(color)}
-      className={cn('button-radio', `button-radio--${color}`, {
+      className={cn('button-radio', `button-radio--${color.replaceAll(' ', '')}`, {
         selectedColor: isSelected,
       })}
     />

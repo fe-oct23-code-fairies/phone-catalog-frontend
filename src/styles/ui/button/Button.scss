@@ -125,6 +125,90 @@
       background-color: #f0f0f0;
     }
   }
+
+  &--silver {
+    &::after {
+      background-color: #c0c0c0;
+    }
+  }
+
+  &--blue {
+    &::after {
+      background-color: #2834d4;
+    }
+  }
+
+  &--red {
+    &::after {
+      background-color: #d42828;
+    }
+  }
+
+  &--spacegray {
+    &::after {
+      background-color: #343d46;
+    }
+  }
+
+  &--rosegold {
+    &::after {
+      background-color: #b76e79;
+    }
+  }
+
+  &--green {
+    &::after {
+      background-color: #32c246;
+    }
+  }
+
+  &--skyblue {
+    &::after {
+      background-color: #87ceeb;
+    }
+  }
+
+  &--yellow {
+    &::after {
+      background-color: #e6d732;
+    }
+  }
+
+  &--coral {
+    &::after {
+      background-color: #ff7f50;
+    }
+  }
+
+  &--black {
+    &::after {
+      background-color: #000000;
+    }
+  }
+
+  &--purple {
+    &::after {
+      background-color: #a250ff;
+    }
+  }
+
+  &--starlight {
+    &::after {
+      background-color: #f8f9ec;
+    }
+  }
+
+  &--pink {
+    &::after {
+      background-color: #ffc0cb;
+    }
+  }
+
+  &--spaceblack {
+    &::after {
+      background-color: #333334;
+    }
+  }
 }
 
 .button-rectangle {

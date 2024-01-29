@@ -30,7 +30,7 @@ export const PhotoBlock: React.FC<Props> = ({ images }) => {
           >
             <img
               className="photo__block-img"
-              src={`${BASE_URL}static/${photo}`}
+              src={`${BASE_URL}/static/${photo}`}
               alt={`Thumbnail ${index + 1}`}
             />
           </button>
@@ -41,7 +41,7 @@ export const PhotoBlock: React.FC<Props> = ({ images }) => {
         {selectedPhoto && (
           <img
             className="photo__block-main"
-            src={`${BASE_URL}static/${selectedPhoto}`}
+            src={`${BASE_URL}/static/${selectedPhoto}`}
             alt={selectedPhoto}
           />
         )}

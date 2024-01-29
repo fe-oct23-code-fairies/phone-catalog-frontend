@@ -67,7 +67,7 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
     <div className="card">
       <div className="card__img-wrapper">
         <Link to={`/phones/${product.itemId}`}>
-          <img className="card__img" src="images/item.png" alt="Iphone IMG" />
+          <img className="card__img" src={`${BASE_URL}/static/${product.image}`} alt="Iphone IMG" />
         </Link>
       </div>
 
