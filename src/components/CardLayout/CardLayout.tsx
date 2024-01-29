@@ -1,59 +1,56 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '../../ui/Button';
 import { AddToFavourite } from '../../ui/AddToFavourite/AddToFavourite';
-import { Item } from '../../types/Item';
 import { useAppContext } from '../../context/AppContext';
+import { Product } from '../../types/Product';
 
 type Props = {
-  product: Item
+  product: Product
 };
 
 export const CardLayout: React.FC<Props> = ({ product }) => {
   const [isAdded, setIsAdded] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
 
   const {
-    parsedCartProductsAmount,
-    parsedCartProducts,
-    setCartProductsAmount,
+    addProductToCart,
+    addProductToFavorites,
+    parsedFavorites,
+    areFavorites,
+    setAreFavorites,
   } = useAppContext();
 
-  const addProduct = () => {
+  useEffect(() => setAreFavorites(parsedFavorites),
+    [setAreFavorites]);
+
+  const addToCart = (productToAdd: Product) => {
+    addProductToCart(productToAdd);
+
     setIsAdded(true);
 
     setTimeout(() => setIsAdded(false), 500);
+  };
 
-    const isAlreadyInCart = parsedCartProducts.find(
-      productToFind => productToFind.id === product.id,
-    );
+  const addToFavorites = (productToAdd: Product) => {
+    addProductToFavorites(productToAdd);
 
-    if (isAlreadyInCart) {
-      const productTochangeIndex = parsedCartProducts.findIndex(
-        productToFind => productToFind.id === product.id,
+    const productAlreadyInFavorites = areFavorites.includes(product.id);
+
+    if (productAlreadyInFavorites) {
+      const favoritesToSet = parsedFavorites.filter(
+        favorite => favorite !== product.id,
       );
 
-      parsedCartProducts[productTochangeIndex] = {
-        ...parsedCartProducts[productTochangeIndex],
-        count: parsedCartProducts[productTochangeIndex].count + 1,
-      };
-
-      const productsToSet = JSON.stringify(parsedCartProducts);
-
-      localStorage.setItem('addedToCartProducts', productsToSet);
+      localStorage.setItem('favorites', JSON.stringify(favoritesToSet));
+      setAreFavorites(favoritesToSet);
 
       return;
     }
 
-    const updatedItems = [...parsedCartProducts, { ...product, count: 1 }];
-    const updatedCartProductsAmount = parsedCartProductsAmount + 1;
+    const newFavorites = [...parsedFavorites, product.id];
 
-    localStorage
-      .setItem('addedToCartProducts', JSON.stringify(updatedItems));
-    localStorage
-      .setItem(
-        'cartProductsAmount', JSON.stringify(updatedCartProductsAmount),
-      );
-    setCartProductsAmount(updatedCartProductsAmount);
+    localStorage.setItem('favorites', JSON.stringify(newFavorites));
+
+    setAreFavorites(newFavorites);
   };
 
   return (
@@ -62,10 +59,9 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
         <img className="card__img" src="images/item.png" alt="Iphone IMG" />
       </div>
 
-
       <h2 className="card__title">{product.name}</h2>
 
-      <div className="card__price">{`$${product.priceRegular}`}</div>
+      <div className="card__price">{`$${product.fullPrice}`}</div>
 
       <div className="card__line" />
 
@@ -94,13 +90,13 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
           to=""
           btnClass="card__add"
           isActive={isAdded}
-          onClick={addProduct}
+          onClick={() => addToCart(product)}
         >
           {isAdded ? 'Added' : 'Add to cart'}
         </Button>
         <AddToFavourite
-          isFavorite={isFavorite}
-          onClick={() => setIsFavorite((prev) => !prev)}
+          isFavorite={areFavorites.includes(product.id)}
+          onClick={() => addToFavorites(product)}
         />
       </div>
     </div>

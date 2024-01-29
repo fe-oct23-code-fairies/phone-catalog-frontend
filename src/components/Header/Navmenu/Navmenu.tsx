@@ -16,7 +16,7 @@ export const Navmenu: React.FC<Props> = ({
   isMenuOpen,
   setIsMenuOpen,
 }: Props) => {
-  const { cartProductsAmount } = useAppContext();
+  const { cartProductsAmount, favoriteProductsAmount } = useAppContext();
 
   return (
     <aside className={cn('navmenu', { 'navmenu--open': isMenuOpen })}>
@@ -45,6 +45,12 @@ export const Navmenu: React.FC<Props> = ({
         >
           <div className="navmenu__button">
             <Icon iconName="heart" />
+
+            {favoriteProductsAmount > 0 && (
+              <p className="navmenu__text-amount-of-products">
+                {favoriteProductsAmount}
+              </p>
+            )}
           </div>
         </NavLink>
         <NavLink

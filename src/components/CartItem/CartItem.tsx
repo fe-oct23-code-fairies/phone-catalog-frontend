@@ -55,7 +55,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
       <div className="cart-item__body">
         <Counter product={product} />
 
-        <p className="h3">{product.priceRegular}</p>
+        <p className="h3">{`$${product.fullPrice}`}</p>
       </div>
     </div>
   );

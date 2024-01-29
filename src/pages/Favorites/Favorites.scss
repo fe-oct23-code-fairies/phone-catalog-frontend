@@ -1,0 +1,8 @@
+.favorites {
+  display: grid;
+  row-gap: 8px;
+
+  &__secondary-text {
+    color: $c-secondary-grey;
+  }
+}

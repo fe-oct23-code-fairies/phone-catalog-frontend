@@ -9,10 +9,13 @@ export const App: React.FC = () => {
   const {
     setCartProductsAmount,
     parsedCartProductsAmount,
+    setFavoriteProductsAmount,
+    parsedFavoriteProductsAmount,
   } = useAppContext();
 
   useEffect(() => {
     setCartProductsAmount(parsedCartProductsAmount);
+    setFavoriteProductsAmount(parsedFavoriteProductsAmount);
   });
 
   return (
