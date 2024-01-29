@@ -4,6 +4,7 @@ import { Checkout } from '../../components/Checkout';
 import { useCartContext } from '../../context/CartContext';
 import { Popup } from '../../components/Popup/Popup';
 import { useAppContext } from '../../context/AppContext';
+import { GoBack } from '../../components/Breadcrumbs/GoBack';
 
 export const Cart: React.FC = () => {
   const { isCheckoutSuccessful } = useCartContext();
@@ -21,6 +22,7 @@ export const Cart: React.FC = () => {
 
   return (
     <div className="cart">
+      <GoBack />
       {cartIsntEmpty
         ? (
           <div className="cart__products">

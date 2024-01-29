@@ -6,6 +6,7 @@ import { Pagination } from '../ui/Pagination';
 import { ErrorNotification } from '../components/ErrorNotification';
 import { Loader } from '../components/Loader/Loader';
 import { Product } from '../types/Product';
+import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 
 export const Tablets: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,6 +35,7 @@ export const Tablets: React.FC = () => {
 
   return (
     <>
+      <Breadcrumbs />
       <h1 className="h1">Tablets Page</h1>
 
       {isLoading
