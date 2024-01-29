@@ -18,7 +18,7 @@ export const CapacitySelect: React.FC<Props> = ({
       onClick={() => onClick(gigabytesAmount)}
       className={cn('button-rectangle', { selectedCapacity: isSelected })}
     >
-      {`${gigabytesAmount} GB`}
+      {`${gigabytesAmount}`}
     </button>
   );
 };

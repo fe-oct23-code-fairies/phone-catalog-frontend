@@ -1,30 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './ColorsAndGb.scss';
 import { ColorRadioButton } from '../../ui/ColorRadioButton';
 import { CapacitySelect } from '../../ui/CapacitySelect';
 import { Button } from '../../ui/Button';
 import { AddToFavourite } from '../../ui/AddToFavourite/AddToFavourite';
+import { Item } from '../../types/Item';
 
 // const colors = ['gold', 'grey', 'brown', 'white'];
-const capacities = ['128', '256', '512'];
+// const capacities = ['128', '256', '512'];
 
 type Props = {
   colors: string[],
-  avaiableGBs: string[]
-}
+  availableGBs: string[],
+  phone: Item,
+};
 
-export const ColorsAndGbVariants: React.FC<Props> = ({ colors, avaiableGBs }) => {
+export const ColorsAndGbVariants: React.FC<Props> = ({
+  colors, availableGBs, phone,
+}) => {
   const [isAdded, setIsAdded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [availableColors] = useState<string[]>(colors);
-  const [avaliableCapacity] = useState<string[]>(avaiableGBs);
+  const [availableCapacity] = useState<string[]>(availableGBs);
 
-  const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
-  const [selectedCapacity, setSelectedCapacity] = useState(capacities[0]);
-
-  useEffect(() => {
-    console.log(availableColors, avaliableCapacity)
-  }, [])
+  const [selectedColor, setSelectedColor] = useState<string | null>(
+    availableColors[0],
+  );
+  const [selectedCapacity, setSelectedCapacity] = useState(
+    availableCapacity[0],
+  );
 
   const handleColorClick = (color: string) => {
     setSelectedColor(color);
@@ -38,7 +42,7 @@ export const ColorsAndGbVariants: React.FC<Props> = ({ colors, avaiableGBs }) =>
     <div className="container-colors-and-Gb">
       <div className="colors">
         <div className="colors__title">Available colors</div>
-        <div className="colors__productId">{}</div>
+        <div className="colors__productId">{phone.namespaceId}</div>
       </div>
 
       <div className="colors__buttons">
@@ -58,7 +62,7 @@ export const ColorsAndGbVariants: React.FC<Props> = ({ colors, avaiableGBs }) =>
       <div className="capacities__title">Select capacity</div>
 
       <div className="capacities__buttons">
-        {avaliableCapacity.map(cap => {
+        {availableCapacity.map(cap => {
           return (
             <CapacitySelect
               key={cap}
@@ -73,8 +77,8 @@ export const ColorsAndGbVariants: React.FC<Props> = ({ colors, avaiableGBs }) =>
       <div className="colors__underline" />
 
       <div className="block">
-        <div className="block__newPrice">$799</div>
-        <div className="block__oldPrice">$1199</div>
+        <div className="block__newPrice">{`$${phone.priceDiscount}`}</div>
+        <div className="block__oldPrice">{phone.priceRegular}</div>
       </div>
 
       <div className="card__buttons">
@@ -95,25 +99,28 @@ export const ColorsAndGbVariants: React.FC<Props> = ({ colors, avaiableGBs }) =>
       <div className="block__additional">
         <div className="block__additional__screen">
           <p className="block__additional__screen-title">Screen</p>
-          <p className="block__additional__screen-value">6.5” OLED</p>
+          <p className="block__additional__screen-value">{phone.screen}</p>
         </div>
 
         <div className="block__additional__resolution">
           <p className="block__additional__resolution-title">Capacity</p>
-          <p className="block__additional__resolution-value">2688x1242</p>
+          <p className="block__additional__resolution-value">
+            {phone.capacity}
+          </p>
         </div>
 
         <div className="block__additional__processor">
           <p className="block__additional__processor-title">processor</p>
-          <p className="block__additional__processor-value">Apple A12 Bionic</p>
+          <p className="block__additional__processor-value">
+            {phone.processor}
+          </p>
         </div>
 
         <div className="block__additional__ram">
           <p className="block__additional__ram-title">RAM</p>
-          <p className="block__additional__ram-value">4 GB</p>
+          <p className="block__additional__ram-value">{phone.ram}</p>
         </div>
       </div>
-
     </div>
   );
 };

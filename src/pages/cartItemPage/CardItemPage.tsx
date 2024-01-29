@@ -1,9 +1,9 @@
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ColorsAndGbVariants } from '../../components/ColorsAndGB';
 import { PhotoBlock } from '../../components/photoBlock';
 import { Sections } from '../../components/sectionsForCartItemPage';
 import './CardItemPage.scss';
-import React, { useEffect, useState } from 'react';
 import { Item } from '../../types/Item';
 
 export const CardItemPage: React.FC = () => {
@@ -15,6 +15,7 @@ export const CardItemPage: React.FC = () => {
       try {
         const response = await fetch(`https://fe-oct23-code-fairies-backend.onrender.com/products-detailed/${itemId}`);
         const data = await response.json();
+
         setPhone(data);
       } catch (error) {
         console.error('Error fetching phone data:', error);
@@ -24,13 +25,8 @@ export const CardItemPage: React.FC = () => {
     fetchData();
   }, [itemId]);
 
-
-  console.log(phone?.capacityAvailable)
-
-
   return (
     <div className="container">
-
       <div className="photo-and-sections">
         {phone && (
           <>
@@ -38,7 +34,8 @@ export const CardItemPage: React.FC = () => {
               <PhotoBlock images={phone.images} />
               <ColorsAndGbVariants
                 colors={phone.coloursAvailable}
-                avaiableGBs={phone.capacityAvailable}
+                availableGBs={phone.capacityAvailable}
+                phone={phone}
               />
             </div>
             <Sections phone={phone} />

@@ -2,7 +2,6 @@ import React from 'react';
 import './sections.scss';
 import { Item } from '../../types/Item';
 
-
 type Props = {
   phone: Item
 };
@@ -14,36 +13,16 @@ export const Sections: React.FC<Props> = ({ phone }) => {
         <h3 className="section__title">About</h3>
         <div className="underline" />
 
-        <h4 className="section__title-name">{}</h4>
-        <p className="section__title-name-description">
-          Lorem ipingemom dolore quibusdam vitae corrupti
-          ipsam porro aniincidunt quibusdam ea.
-        </p>
-
-        <h4 className="section__title-name">Camera</h4>
-        <p className="section__title-name-description">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, labore
-          dicta.Recusandae praesentium mollitia minus ipsa vitae, adipisci nam
-          expedita nat
-          us aliquid perspiciatis, dignissimos, repudiandae commodi veniam
-          harum saepe excepturi! A mollitia ab fugiat deserunt illo earum dign
-          issimos ap
-          eriam, quis maiores odio voluptas
-          repellat inventore, corporis quidem placeat sit alias!
-        </p>
-
-        <h4 className="section__title-name">
-          Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. L
-          ove it.
-        </h4>
-        <p className="section__title-name-description">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, labo
-          re dicta. Recusandae praesentium mollitia minus ipsa vitae, adipi
-          nam expedita natus aliquid iciatis, dignissimos, repudiandae commod
-          veniam harum saepe excepturi! A mollitia ab fugiat deserunt illo earum
-          dignissimos aperiam, quis maiores odio voluptas repellat inventore, co
-          rporis quidem placeat sit alias!
-        </p>
+        {phone.description.map((description) => {
+          return (
+            <>
+              <h4 className="section__title-name">{description.title}</h4>
+              <p className="section__title-name-description">
+                {description.text}
+              </p>
+            </>
+          );
+        })}
       </section>
 
       <section className="Tech-specs">

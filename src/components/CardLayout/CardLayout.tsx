@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '../../ui/Button';
 import { AddToFavourite } from '../../ui/AddToFavourite/AddToFavourite';
 import { useAppContext } from '../../context/AppContext';
 import { Product } from '../../types/Product';
-import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product

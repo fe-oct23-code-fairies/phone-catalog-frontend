@@ -6,7 +6,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 type Props = {
   images: string[]
-}
+};
 
 export const PhotoBlock: React.FC<Props> = ({ images }) => {
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(images[0]);
