@@ -18,6 +18,7 @@ import { CatalogContextProvider }
 import { CartContextProvider } from './context/CartContext';
 import { ProductCard } from './pages/ProductCard/ProductCard';
 import { AppContextProvider } from './context/AppContext';
+import { CardItemPage } from './pages/cartItemPage';
 
 export const Routing = () => (
   <Router>
@@ -42,9 +43,10 @@ export const Routing = () => (
               </CatalogContextProvider>
             )}
           />
+          
           <Route
             path=":itemId"
-            element={<ProductCard productType="phones" />}
+            element={<CardItemPage />}
           />
         </Route>
         <Route path="tablets">
