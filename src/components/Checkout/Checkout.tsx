@@ -6,6 +6,7 @@ import { useAppContext } from '../../context/AppContext';
 export const Checkout: React.FC = () => {
   const { setIsCheckoutSuccessful } = useCartContext();
   const { totalPrice, setTotalPrice } = useCartContext();
+  const { setAddedToCartProducts } = useAppContext();
 
   const { parsedCartProducts } = useAppContext();
 
@@ -18,6 +19,13 @@ export const Checkout: React.FC = () => {
 
     setTotalPrice(totalPurchasePrice);
   }, [parsedCartProducts, setTotalPrice]);
+
+  const clearProductsFromCart = () => {
+    setAddedToCartProducts([]);
+    localStorage.removeItem('addedToCartProducts');
+    localStorage.removeItem('cartProductsAmount');
+    setIsCheckoutSuccessful(true);
+  };
 
   const itemsAmount = parsedCartProducts.length;
 
@@ -36,7 +44,7 @@ export const Checkout: React.FC = () => {
       <Button
         to="/checkout"
         btnClass="checkout__button"
-        onClick={() => setIsCheckoutSuccessful(true)}
+        onClick={() => clearProductsFromCart()}
       >
         Checkout
       </Button>
