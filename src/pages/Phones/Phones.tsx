@@ -46,7 +46,7 @@ export const Phones: React.FC = () => {
         <Loader />
       ) : (
         <>
-          {!error && (
+          {!error ? (
             <>
               <div className="section-top">
                 <h1 className="h1">Mobile phones</h1>
@@ -78,9 +78,9 @@ export const Phones: React.FC = () => {
 
               <Pagination />
             </>
+          ) : (
+            <ErrorNotification error={error} />
           )}
-
-          {error && <ErrorNotification error={error} />}
         </>
       )}
     </>

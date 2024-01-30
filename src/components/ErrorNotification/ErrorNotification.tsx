@@ -1,19 +1,13 @@
-import 'bulma/css/bulma.min.css';
+import './ErrorNotification.scss';
 
 interface Props {
-  error: string | null;
+  error: string;
 }
 
-// eslint-disable-next-line react/prop-types
-export const ErrorNotification: React.FC<Props> = ({ error }) => {
+export const ErrorNotification = ({ error }: Props) => {
   return (
-    <div className="notification is-danger is-light error">
-      {/* <button
-        type="button"
-        aria-label="CloseButton"
-        className="delete"
-      /> */}
-      {`${error}`}
+    <div className="error error--margin-top">
+      <p className="error__text">{`${error}`}</p>
     </div>
   );
 };

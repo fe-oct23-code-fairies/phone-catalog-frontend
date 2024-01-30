@@ -40,7 +40,7 @@ export const PhonesSection: FC<Props> = ({ title, prefixSlider }) => {
         <Loader />
       ) : (
         <>
-          {!error && (
+          {!error ? (
             <div className="phones-slider-wrapper">
               <div className="wrapper-card">
                 <div
@@ -66,9 +66,9 @@ export const PhonesSection: FC<Props> = ({ title, prefixSlider }) => {
                 </SliderSettingsPhone>
               </div>
             </div>
+          ) : (
+            <ErrorNotification error={error} />
           )}
-
-          {error && <ErrorNotification error={error} />}
         </>
       )}
     </div>
