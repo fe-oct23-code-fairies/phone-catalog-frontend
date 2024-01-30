@@ -6,6 +6,20 @@
 
   gap: 4px;
 
+  width:  100%;
+
+  @include onTablet{
+    width: auto;
+  }
+
+  &:first-child {
+    min-width: 148px;
+
+    @include onTablet {
+      min-width: 187px;
+    }
+  }
+
   &__description {
     font-size: 12px;
     line-height: 15px;
