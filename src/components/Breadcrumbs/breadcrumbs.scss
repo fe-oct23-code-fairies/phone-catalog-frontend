@@ -3,6 +3,8 @@
 
 .breadcrumbs-wrapper {
   grid-column: 1 / -1;
+  grid-row: 1;
+  align-self: flex-start;
   margin-bottom: 16px;
 }
 

@@ -26,11 +26,12 @@ export const Phones: React.FC = () => {
 
   useEffect(() => {
     getPhones()
-      .then(data => {
+      .then((data) => {
         setTotalItems(data.length);
         setPhones(data);
       })
-      .catch(() => handleError('Unable to load phones'))
+      .catch(() => handleError(`Unable to load mobile phones!
+      Try to reload this page.`))
       .finally(() => {
         setTimeout(() => setIsLoading(false), 500);
       });
@@ -41,46 +42,47 @@ export const Phones: React.FC = () => {
   return (
     <>
       <Breadcrumbs />
-      {isLoading
-        ? <Loader />
-        : (
-          <>
-            <div className="section-top">
-              <h1 className="h1">Mobile phones</h1>
-              <p className="text-body section-text">
-                {`${phones.length} models`}
-              </p>
-            </div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {!error ? (
+            <>
+              <div className="section-top">
+                <h1 className="h1">Mobile phones</h1>
+                <p className="text-body section-text">
+                  {`${phones.length} models`}
+                </p>
+              </div>
 
-            <div className="section-dropdowns">
-              <Dropdown
-                items={['Newest', 'Alphabetically', 'Cheapest']}
-                description="Sort by"
-                startValue={sortBy}
-                onSelection={selectSortBy}
-              />
-
-              <Dropdown
-                items={[16, 8, 4]}
-                description="Items on page"
-                startValue={itemsPerPage}
-                onSelection={selectItemsPerPage}
-              />
-            </div>
-            <div className="grid__container">
-              {visiblePhones.map((phone) => (
-                <CardLayout
-                  key={phone.id}
-                  product={phone}
+              <div className="section-dropdowns">
+                <Dropdown
+                  items={['Newest', 'Alphabetically', 'Cheapest']}
+                  description="Sort by"
+                  startValue={sortBy}
+                  onSelection={selectSortBy}
                 />
-              ))}
-            </div>
 
-            <Pagination />
+                <Dropdown
+                  items={[16, 8, 4]}
+                  description="Items on page"
+                  startValue={itemsPerPage}
+                  onSelection={selectItemsPerPage}
+                />
+              </div>
+              <div className="grid__container">
+                {visiblePhones.map((phone) => (
+                  <CardLayout key={phone.id} product={phone} />
+                ))}
+              </div>
 
-            {error && <ErrorNotification error={error} />}
-          </>
-        )}
+              <Pagination />
+            </>
+          ) : (
+            <ErrorNotification error={error} />
+          )}
+        </>
+      )}
     </>
   );
 };

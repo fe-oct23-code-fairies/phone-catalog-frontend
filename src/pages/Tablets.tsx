@@ -26,11 +26,12 @@ export const Tablets: React.FC = () => {
 
   useEffect(() => {
     getTablets()
-      .then(data => {
+      .then((data) => {
         setTotalItems(data.length);
         setTablets(data);
       })
-      .catch(() => handleError('Unable to load phones'))
+      .catch(() => handleError(`Unable to load tablets!
+      Try to reload this page.`))
       .finally(() => {
         setTimeout(() => setIsLoading(false), 500);
       });
@@ -42,47 +43,48 @@ export const Tablets: React.FC = () => {
     <>
       <Breadcrumbs />
 
-      {isLoading
-        ? <Loader />
-        : (
-          <>
-            <div className="section-top">
-              <h1 className="h1">Tablets</h1>
-              <p className="text-body section-text">
-                {`${tablets.length} models`}
-              </p>
-            </div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {!error && (
+            <>
+              <div className="section-top">
+                <h1 className="h1">Tablets</h1>
+                <p className="text-body section-text">
+                  {`${tablets.length} models`}
+                </p>
+              </div>
 
-            <div className="section-dropdowns">
-              <Dropdown
-                items={['Newest', 'Alphabetically', 'Cheapest']}
-                description="Sort by"
-                startValue={sortBy}
-                onSelection={selectSortBy}
-              />
-
-              <Dropdown
-                items={[16, 8, 4]}
-                description="Items on page"
-                startValue={itemsPerPage}
-                onSelection={selectItemsPerPage}
-              />
-            </div>
-
-            <div className="grid__container">
-              {visibleTablets.map((tablet) => (
-                <CardLayout
-                  key={tablet.id}
-                  product={tablet}
+              <div className="section-dropdowns">
+                <Dropdown
+                  items={['Newest', 'Alphabetically', 'Cheapest']}
+                  description="Sort by"
+                  startValue={sortBy}
+                  onSelection={selectSortBy}
                 />
-              ))}
-            </div>
 
-            <Pagination />
+                <Dropdown
+                  items={[16, 8, 4]}
+                  description="Items on page"
+                  startValue={itemsPerPage}
+                  onSelection={selectItemsPerPage}
+                />
+              </div>
 
-            {error && <ErrorNotification error={error} />}
-          </>
-        )}
+              <div className="grid__container">
+                {visibleTablets.map((tablet) => (
+                  <CardLayout key={tablet.id} product={tablet} />
+                ))}
+              </div>
+
+              <Pagination />
+            </>
+          )}
+
+          {error && <ErrorNotification error={error} />}
+        </>
+      )}
     </>
   );
 };

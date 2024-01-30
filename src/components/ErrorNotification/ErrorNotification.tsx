@@ -1,8 +1,13 @@
+import './ErrorNotification.scss';
+
 interface Props {
-  error: string | null
+  error: string;
 }
 
-// eslint-disable-next-line react/prop-types
-export const ErrorNotification: React.FC<Props> = ({ error }) => {
-  return <div>{`${error}`}</div>;
+export const ErrorNotification = ({ error }: Props) => {
+  return (
+    <div className="error error--margin-top">
+      <p className="error__text">{`${error}`}</p>
+    </div>
+  );
 };

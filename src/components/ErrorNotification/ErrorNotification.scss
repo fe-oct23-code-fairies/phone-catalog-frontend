@@ -1,0 +1,17 @@
+.error {
+  padding-block: 20px;
+  margin-right: 16px;
+
+  background-color: rgb(243, 200, 200);
+  border-radius: 5px;
+
+  &__text {
+    font-weight: bold;
+    text-align: center;
+    color: red;
+  }
+
+  &--margin-top {
+    margin-top: 20px;
+  }
+}
