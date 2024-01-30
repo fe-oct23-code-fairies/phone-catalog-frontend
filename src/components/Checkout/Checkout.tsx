@@ -44,7 +44,7 @@ export const Checkout: React.FC = () => {
       <Button
         to="/checkout"
         btnClass="checkout__button"
-        onClick={() => clearProductsFromCart()}
+        onClick={clearProductsFromCart}
       >
         Checkout
       </Button>

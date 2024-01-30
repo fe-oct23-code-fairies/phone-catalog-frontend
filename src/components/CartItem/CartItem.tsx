@@ -12,14 +12,13 @@ type Props = {
 
 export const CartItem: React.FC<Props> = ({ product }) => {
   const {
-    addedToCartProducts,
+    parsedCartProducts,
     cartProductsAmount,
     setCartProductsAmount,
-    setAddedToCartProducts,
   } = useAppContext();
 
   const removeProduct = () => {
-    const newProducts = addedToCartProducts.filter(
+    const newProducts = parsedCartProducts.filter(
       addedProduct => addedProduct.id !== product.id,
     );
 
@@ -35,7 +34,6 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     );
 
     setCartProductsAmount(cartProductsAmount - 1);
-    setAddedToCartProducts(newProducts);
   };
 
   return (
