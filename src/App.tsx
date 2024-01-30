@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import './App.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -13,10 +13,21 @@ export const App: React.FC = () => {
     parsedFavoriteProductsAmount,
   } = useAppContext();
 
+  const { pathname } = useLocation();
+  const page = document.querySelector('#app-page');
+
   useEffect(() => {
     setCartProductsAmount(parsedCartProductsAmount);
     setFavoriteProductsAmount(parsedFavoriteProductsAmount);
   });
+
+  useEffect(() => {
+    if (page) {
+      setTimeout(() => {
+        page.scrollTop = 0;
+      }, 0);
+    }
+  }, [page, pathname]);
 
   return (
     <div className="App">

@@ -1,9 +1,33 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getPhones } from '../../../api/phones';
+import { getTablets } from '../../../api/tablets';
+import { getAccessories } from '../../../api/accessories';
 
 export const SectionCategories: React.FC = () => {
-  const PHONES_COUNT = 12;
-  const TABLETS_COUNT = 9;
-  const ACCESSORIES_COUNT = 35;
+  const [phonesCount, setPhonesCount] = useState(0);
+  const [tabletsCount, setTabletsCount] = useState(0);
+  const [accessoriesCount, setAccessoriesCount] = useState(0);
+
+  useEffect(() => {
+    getPhones()
+      .then(data => {
+        setPhonesCount(data.length);
+      })
+      .catch(() => {});
+
+    getTablets()
+      .then(data => {
+        setTabletsCount(data.length);
+      })
+      .catch(() => {});
+
+    getAccessories()
+      .then(data => {
+        setAccessoriesCount(data.length);
+      })
+      .catch(() => {});
+  });
 
   return (
     <div className="categories-wrapper">
@@ -20,7 +44,7 @@ export const SectionCategories: React.FC = () => {
                 Mobile phones
               </Link>
 
-              <p className="categories__counter">{`${PHONES_COUNT} models`}</p>
+              <p className="categories__counter">{`${phonesCount} models`}</p>
             </div>
           </div>
 
@@ -34,7 +58,7 @@ export const SectionCategories: React.FC = () => {
                 Tablets
               </Link>
 
-              <p className="categories__counter">{`${TABLETS_COUNT} models`}</p>
+              <p className="categories__counter">{`${tabletsCount} models`}</p>
             </div>
           </div>
 
@@ -51,7 +75,7 @@ export const SectionCategories: React.FC = () => {
                 Accessories
               </Link>
 
-              <p className="categories__counter">{`${ACCESSORIES_COUNT} models`}</p>
+              <p className="categories__counter">{`${accessoriesCount} models`}</p>
             </div>
           </div>
         </div>
