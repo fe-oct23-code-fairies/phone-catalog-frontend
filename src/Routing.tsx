@@ -18,7 +18,7 @@ import { CatalogContextProvider }
 import { CartContextProvider } from './context/CartContext';
 import { ProductCard } from './pages/ProductCard/ProductCard';
 import { AppContextProvider } from './context/AppContext';
-import { CardItemPage } from './pages/cartItemPage';
+// import { CardItemPage } from './pages/cartItemPage';
 
 export const Routing = () => (
   <Router>
@@ -43,12 +43,13 @@ export const Routing = () => (
               </CatalogContextProvider>
             )}
           />
-
-          <Route
-            path=":itemId"
-            element={<CardItemPage />}
-          />
         </Route>
+
+        <Route
+          path="products-detailed/:itemId"
+          element={<ProductCard />}
+        />
+
         <Route path="tablets">
           <Route
             index
@@ -57,10 +58,6 @@ export const Routing = () => (
                 <Tablets />
               </CatalogContextProvider>
             )}
-          />
-          <Route
-            path=":itemId"
-            element={<ProductCard productType="tablets" />}
           />
         </Route>
 
@@ -72,10 +69,6 @@ export const Routing = () => (
                 <Accessories />
               </CatalogContextProvider>
             )}
-          />
-          <Route
-            path=":itemId"
-            element={<ProductCard productType="accessories" />}
           />
         </Route>
 

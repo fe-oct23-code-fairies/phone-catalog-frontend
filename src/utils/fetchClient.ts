@@ -13,14 +13,14 @@ function get<T>(url: string): Promise<T> {
 
 export const client = {
   getProducts: <T>() => get<T>('/products'),
-  getProductById: <T>(id: string) => get<T>(`/products/${id}`),
+  getProductById: <T>(id: string) => get<T>(`/products-detailed/${id}`),
 
   getAccessories: <T>() => get<T>('/accessories'),
-  getAccessoryById: <T>(id: string) => get<T>(`/accessories/${id}`),
+  getAccessoryById: <T>(id: string) => get<T>(`/products-detailed/${id}`),
 
   getPhones: <T>() => get<T>('/phones'),
-  getPhoneById: <T>(id: string) => get<T>(`/phones/${id}`),
+  getPhoneById: <T>(id: string) => get<T>(`/products-detailed/${id}`),
 
   getTablets: <T>() => get<T>('/tablets'),
-  getTabletById: <T>(id: string) => get<T>(`/tablets/${id}`),
+  getTabletById: <T>(id: string) => get<T>(`/products-detailed/${id}`),
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { CartItem } from '../../components/CartItem';
 import { Checkout } from '../../components/Checkout';
 import { useCartContext } from '../../context/CartContext';
@@ -10,7 +10,12 @@ export const Cart: React.FC = () => {
   const { isCheckoutSuccessful } = useCartContext();
   const {
     parsedCartProducts,
+    setAddedToCartProducts,
   } = useAppContext();
+
+  useEffect(() => {
+    setAddedToCartProducts(parsedCartProducts);
+  }, []);
 
   const cartIsntEmpty = parsedCartProducts && parsedCartProducts.length > 0;
 

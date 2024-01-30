@@ -1,60 +1,24 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import { getPhoneById } from '../../api/phones';
-import { getTabletById } from '../../api/tablets';
-import { getAccessorieById } from '../../api/accessories';
+// import { getfoundProductById } from '../../api/foundProducts';
+// import { getTabletById } from '../../api/tablets';
 import { Item } from '../../types/Item';
+import { getProductById } from '../../api/products';
+import { ColorsAndGbVariants } from '../../components/ColorsAndGB';
+import { Sections } from '../../components/sectionsForCartItemPage';
+import { PhotoBlock } from '../../components/photoBlock';
 
-const defaultItem = {
-  id: '',
-  namespaceId: '',
-  name: '',
-  capacityAvailable: [],
-  capacity: '',
-  priceRegular: 0,
-  priceDiscount: 0,
-  coloursAvailable: [],
-  colour: '',
-  images: [],
-  description: [],
-  screen: '',
-  resolution: '',
-  processor: '',
-  ram: '',
-  camera: '',
-  zoom: '',
-  cell: [],
-};
-
-type Props = {
-  productType: string
-};
-
-export const ProductCard: React.FC<Props> = ({ productType }) => {
+export const ProductCard: React.FC = () => {
   const { itemId } = useParams();
-  const [foundProduct, setFoundProduct] = useState<Item>(defaultItem);
+  const [foundProduct, setFoundProduct] = useState<Item>();
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         if (itemId) {
-          switch (productType) {
-            case 'phones':
-              getPhoneById(itemId)
-                .then(phone => setFoundProduct(phone));
-              break;
-
-            case 'tablets':
-              getTabletById(itemId)
-                .then(tablet => setFoundProduct(tablet));
-              break;
-
-            default:
-              getAccessorieById(itemId)
-                .then(accessories => setFoundProduct(accessories));
-              break;
-          }
+          getProductById(itemId)
+            .then(setFoundProduct);
         }
       } catch (error) {
         navigate('/');
@@ -65,16 +29,20 @@ export const ProductCard: React.FC<Props> = ({ productType }) => {
   });
 
   return (
-    <div className="productCard">
-      <p className="h2 product-title">
-        {`Product id: ${foundProduct?.id}`}
-      </p>
-
-      <br />
-
-      <p className="h2 product-title">
-        {`Product capasity: ${foundProduct?.capacity}`}
-      </p>
+    <div className="photo-and-sections">
+      {foundProduct && (
+        <>
+          <div className="photos-and-additional-info">
+            <PhotoBlock images={foundProduct.images} />
+            <ColorsAndGbVariants
+              colors={foundProduct.coloursAvailable}
+              availableGBs={foundProduct.capacityAvailable}
+              product={foundProduct}
+            />
+          </div>
+          <Sections product={foundProduct} />
+        </>
+      )}
     </div>
   );
 };
