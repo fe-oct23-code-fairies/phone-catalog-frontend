@@ -1,6 +1,7 @@
 import React, {
   createContext, useCallback, useContext, useMemo, useState,
 } from 'react';
+import { SetURLSearchParams, useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { parseDataFromStorage } from '../../helpers/parseDataFromStorage';
 
@@ -23,6 +24,8 @@ interface CatalogContextType {
   selectSortBy: (arg: number | string) => void | undefined,
   sortBy: string,
   setSortBy: (arg: string) => void,
+  params: URLSearchParams,
+  setParams: SetURLSearchParams,
 }
 
 interface CatalogContextProviderProps {
@@ -48,6 +51,8 @@ export const CatalogContext = createContext<CatalogContextType>({
   selectSortBy: () => { },
   sortBy: 'Newest',
   setSortBy: () => { },
+  params: new URLSearchParams(),
+  setParams: () => { },
 });
 
 export const CatalogContextProvider = ({
@@ -59,6 +64,7 @@ export const CatalogContextProvider = ({
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState('Newest');
+  const [params, setParams] = useSearchParams();
 
   const firstItem = itemsPerPage * currentPage - itemsPerPage + 1;
   const lastItem
@@ -115,15 +121,46 @@ export const CatalogContextProvider = ({
       localStorage.setItem(
         'itemsPerPage', JSON.stringify(selectedItem),
       );
-    }, [],
+
+      const urlParams = new URLSearchParams(params);
+
+      urlParams.set('perPage', selectedItem.toString());
+      setParams(urlParams);
+    }, [params, setParams],
   );
 
-  const selectSortBy = (selectedItem: number | string) => {
-    setSortBy(selectedItem.toString());
-    localStorage.setItem(
-      'sortBy', JSON.stringify(selectedItem),
-    );
-  };
+  const selectSortBy = useCallback(
+    (selectedItem: number | string) => {
+      setSortBy(selectedItem.toString());
+      localStorage.setItem(
+        'sortBy', JSON.stringify(selectedItem),
+      );
+
+      const setSortParam = (param: string) => {
+        const urlParams = new URLSearchParams(params);
+
+        urlParams.set('sort', param);
+        setParams(urlParams);
+      };
+
+      switch (selectedItem) {
+        case 'Cheapest':
+          setSortParam('price');
+          break;
+
+        case 'Alphabetically':
+          setSortParam('title');
+          break;
+
+        case 'Newest':
+          setSortParam('age');
+          break;
+
+        default:
+          setSortParam('');
+      }
+    }, [params, setParams],
+  );
 
   const value: CatalogContextType = useMemo(
     () => ({
@@ -145,6 +182,8 @@ export const CatalogContextProvider = ({
       setSortBy,
       selectSortBy,
       parsedSortBy,
+      params,
+      setParams,
     }),
     [
       currentPage,
@@ -162,6 +201,9 @@ export const CatalogContextProvider = ({
       sortBy,
       parsedSortBy,
       selectItemsPerPage,
+      params,
+      setParams,
+      selectSortBy,
     ],
   );
 

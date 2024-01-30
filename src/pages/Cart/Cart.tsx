@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { CartItem } from '../../components/CartItem';
 import { Checkout } from '../../components/Checkout';
 import { useCartContext } from '../../context/CartContext';
@@ -9,16 +9,10 @@ import { GoBack } from '../../components/Breadcrumbs/GoBack';
 export const Cart: React.FC = () => {
   const { isCheckoutSuccessful } = useCartContext();
   const {
-    addedToCartProducts,
-    setAddedToCartProducts,
     parsedCartProducts,
   } = useAppContext();
 
-  useEffect(() => {
-    setAddedToCartProducts(parsedCartProducts);
-  }, []);
-
-  const cartIsntEmpty = addedToCartProducts && addedToCartProducts.length > 0;
+  const cartIsntEmpty = parsedCartProducts && parsedCartProducts.length > 0;
 
   return (
     <div className="cart">
@@ -26,7 +20,7 @@ export const Cart: React.FC = () => {
       {cartIsntEmpty
         ? (
           <div className="cart__products">
-            {addedToCartProducts.map(
+            {parsedCartProducts.map(
               (addedProduct) => (
                 <CartItem
                   key={addedProduct.id}

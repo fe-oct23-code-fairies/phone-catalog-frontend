@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { useCatalogContext } from '../../context/CatalogContext/CatalogContext';
 import { getNumbers } from '../../helpers/getNumbers';
 import { CircleButton } from '../CircleButtonWithIcon';
@@ -10,13 +9,20 @@ export const Pagination = () => {
     totalItems,
     currentPage,
     itemsPerPage,
+    setItemsPerPage,
     setCurrentPage,
-    sortBy,
+    params,
+    setParams,
+    parsedItemsPerPage,
+    selectItemsPerPage,
+    selectSortBy,
+    parsedSortBy,
   }
     = useCatalogContext();
 
-  const [params, setParams] = useSearchParams();
   const paramsPage = params.get('page') || '1';
+  const paramsPerPage = params.get('perPage') || parsedItemsPerPage;
+  const paramsSortBy = params.get('sort') || parsedSortBy;
 
   const pagesCount = getNumbers(1, Math.ceil(totalItems / itemsPerPage));
   const isFirstPage = currentPage === pagesCount[0];
@@ -24,29 +30,34 @@ export const Pagination = () => {
 
   useEffect(() => {
     setCurrentPage(+paramsPage);
+    setItemsPerPage(+paramsPerPage);
+    selectItemsPerPage(+paramsPerPage);
 
-    params.set('page', paramsPage.toString());
-    params.set('perPage', itemsPerPage.toString());
+    const sortByMappings: { [key: string]: string } = {
+      price: 'Cheapest',
+      title: 'Alphabetically',
+      age: 'Newest',
+      Cheapest: 'Cheapest',
+      Alphabetically: 'Alphabetically',
+      Newest: 'Newest',
+    };
 
-    switch (sortBy) {
-      case 'Alphabetically':
-        params.set('sort', 'title');
-        break;
+    selectSortBy(sortByMappings[paramsSortBy] || 'Newest');
 
-      case 'Cheapest':
-        params.set('sort', 'price');
-        break;
-
-      case 'Newest':
-        params.set('sort', 'age');
-        break;
-
-      default:
-        params.set('sort', 'all');
-    }
-
-    setParams(params);
-  }, [itemsPerPage, params, paramsPage, setParams, setCurrentPage, sortBy]);
+    params.set('page', paramsPage);
+    params.set('perPage', paramsPerPage.toString());
+    params.set('sort', paramsSortBy);
+  }, [
+    params,
+    paramsPage,
+    paramsPerPage,
+    paramsSortBy,
+    selectItemsPerPage,
+    selectSortBy,
+    setCurrentPage,
+    setItemsPerPage,
+    itemsPerPage,
+  ]);
 
   const onPageChange = (page: number) => {
     setCurrentPage(page);
