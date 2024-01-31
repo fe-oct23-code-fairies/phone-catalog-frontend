@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getTablets } from '../api/tablets';
+import { getTablets, getTabletsByQuery } from '../api/tablets';
 import { useCatalogContext } from '../context/CatalogContext';
 import { CardLayout } from '../components/CardLayout';
 import { Pagination } from '../ui/Pagination';
@@ -17,27 +17,34 @@ export const Tablets: React.FC = () => {
     setTotalItems,
     handleError,
     error,
-    prepareProductForPage,
     itemsPerPage,
     selectItemsPerPage,
     sortBy,
     selectSortBy,
+    params,
+    parsedItemsPerPage,
+    parsedSortBy,
   } = useCatalogContext();
 
+  const paramsPage = params.get('page') || '1';
+  const paramsPerPage = params.get('perPage') || parsedItemsPerPage.toString();
+  const paramsSortBy = params.get('sort') || parsedSortBy;
+
   useEffect(() => {
-    getTablets()
-      .then((data) => {
-        setTotalItems(data.length);
-        setTablets(data);
+    Promise.all([
+      getTabletsByQuery(paramsPage, paramsPerPage, paramsSortBy),
+      getTablets(),
+    ])
+      .then(([queryTablets, allTablets]) => {
+        setTotalItems(allTablets.length);
+        setTablets(queryTablets);
       })
-      .catch(() => handleError(`Unable to load tablets!
+      .catch(() => handleError(`Unable to load mobile phones!
       Try to reload this page.`))
       .finally(() => {
         setTimeout(() => setIsLoading(false), 500);
       });
-  });
-
-  const visibleTablets = prepareProductForPage(tablets, sortBy);
+  }, [paramsPage, paramsPerPage, paramsSortBy]);
 
   return (
     <>
@@ -73,7 +80,7 @@ export const Tablets: React.FC = () => {
               </div>
 
               <div className="grid__container">
-                {visibleTablets.map((tablet) => (
+                {tablets.map((tablet) => (
                   <CardLayout key={tablet.id} product={tablet} />
                 ))}
               </div>

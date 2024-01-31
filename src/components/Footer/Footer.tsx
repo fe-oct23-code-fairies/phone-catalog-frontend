@@ -3,7 +3,7 @@ import { Logo } from '../../ui/Logo';
 import { Icon } from '../../ui/Icons';
 import { CircleButtonWithIcon } from '../../ui/CircleButtonWithIcon';
 
-function scrollTop() {
+export function scrollTop() {
   const page = document.querySelector('#app-page');
 
   if (page) {

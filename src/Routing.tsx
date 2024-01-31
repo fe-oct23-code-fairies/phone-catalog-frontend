@@ -16,7 +16,6 @@ import { Favorites } from './pages/Favorites/Favorites';
 import { CatalogContextProvider }
   from './context/CatalogContext/CatalogContext';
 import { CartContextProvider } from './context/CartContext';
-import { ProductCard } from './pages/ProductCard/ProductCard';
 import { AppContextProvider } from './context/AppContext';
 import { CardItemPage } from './pages/cartItemPage';
 
@@ -60,7 +59,7 @@ export const Routing = () => (
           />
           <Route
             path=":itemId"
-            element={<ProductCard productType="tablets" />}
+            element={<CardItemPage />}
           />
         </Route>
 
@@ -75,7 +74,7 @@ export const Routing = () => (
           />
           <Route
             path=":itemId"
-            element={<ProductCard productType="accessories" />}
+            element={<CardItemPage />}
           />
         </Route>
 

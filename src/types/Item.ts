@@ -18,5 +18,5 @@ export interface Item {
   ram: string,
   camera?: string,
   zoom?: string,
-  cell: string[]
+  cell: string
 }

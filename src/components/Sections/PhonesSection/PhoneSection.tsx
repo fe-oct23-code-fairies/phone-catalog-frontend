@@ -7,7 +7,6 @@ import {
   SliderSettingsPhone,
 } from '../../SliderSettingsPhones/SliderSettingsPhones';
 import 'swiper/css';
-import { getPhones } from '../../../api/phones';
 import './PhoneSection.scss';
 import { Product } from '../../../types/Product';
 import { Loader } from '../../Loader/Loader';
@@ -16,22 +15,29 @@ import { ErrorNotification } from '../../ErrorNotification';
 type Props = {
   title: string;
   prefixSlider: string;
+  getterCallback: (id?: string) => Promise<Product[]>;
+  id?: string;
 };
 
-export const PhonesSection: FC<Props> = ({ title, prefixSlider }) => {
+export const PhonesSection: FC<Props> = ({
+  title,
+  prefixSlider,
+  getterCallback,
+  id,
+}) => {
   const createPrefixSlider = prefixSlider;
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    getPhones()
+    getterCallback(id)
       .then(setProducts)
       .catch(() => setError('Unable to load products.'))
       .finally(() => {
         setTimeout(() => setIsLoading(false), 500);
       });
-  }, []);
+  }, [getterCallback, id]);
 
   return (
     <div className="phones-wrapper">

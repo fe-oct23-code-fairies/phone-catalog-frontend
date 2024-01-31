@@ -1,20 +1,29 @@
 import cn from 'classnames';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './PhotoBlock.scss';
+import { Item } from '../../types/Item';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 type Props = {
-  images: string[]
+  product: Item
 };
 
-export const PhotoBlock: React.FC<Props> = ({ images }) => {
-  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(images[0]);
-  const [photos] = useState(images);
+export const PhotoBlock: React.FC<Props> = ({ product }) => {
+  const [
+    selectedPhoto,
+    setSelectedPhoto,
+  ] = useState<string | null>(product.images[0]);
+  const [photos, setPhotos] = useState(product.images);
 
   const handlePhotoClick = (photo: string) => {
     setSelectedPhoto(photo);
   };
+
+  useEffect(() => {
+    setSelectedPhoto(product.images[0]);
+    setPhotos(product.images);
+  }, [product]);
 
   return (
     <div className="container">
