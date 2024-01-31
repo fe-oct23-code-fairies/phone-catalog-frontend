@@ -45,7 +45,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           <Icon iconName="close" />
         </ButtonWithIcon>
 
-        <CartItemPhoto photo="item" />
+        <CartItemPhoto photo={product.image} />
 
         <p className="cart-item__title text-body">
           {product.name}
