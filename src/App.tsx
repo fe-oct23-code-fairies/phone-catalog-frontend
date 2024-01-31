@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import './App.scss';
@@ -29,8 +30,13 @@ export const App: React.FC = () => {
     }
   }, [page, pathname]);
 
+  const location = useLocation();
+
   return (
-    <div className="App">
+    <div className={classNames('App', {
+      'App--blue-bg': location.pathname.includes('authorization'),
+    })}
+    >
       <Header />
 
       <div className="App__page" id="app-page">

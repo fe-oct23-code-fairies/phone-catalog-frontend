@@ -1,0 +1,98 @@
+.auth {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  padding: 44px 16px;
+
+  background-color: $c-white;
+  border-radius: 16px;
+
+  &__wrapper {
+    @include grid;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  @include onTablet {
+    grid-column: 3/11;
+    padding: 44px 44px;
+  }
+
+  @include onDesktop1200 {
+    gap: 44px;
+    grid-column: 8/18;
+  }
+
+  &__subSection {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__link {
+    @include text-body;
+    color: $c-secondary-grey;
+
+    &--active {
+      color: $c-primary-black;
+    }
+  }
+
+  &__welcome {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  &__input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 9px 12px;
+    border: 1px solid $c-elements-light-grey;
+    border-radius: 8px;
+
+    @include text-body;
+
+    color: $c-secondary-grey;
+
+    &:focus {
+      color: $c-primary-black;
+    }
+
+    @include hover(border-color, $c-icons-mid-grey);
+
+    &--error {
+      color: $c-red;
+      border-color: $c-red;
+    }
+  }
+
+  &__input-div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    &--error {
+      color: $c-red;
+      @include text-small;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+  }
+}

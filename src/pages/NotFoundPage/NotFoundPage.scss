@@ -1,6 +1,5 @@
 .notFound {
   grid-column: span 4;
-  transform: translateY(20%);
 
   display: flex;
   flex-direction: column;
@@ -15,6 +14,12 @@
   @include onDesktop1200 {
     grid-column: 9/17;
     gap: 36px;
+  }
+
+  &__wrapper {
+    @include grid;
+    height: 100%;
+    align-items: center;
   }
 
   &__text-container {

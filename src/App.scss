@@ -26,10 +26,15 @@
 @import "./components/CardLayout/CardLayout.scss";
 @import "./components/Sections/CategoriesSection/SectionCategories.scss";
 @import "./components/popUp/Popup.scss";
+@import "./components/AuthComponent/AuthComponent.scss";
 
 .App {
   height: 100vh;
   background-color: $c-background;
+
+  &--blue-bg {
+    background-color: #F1F0FA;
+  }
 
   &__page {
     margin-top: $header-height;
