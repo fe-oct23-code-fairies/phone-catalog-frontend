@@ -1,0 +1,60 @@
+.theme {
+  &--light {
+    --c-accent: #4219d0;
+    --c-accent-hover: #4219d0;
+    --c-secondary-accent: #f4ba47;
+    --c-products-counter-bg: #4219d0;
+    --c-products-counter: #ffffff;
+    --c-red: #eb5757;
+    --c-green: #27ae60;
+    --c-primary: #0f0f11;
+    --c-secondary: #89939a;
+    --c-icons: #b4bdc3;
+    --c-elements: #e2e6e9;
+    --c-background-page: #fafbfc;
+    --c-background: #ffffff;
+
+    --c-surface-1: #ffffff;
+    --c-surface-2: transparent;
+
+    --c-hover: #00000010;
+    --c-button-hover: #17203166;
+    --c-button-hover-bg: transparent;
+    --c-button-hover-border: var(--c-primary);
+    --c-button-border: var(--c-icons);
+    --c-button-default-bg: transparent;
+
+
+    --c-dropdown-focus: var(--c-primary);
+    --c-dropdown-item-hover: var(--c-background-page);
+  }
+
+  &--dark {
+    --c-accent: #905BFF;
+    --c-accent-hover: #A378FF;
+    --c-secondary-accent: #eb5757;
+    --c-products-counter-bg: #eb5757;
+    --c-products-counter: #F1F2F9;
+    --c-red: #eb5757;
+    --c-green: #27ae60;
+    --c-primary: #F1F2F9;
+    --c-secondary: #75767F;
+    --c-icons: #4A4D58;
+    --c-elements: #3B3E4A;
+    --c-background-page: #0F1121;
+    --c-background: #0F1121;
+
+    --c-surface-1: #161827;
+    --c-surface-2: #323542;
+
+    --c-hover: #FFFFFF20;
+    --c-button-hover: #FFFFFF20;
+    --c-button-hover-bg: var(--c-icons);
+    --c-button-hover-border: var(--c-icons);
+    --c-button-border: var(--c-surface-2);
+    --c-button-default-bg: var(--c-surface-2);
+
+    --c-dropdown-focus: var(--c-accent);
+    --c-dropdown-item-hover: var(--c-surface-2);
+  }
+}

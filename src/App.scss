@@ -1,4 +1,5 @@
 @import "./styles/utils/vars.scss";
+@import "./styles/utils/themes.scss";
 @import "./styles/Fonts/fonts.scss";
 @import "./styles/utils/reset.scss";
 @import "./styles/utils/mixins.scss";
@@ -29,7 +30,7 @@
 
 .App {
   height: 100vh;
-  background-color: $c-background;
+  background-color: var(--c-background-page);
 
   &__page {
     margin-top: $header-height;

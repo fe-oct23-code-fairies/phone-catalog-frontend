@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import cn from 'classnames';
 import './App.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -11,14 +12,19 @@ export const App: React.FC = () => {
     parsedCartProductsAmount,
     setFavoriteProductsAmount,
     parsedFavoriteProductsAmount,
+    pageTheme,
+    parsedPageTheme,
+    setPageTheme,
   } = useAppContext();
 
   const { pathname } = useLocation();
   const page = document.querySelector('#app-page');
+  const isThemeDark = pageTheme === 'Dark';
 
   useEffect(() => {
     setCartProductsAmount(parsedCartProductsAmount);
     setFavoriteProductsAmount(parsedFavoriteProductsAmount);
+    setPageTheme(parsedPageTheme);
   });
 
   useEffect(() => {
@@ -30,7 +36,12 @@ export const App: React.FC = () => {
   }, [page, pathname]);
 
   return (
-    <div className="App">
+    <div
+      className={cn('App', {
+        'theme--light': !isThemeDark,
+        'theme--dark': isThemeDark,
+      })}
+    >
       <Header />
 
       <div className="App__page" id="app-page">

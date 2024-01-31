@@ -25,9 +25,9 @@
   width: 288px;
   height: 288px;
 
-  background: white;
+  background: var(--c-surface-1);
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px var(--c-button-hover);
 
   @include onTablet {
     width: 368px;
