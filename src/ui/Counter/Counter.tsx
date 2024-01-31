@@ -13,7 +13,7 @@ export const Counter: React.FC<Props> = ({ product }) => {
   const MAX_VALUE = 12;
 
   const { count, id } = product;
-  const { addedToCartProducts } = useAppContext();
+  const { parsedCartProducts } = useAppContext();
   const { setTotalPrice, totalPrice } = useCartContext();
 
   const [counter, setCounter] = useState(1);
@@ -22,7 +22,7 @@ export const Counter: React.FC<Props> = ({ product }) => {
 
   useEffect(() => setCounter(count), [count]);
 
-  const productTochangeIndex = addedToCartProducts.findIndex(
+  const productTochangeIndex = parsedCartProducts.findIndex(
     productToFind => productToFind.id === id,
   );
 
@@ -33,12 +33,12 @@ export const Counter: React.FC<Props> = ({ product }) => {
 
     setTotalPrice(updatedPrice);
 
-    addedToCartProducts[productTochangeIndex] = {
-      ...addedToCartProducts[productTochangeIndex],
+    parsedCartProducts[productTochangeIndex] = {
+      ...parsedCartProducts[productTochangeIndex],
       count: counter + 1,
     };
 
-    const productsToSet = JSON.stringify(addedToCartProducts);
+    const productsToSet = JSON.stringify(parsedCartProducts);
 
     localStorage.setItem('addedToCartProducts', productsToSet);
   };
@@ -50,12 +50,12 @@ export const Counter: React.FC<Props> = ({ product }) => {
 
     setTotalPrice(updatedPrice);
 
-    addedToCartProducts[productTochangeIndex] = {
-      ...addedToCartProducts[productTochangeIndex],
+    parsedCartProducts[productTochangeIndex] = {
+      ...parsedCartProducts[productTochangeIndex],
       count: counter - 1,
     };
 
-    const productsToSet = JSON.stringify(addedToCartProducts);
+    const productsToSet = JSON.stringify(parsedCartProducts);
 
     localStorage.setItem('addedToCartProducts', productsToSet);
   };

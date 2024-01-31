@@ -3,6 +3,7 @@ import { useCatalogContext } from '../../context/CatalogContext/CatalogContext';
 import { getNumbers } from '../../helpers/getNumbers';
 import { CircleButton } from '../CircleButtonWithIcon';
 import { Icon } from '../Icons';
+import { scrollTop } from '../../components/Footer';
 
 export const Pagination = () => {
   const {
@@ -35,8 +36,8 @@ export const Pagination = () => {
 
     const sortByMappings: { [key: string]: string } = {
       price: 'Cheapest',
-      title: 'Alphabetically',
-      age: 'Newest',
+      name: 'Alphabetically',
+      year: 'Newest',
       Cheapest: 'Cheapest',
       Alphabetically: 'Alphabetically',
       Newest: 'Newest',
@@ -60,6 +61,7 @@ export const Pagination = () => {
   ]);
 
   const onPageChange = (page: number) => {
+    scrollTop();
     setCurrentPage(page);
 
     const urlParams = new URLSearchParams(params);
@@ -69,10 +71,14 @@ export const Pagination = () => {
   };
 
   const goToNextPage = () => {
+    scrollTop();
+
     return !isLastPage ? onPageChange(currentPage + 1) : currentPage;
   };
 
   const backToPreviousPage = () => {
+    scrollTop();
+
     return !isFirstPage ? onPageChange(currentPage - 1) : currentPage;
   };
 
