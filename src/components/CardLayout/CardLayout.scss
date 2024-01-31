@@ -13,7 +13,7 @@
 
   &__img {
     flex-shrink: 1;
-    max-height: 200px;
+    height: 200px;
     max-width: 200px;
 
     transition: transform 0.3s ease;
@@ -37,14 +37,23 @@
     font-size: 12px;
     font-weight: 500;
     line-height: 18px;
+    height: 52px;
+    overflow: hidden;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
   }
 
   &__price {
     font-weight: 800;
     display: flex;
-    justify-content: space-between;
+    gap: 8px;
     font-size: 22px;
     line-height: 30.8px;
+
+    &--old {
+      text-decoration: line-through;
+      color: $c-secondary-grey;
+    }
   }
 
   &__line {

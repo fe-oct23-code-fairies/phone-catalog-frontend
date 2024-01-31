@@ -66,16 +66,19 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
   return (
     <div className="card">
       <div className="card__img-wrapper">
-        <Link to={`/phones/${product.itemId}`}>
+        <Link to={`/${product.category}/${product.itemId}`}>
           <img className="card__img" src={`${BASE_URL}/static/${product.image}`} alt="Iphone IMG" />
         </Link>
       </div>
 
-      <Link to={`/phones/${product.itemId}`}>
+      <Link to={`/${product.category}/${product.itemId}`}>
         <h2 className="card__title">{product.name}</h2>
       </Link>
 
-      <div className="card__price">{`$${product.fullPrice}`}</div>
+      <div className="card__price">
+        <p>{`$${product.price}`}</p>
+        <p className="card__price--old">{`$${product.fullPrice}`}</p>
+      </div>
 
       <div className="card__line" />
 
