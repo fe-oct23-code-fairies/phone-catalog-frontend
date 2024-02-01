@@ -19,15 +19,30 @@ export const client = {
 
   getAccessories: <T>() => get<T>('/accessories'),
   getAccessoryById: <T>(id: string) => get<T>(`/accessories/${id}`),
-  getAccessoriesByQuery: <T>(page: string, limit: string, sortBy: string) => get<T>(`/accessories?sortBy=${sortBy}&limit=${limit}&page=${page}`),
+  getAccessoriesByQuery: <T>(
+    page: string,
+    limit: string,
+    sortBy: string,
+    sortOrder: string,
+  ) => get<T>(`/accessories?sortBy=${sortBy}&limit=${limit}&page=${page}&sortOrder=${sortOrder}`),
 
   getPhones: <T>() => get<T>('/phones'),
   getPhoneById: <T>(id: string) => get<T>(`/phones/${id}`),
-  getPhonesByQuery: <T>(page: string, limit: string, sortBy: string) => get<T>(`/phones?sortBy=${sortBy}&limit=${limit}&page=${page}`),
+  getPhonesByQuery: <T>(
+    page: string,
+    limit: string,
+    sortBy: string,
+    sortOrder: string,
+  ) => get<T>(`/phones?sortBy=${sortBy}&limit=${limit}&page=${page}&sortOrder=${sortOrder}`),
 
   getTablets: <T>() => get<T>('/tablets'),
   getTabletById: <T>(id: string) => get<T>(`/tablets/${id}`),
-  getTabletsByQuery: <T>(page: string, limit: string, sortBy: string) => get<T>(`/tablets?sortBy=${sortBy}&limit=${limit}&page=${page}`),
+  getTabletsByQuery: <T>(
+    page: string,
+    limit: string,
+    sortBy: string,
+    sortOrder: string,
+  ) => get<T>(`/tablets?sortBy=${sortBy}&limit=${limit}&page=${page}&sortOrder=${sortOrder}`),
 
   getDetailed: <T>() => get<T>('/products-detailed'),
   getDetailedById: <T>(id: string) => get<T>(`/products-detailed/${id}`),

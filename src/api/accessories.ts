@@ -6,4 +6,5 @@ export const getAccessoriesByQuery = (
   page: string,
   limit: string,
   sortBy: string,
-) => client.getAccessoriesByQuery<Product[]>(page, limit, sortBy);
+  sortOrder = 'ASC',
+) => client.getAccessoriesByQuery<Product[]>(page, limit, sortBy, sortOrder);

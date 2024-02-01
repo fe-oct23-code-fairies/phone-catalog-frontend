@@ -31,8 +31,10 @@ export const Phones: React.FC = () => {
   const paramsSortBy = params.get('sort') || parsedSortBy;
 
   useEffect(() => {
+    const sortOrder = paramsSortBy === 'year' ? 'DESC' : 'ASC';
+
     Promise.all([
-      getPhonesByQuery(paramsPage, paramsPerPage, paramsSortBy),
+      getPhonesByQuery(paramsPage, paramsPerPage, paramsSortBy, sortOrder),
       getPhones(),
     ])
       .then(([queryPhones, allPhones]) => {

@@ -31,8 +31,10 @@ export const Accessories: React.FC = () => {
   const paramsSortBy = params.get('sort') || parsedSortBy;
 
   useEffect(() => {
+    const sortOrder = paramsSortBy === 'year' ? 'DESC' : 'ASC';
+
     Promise.all([
-      getAccessoriesByQuery(paramsPage, paramsPerPage, paramsSortBy),
+      getAccessoriesByQuery(paramsPage, paramsPerPage, paramsSortBy, sortOrder),
       getAccessories(),
     ])
       .then(([queryAccessories, allAccessories]) => {

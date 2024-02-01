@@ -31,8 +31,10 @@ export const Tablets: React.FC = () => {
   const paramsSortBy = params.get('sort') || parsedSortBy;
 
   useEffect(() => {
+    const sortOrder = paramsSortBy === 'year' ? 'DESC' : 'ASC';
+
     Promise.all([
-      getTabletsByQuery(paramsPage, paramsPerPage, paramsSortBy),
+      getTabletsByQuery(paramsPage, paramsPerPage, paramsSortBy, sortOrder),
       getTablets(),
     ])
       .then(([queryTablets, allTablets]) => {

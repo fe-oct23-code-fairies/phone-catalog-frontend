@@ -16,6 +16,7 @@ import { Sections } from '../../components/sectionsForCartItemPage';
 import { Item } from '../../types/Item';
 import { Product } from '../../types/Product';
 import './CardItemPage.scss';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
 export const CardItemPage: React.FC = () => {
   const { itemId } = useParams();
@@ -62,10 +63,16 @@ export const CardItemPage: React.FC = () => {
     <>
       {!isLoading ? (
         <>
+          <Breadcrumbs title={selectedProduct?.name || 'Error'} />
           {!error && selectedProduct && nonDetailedProduct ? (
             <>
               <div className="container">
                 <div className="photo-and-sections">
+                  <h2
+                    className="photo-and-sections__title"
+                  >
+                    {selectedProduct.name}
+                  </h2>
                   <div className="photos-and-additional-info">
                     <PhotoBlock product={selectedProduct} />
                     <ColorsAndGbVariants
