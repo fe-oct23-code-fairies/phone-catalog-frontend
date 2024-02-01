@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
 import { Dispatch, SetStateAction, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Icon } from '../../../ui/Icons';
 import { getLinkClass } from '../helper';
 import { useAppContext } from '../../../context/AppContext';
@@ -27,7 +27,7 @@ export const Navbar: React.FC<Props> = ({
     localStorage.removeItem('addedToCartProducts');
     localStorage.removeItem('cartProductsAmount');
   };
-  
+
   const {
     cartProductsAmount,
     favoriteProductsAmount,

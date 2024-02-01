@@ -18,11 +18,11 @@ interface Props {
   | 'user'
   | 'logout'
   | 'eye'
-  | 'eyeshut';
+  | 'eyeshut'
   | 'sun'
   | 'sun-filled'
   | 'moon'
-  | 'moon-filled'
+  | 'moon-filled';
 }
 
 export const Icon: React.FC<Props> = ({ iconName }: Props) => {
@@ -159,7 +159,7 @@ export const Icon: React.FC<Props> = ({ iconName }: Props) => {
           height="16"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="black"
+          stroke="#905BFF"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -191,8 +191,8 @@ export const Icon: React.FC<Props> = ({ iconName }: Props) => {
           height="16"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="black"
-          strokeWidth="1"
+          stroke="#905BFF"
+          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
           className="feather feather-log-out"
@@ -248,7 +248,7 @@ export const Icon: React.FC<Props> = ({ iconName }: Props) => {
       );
 
       break;
-      
+
     case 'eyeshut':
       icon = (
         <svg
@@ -287,7 +287,11 @@ export const Icon: React.FC<Props> = ({ iconName }: Props) => {
   }
 
   return (
-    <svg width={size} height={size} viewBox={isBig ? '0 0 512 512' : '0 0 16 16'}>
+    <svg
+      width={size}
+      height={size}
+      viewBox={isBig ? '0 0 512 512' : '0 0 16 16'}
+    >
       {icon}
     </svg>
   );
