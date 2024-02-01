@@ -16,6 +16,7 @@
 @import './pages/NotFoundPage/NotFoundPage.scss';
 @import './pages/Cart/Cart.scss';
 @import './pages/Favorites/Favorites.scss';
+@import './pages/Login/Auth.scss';
 
 @import "./components/Header/Header.scss";
 @import "./components/Header/Navbar/Navbar.scss";
@@ -26,7 +27,6 @@
 @import "./components/CardLayout/CardLayout.scss";
 @import "./components/Sections/CategoriesSection/SectionCategories.scss";
 @import "./components/popUp/Popup.scss";
-@import "./components/AuthComponent/AuthComponent.scss";
 
 .App {
   height: 100vh;

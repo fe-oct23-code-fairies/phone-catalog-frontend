@@ -36,6 +36,8 @@
     @include text-body;
     color: $c-secondary-grey;
 
+    @include hover(color, $c-accent-blue);
+
     &--active {
       color: $c-primary-black;
     }
@@ -82,14 +84,16 @@
   }
 
   &__input-div {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 6px;
+  }
 
-    &--error {
-      color: $c-red;
-      @include text-small;
-    }
+  &__password-icon {
+    position: absolute;
+    right: 9px;
+    top: 12px;
   }
 
   &__btn {
