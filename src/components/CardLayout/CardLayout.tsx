@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '../../ui/Button';
 import { AddToFavourite } from '../../ui/AddToFavourite/AddToFavourite';
 import { useAppContext } from '../../context/AppContext';
@@ -7,11 +7,14 @@ import { Product } from '../../types/Product';
 import { BASE_URL } from '../../utils/fetchClient';
 
 type Props = {
-  product: Product
+  product: Product;
 };
 
 export const CardLayout: React.FC<Props> = ({ product }) => {
   const [isAdded, setIsAdded] = useState(false);
+  const location = useLocation();
+
+  const { pathname, search } = location;
 
   const {
     addProductToCart,
@@ -23,8 +26,7 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
     setAddedToFavoriteProducts,
   } = useAppContext();
 
-  useEffect(() => setAreFavorites(parsedFavorites),
-    [setAreFavorites]);
+  useEffect(() => setAreFavorites(parsedFavorites), [setAreFavorites]);
 
   const addToCart = (productToAdd: Product) => {
     addProductToCart(productToAdd);
@@ -67,7 +69,11 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
     <div className="card">
       <div className="card__img-wrapper">
         <Link to={`/${product.category}/${product.itemId}`}>
-          <img className="card__img" src={`${BASE_URL}/static/${product.image}`} alt="Iphone IMG" />
+          <img
+            className="card__img"
+            src={`${BASE_URL}/static/${product.image}`}
+            alt="Iphone IMG"
+          />
         </Link>
       </div>
 
@@ -104,7 +110,7 @@ export const CardLayout: React.FC<Props> = ({ product }) => {
 
       <div className="card__buttons">
         <Button
-          to=""
+          to={pathname + search}
           btnClass="card__add"
           isActive={isAdded}
           onClick={() => addToCart(product)}

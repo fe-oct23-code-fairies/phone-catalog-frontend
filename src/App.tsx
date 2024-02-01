@@ -35,8 +35,6 @@ export const App: React.FC = () => {
     }
   }, [page, pathname]);
 
-  const location = useLocation();
-
   return (
     <div
       className={cn('App', {
