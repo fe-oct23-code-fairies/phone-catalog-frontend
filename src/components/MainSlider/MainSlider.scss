@@ -45,16 +45,15 @@
   margin-left: 5px;
   border-radius: 0;
   cursor: pointer;
-  background-color:
-    $c-elements-light-grey;
+  background-color: var(--c-elements);
 
-    &:first-child{
-      margin-left: 0;
-    }
+  &:first-child{
+    margin-left: 0;
+  }
 }
 
 .swiper-pagination-bullet-active {
-  background-color: $c-primary-black;
+  background-color: var(--c-primary);
 }
 
 .custom-slide {
@@ -83,11 +82,24 @@
     height: 100%;
     min-width: 32px;
     border-radius: 24px;
-    border: 1px solid;
-    border-color: $c-icons-mid-grey;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--c-button-border);
+    background-color: var(--c-button-default-bg);
+
     cursor: pointer;
 
-    @include hover(border-color, $c-primary-black)
+    transition-property: border-color, background-color;
+    transition-duration: $effect-duration;
+
+    &:hover {
+      border-color: var(--c-button-hover-border);
+      background-color: var(--c-button-hover-bg);
+    }
+
+    & svg {
+      fill: var(--c-primary);
+    }
   }
 }
 

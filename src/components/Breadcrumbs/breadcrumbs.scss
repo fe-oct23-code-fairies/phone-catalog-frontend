@@ -18,8 +18,8 @@
     margin: 0 8px;
     padding-left: 5px;
 
-    & svg {
-      fill: $c-secondary-grey;
+    & > svg {
+      fill: var(--c-secondary);
     }
   }
 
@@ -49,6 +49,10 @@
     font-size: 13px;
     line-height: 1;
 
+    & svg {
+      fill: var(--c-primary)
+    }
+
     &::first-letter {
       text-transform: uppercase;
     }
@@ -59,7 +63,7 @@
     text-decoration: none;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: $c-secondary-grey;
+    color: var(--c-secondary);
 
     &::first-letter {
       text-transform: uppercase;
@@ -75,7 +79,7 @@
 
   &:hover>* {
     transition: color $effect-duration;
-    color: $c-primary-black;
+    color: var(--c-primary);
   }
 
   @include onTablet {
@@ -88,7 +92,7 @@
 
   &__text {
     font-size: 13px;
-    color: $c-secondary-grey;
+    color: var(--c-secondary);
     line-height: 16px;
   }
 }

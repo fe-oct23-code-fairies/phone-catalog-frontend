@@ -20,7 +20,7 @@
 }
 
 .section__title {
-  color: $c-primary-black;
+  color: var(--c-primary);
   font-size: 20px;
   font-weight: 800;
   padding: 16px 0;
@@ -39,7 +39,7 @@
     }
 
     &-description {
-      color: $c-secondary-grey;
+      color: var(--c-secondary);
       font-size: 14px;
       font-weight: 600;
       line-height: 21px;
@@ -48,8 +48,8 @@
 }
 
 .underline {
-  color: $c-elements-light-grey;
-  border-top: 1px solid $c-elements-light-grey;
+  color: var(--c-elements);
+  border-top: 1px solid var(--c-elements);
 }
 
 .specifics {
@@ -64,14 +64,14 @@
     justify-content: space-between;
 
     &-title {
-      color: $c-secondary-grey;
+      color: var(--c-secondary);
       font-size: 14px;
       font-weight: 500;
       line-height: 21px;
     }
 
     &-value {
-      color: $c-primary-black;
+      color: var(--c-primary);
       font-size: 14px;
       font-weight: 600;
       line-height: 21px;

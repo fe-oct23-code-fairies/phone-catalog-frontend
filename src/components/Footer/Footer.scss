@@ -1,7 +1,7 @@
 .footer {
   width: 100%;
-  background-color: $c-white;
-  box-shadow: 0px -1px 0px 0px $c-elements-light-grey;
+  background-color: var(--c-background);
+  box-shadow: 0px -1px 0px 0px var(--c-elements);
 
   @include grid;
   @include paddingInline;
@@ -15,7 +15,7 @@
 
     width: 100%;
     padding-block: 32px;
-    background-color: $c-white;
+    background-color: var(--c-background);
 
     @include onTablet {
       flex-direction: row;
@@ -40,6 +40,10 @@
     @include onTablet {
       justify-content: flex-end;
     }
+
+    & svg {
+      fill: var(--c-primary);
+    }
   }
 
   &__items {
@@ -54,6 +58,6 @@
   }
 
   &__button-label {
-    color: $c-secondary-grey;
+    color: var(--c-secondary);
   }
 }

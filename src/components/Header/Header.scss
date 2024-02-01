@@ -14,9 +14,9 @@ $header-gap-desktop: 24px;
   flex-direction: column;
 
   box-sizing: border-box;
-  box-shadow: 0px 1px 0px 0px $c-elements-light-grey;
+  box-shadow: 0px 1px 0px 0px var(--c-elements);
 
-  background-color: $c-white;
+  background-color: var(--c-background);
 
   &__bar {
     display: flex;
@@ -26,7 +26,7 @@ $header-gap-desktop: 24px;
     gap: $header-gap;
 
     box-sizing: border-box;
-    box-shadow: 0px 1px 0px 0px $c-elements-light-grey;
+    box-shadow: 0px 1px 0px 0px var(--c-elements);
 
     @include onDesktop1200 {
       height: $header-height-desktop;
@@ -68,7 +68,8 @@ $header-gap-desktop: 24px;
     border-bottom-color: transparent;
     border-bottom-style: solid;
 
-    transition: border-bottom-color, $effect-duration;
+    transition-property: border-bottom-color, color;
+    transition-duration: $effect-duration;
 
     @include onDesktop1200 {
       height: $header-height-desktop;
@@ -76,9 +77,9 @@ $header-gap-desktop: 24px;
     }
 
     &--active {
-      color: $c-primary-black;
+      color: var(--c-primary);
 
-      border-bottom-color: $c-primary-black;
+      border-bottom-color: var(--c-primary);
     }
   }
 }

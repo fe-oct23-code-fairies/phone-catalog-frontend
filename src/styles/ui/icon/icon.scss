@@ -9,8 +9,8 @@
   cursor: pointer;
 
   & > svg {
-    fill: $c-icons-mid-grey;
+    fill: var(--c-icons);
 
-    @include hover(fill, $c-primary-black);
+    @include hover(fill, var(--c-primary));
   }
 }

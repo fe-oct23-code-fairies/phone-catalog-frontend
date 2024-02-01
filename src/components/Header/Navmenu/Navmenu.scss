@@ -14,11 +14,12 @@
     height: calc(100% - $header-height-desktop);
   }
 
-  background-color: $c-white;
+  background-color: var(--c-background);
   opacity: 0;
   transform: translateY(-100%);
 
-  transition: opacity, transform, $effect-duration;
+  transition-property: opacity, transform;
+  transition-duration: $effect-duration;
 
   &--open {
     opacity: 1;
@@ -47,7 +48,7 @@
     display: flex;
     height: 64px;
 
-    box-shadow: 0px -1px 0px 0px $c-elements-light-grey;
+    box-shadow: 0px -1px 0px 0px var(--c-elements);
 
     & > * {
       flex-grow: 1;
@@ -63,40 +64,45 @@
     align-items: center;
 
     box-sizing: border-box;
-    background-repeat: no-repeat;
-    background-position: center;
     height: 64px;
     line-height: 64px;
 
-    box-shadow: -1px 0px 0px 0px $c-elements-light-grey;
+    box-shadow: -1px 0px 0px 0px var(--c-elements);
 
-    z-index: -1;
+    transition-property: background-color;
+    transition-duration: $effect-duration;
 
-    @include hover(background-color, #00000005);
+    &:hover {
+      background-color: var(--c-hover);
+    }
 
     & > * {
-      fill: $c-primary-black;
+      fill: var(--c-primary);
     }
   }
 
   &__text-amount-of-products {
     position: absolute;
-    top: 20px;
-    right: 42%;
+    top: 18px;
+    right: calc(50% - 16px);
 
     display: block;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
 
-    font-size: 7px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--c-background);
+
+    font-size: 9px;
     font-weight: 700;
-    color: $c-white;
+    color: var(--c-products-counter);
 
     border-radius: 48px;
-    background-color: $c-accent-blue;
+    background-color: var(--c-products-counter-bg);
   }
 }

@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Icon } from '../../../ui/Icons';
 import { getLinkClass } from '../helper';
@@ -16,7 +16,30 @@ export const Navbar: React.FC<Props> = ({
   isMenuOpen,
   setIsMenuOpen,
 }: Props) => {
-  const { cartProductsAmount, favoriteProductsAmount } = useAppContext();
+  const {
+    cartProductsAmount,
+    favoriteProductsAmount,
+    pageTheme,
+    setPageTheme,
+  } = useAppContext();
+
+  const isThemeDark = pageTheme === 'Dark';
+  const [switchSelected, setSwitchSelected] = useState(false);
+  const lightThemeIconName = switchSelected ? 'sun-filled' : 'sun';
+  const darkThemeIconName = switchSelected ? 'moon-filled' : 'moon';
+  const themeIconName = isThemeDark
+    ? darkThemeIconName
+    : lightThemeIconName;
+
+  const switchThemeOnClick = () => {
+    const currentTheme = isThemeDark ? 'Light' : 'Dark';
+
+    localStorage.setItem(
+      'pageTheme', currentTheme,
+    );
+
+    setPageTheme(currentTheme);
+  };
 
   return (
     <nav className="navbar">
@@ -33,6 +56,16 @@ export const Navbar: React.FC<Props> = ({
       </div>
 
       <div className="navbar__right">
+        <button
+          type="button"
+          aria-label="theme-switch"
+          className="navbar__button navbar__button-main navbar__theme-mode"
+          onClick={() => switchThemeOnClick()}
+          onMouseEnter={() => setSwitchSelected(true)}
+          onMouseLeave={() => setSwitchSelected(false)}
+        >
+          <Icon iconName={themeIconName} />
+        </button>
         <NavLink to="/favorites" className={getLinkClass}>
           <div className="navbar__button navbar__button-main">
             <Icon iconName="heart" />
