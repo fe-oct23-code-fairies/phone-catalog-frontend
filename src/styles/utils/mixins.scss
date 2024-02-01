@@ -209,6 +209,12 @@
     }
   }
 
+
+  &--loading {
+    cursor: progress;
+    background-color: $c-accent-blue-light;
+  }
+
   cursor: pointer;
 }
 

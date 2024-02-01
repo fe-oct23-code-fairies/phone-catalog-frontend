@@ -18,79 +18,88 @@ import { CatalogContextProvider }
 import { CartContextProvider } from './context/CartContext';
 import { AppContextProvider } from './context/AppContext';
 import { CardItemPage } from './pages/cartItemPage';
+import { Login } from './pages/Login';
+import { Signup } from './pages/Signup';
+import { AuthContextProvider } from './context/AuthContext/AuthContext';
 
 export const Routing = () => (
   <Router>
-    <Routes>
-      <Route
-        path="/"
-        element={(
-          <AppContextProvider>
-            <App />
-          </AppContextProvider>
-        )}
-      >
-        <Route index element={<Home />} />
-        <Route path="home" element={<Navigate to=".." />} />
-
-        <Route path="phones">
-          <Route
-            index
-            element={(
-              <CatalogContextProvider>
-                <Phones />
-              </CatalogContextProvider>
-            )}
-          />
-
-          <Route
-            path=":itemId"
-            element={<CardItemPage />}
-          />
-        </Route>
-        <Route path="tablets">
-          <Route
-            index
-            element={(
-              <CatalogContextProvider>
-                <Tablets />
-              </CatalogContextProvider>
-            )}
-          />
-          <Route
-            path=":itemId"
-            element={<CardItemPage />}
-          />
-        </Route>
-
-        <Route path="accessories">
-          <Route
-            index
-            element={(
-              <CatalogContextProvider>
-                <Accessories />
-              </CatalogContextProvider>
-            )}
-          />
-          <Route
-            path=":itemId"
-            element={<CardItemPage />}
-          />
-        </Route>
-
-        <Route path="favorites" element={<Favorites />} />
-
+    <AuthContextProvider>
+      <Routes>
         <Route
-          path="checkout"
+          path="/"
           element={(
-            <CartContextProvider>
-              <Cart />
-            </CartContextProvider>
+            <AppContextProvider>
+              <App />
+            </AppContextProvider>
           )}
-        />
+        >
+          <Route index element={<Home />} />
+          <Route path="home" element={<Navigate to=".." />} />
 
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
-    </Routes>
+          <Route path="phones">
+            <Route
+              index
+              element={(
+                <CatalogContextProvider>
+                  <Phones />
+                </CatalogContextProvider>
+              )}
+            />
+
+            <Route
+              path=":itemId"
+              element={<CardItemPage />}
+            />
+          </Route>
+          <Route path="tablets">
+            <Route
+              index
+              element={(
+                <CatalogContextProvider>
+                  <Tablets />
+                </CatalogContextProvider>
+              )}
+            />
+            <Route
+              path=":itemId"
+              element={<CardItemPage />}
+            />
+          </Route>
+
+          <Route path="accessories">
+            <Route
+              index
+              element={(
+                <CatalogContextProvider>
+                  <Accessories />
+                </CatalogContextProvider>
+              )}
+            />
+            <Route
+              path=":itemId"
+              element={<CardItemPage />}
+            />
+          </Route>
+
+          <Route path="favorites" element={<Favorites />} />
+          <Route path="auth/">
+            <Route path="signin" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
+          </Route>
+
+          <Route
+            path="checkout"
+            element={(
+              <CartContextProvider>
+                <Cart />
+              </CartContextProvider>
+            )}
+          />
+
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </AuthContextProvider>
   </Router>
 );

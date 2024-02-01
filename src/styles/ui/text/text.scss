@@ -33,3 +33,8 @@ h4, .h4 {
 .text-link {
   @include text-link;
 }
+
+.text-error {
+  @include text-small;
+  color: $c-red;
+}

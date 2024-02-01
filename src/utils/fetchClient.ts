@@ -1,9 +1,29 @@
+import { User } from '../types/User';
+
 export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function get<T>(url: string): Promise<T> {
   return fetch(BASE_URL + url).then(response => {
     if (!response.ok) {
       throw new Error(`${response.status} ${response.statusText}`);
+    }
+
+    return response.json();
+  });
+}
+
+function post<T>(url: string, data: string): Promise<T> {
+  return fetch(BASE_URL + url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: data,
+  }).then(async response => {
+    if (!response.ok) {
+      const message = await response.json();
+
+      throw new Error(message.error);
     }
 
     return response.json();
@@ -47,4 +67,13 @@ export const client = {
   getDetailed: <T>() => get<T>('/products-detailed'),
   getDetailedById: <T>(id: string) => get<T>(`/products-detailed/${id}`),
   getDetailedRecommendations: <T>(id: string) => get<T>(`/products-detailed/${id}/recommended`),
+
+  login: <T>(credentials: Omit<User, 'id'>) => post<T>(
+    '/auth/signin',
+    JSON.stringify(credentials),
+  ),
+  register: <T>(credentials: Omit<User, 'id'>) => post<T>(
+    '/auth/signup',
+    JSON.stringify(credentials),
+  ),
 };
