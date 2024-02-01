@@ -6,4 +6,5 @@ export const getTabletsByQuery = (
   page: string,
   limit: string,
   sortBy: string,
-) => client.getTabletsByQuery<Product[]>(page, limit, sortBy);
+  sortOrder = 'ASC',
+) => client.getTabletsByQuery<Product[]>(page, limit, sortBy, sortOrder);

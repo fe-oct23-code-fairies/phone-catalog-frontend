@@ -3,7 +3,11 @@ import { Icon } from '../../ui/Icons';
 import './breadcrumbs.scss';
 import { GoBack } from './GoBack';
 
-export const Breadcrumbs = () => {
+interface Props {
+  title?: string;
+}
+
+export const Breadcrumbs = ({ title }: Props) => {
   const location = useLocation();
   const pathCrumbs
     = location.pathname.split('/').filter(segment => segment !== '');
@@ -25,7 +29,7 @@ export const Breadcrumbs = () => {
               return (
                 <li className="breadcrumbs__item " key={`${item + ind}`}>
                   <span className="breadcrumbs__text-over">
-                    {item}
+                    {title || item}
                   </span>
                 </li>
               );
