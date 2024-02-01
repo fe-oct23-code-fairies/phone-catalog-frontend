@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Pagination, Navigation } from 'swiper/modules';
+import { Link } from 'react-router-dom';
 import { Icon } from '../../ui/Icons';
 
 import 'swiper/css';
@@ -35,46 +36,46 @@ export const MainSlider: FC = () => {
       >
 
         <SwiperSlide className="custom-slide">
-          <a href="/#" aria-label="banner" className="slide-for-tablet">
+          <Link to="/" aria-label="banner" className="slide-for-tablet">
             <img
               src="images/banner-tablet.png"
               alt="banner"
             />
-          </a>
-          <a href="/#" aria-label="banner" className="slide-for-mobile">
+          </Link>
+          <Link to="/" aria-label="banner" className="slide-for-mobile">
             <img
               src="images/banner-phone.png"
               alt="banner"
             />
-          </a>
+          </Link>
         </SwiperSlide>
         <SwiperSlide className="custom-slide">
-          <a href="/#" aria-label="banner" className="slide-for-tablet">
+          <Link to="/" aria-label="banner" className="slide-for-tablet">
             <img
               src="images/banner-tablet.png"
               alt="banner"
             />
-          </a>
-          <a href="/#" aria-label="banner" className="slide-for-mobile">
+          </Link>
+          <Link to="/" aria-label="banner" className="slide-for-mobile">
             <img
               src="images/banner-phone.png"
               alt="banner"
             />
-          </a>
+          </Link>
         </SwiperSlide>
         <SwiperSlide className="custom-slide">
-          <a href="/#" aria-label="banner" className="slide-for-tablet">
+          <Link to="/" aria-label="banner" className="slide-for-tablet">
             <img
               src="images/banner-tablet.png"
               alt="banner"
             />
-          </a>
-          <a href="/#" aria-label="banner" className="slide-for-mobile">
+          </Link>
+          <Link to="/" aria-label="banner" className="slide-for-mobile">
             <img
               src="images/banner-phone.png"
               alt="banner"
             />
-          </a>
+          </Link>
         </SwiperSlide>
       </Swiper>
       <div className="swiper-button-next">
