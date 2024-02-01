@@ -15,11 +15,11 @@ export const Login: React.FC = () => {
     emailError,
     onLogin,
     onBlurEmail,
-    onBlurPassword,
     onPasswordChange,
     onEmailChange,
     reset,
     resetErrors,
+    isLoading,
   } = useAuth();
 
   const [openPassword, setOpenPassword] = useState(false);
@@ -48,9 +48,7 @@ export const Login: React.FC = () => {
           </NavLink>
         </div>
         <div className="auth__welcome">
-          <p className="h2">
-            Welcome to
-          </p>
+          <p className="h2">Welcome to</p>
           <Logo />
         </div>
         <div className="auth__inputs">
@@ -64,6 +62,7 @@ export const Login: React.FC = () => {
               value={email}
               onChange={onEmailChange}
               onBlur={onBlurEmail}
+              disabled={isLoading}
             />
 
             {emailError && <p className="text-error">{emailError}</p>}
@@ -78,7 +77,7 @@ export const Login: React.FC = () => {
               placeholder="Password"
               value={password}
               onChange={onPasswordChange}
-              onBlur={onBlurPassword}
+              disabled={isLoading}
             />
 
             {password && (
@@ -86,9 +85,17 @@ export const Login: React.FC = () => {
                 additionalClass="auth__password-icon"
                 onClick={() => setOpenPassword(!openPassword)}
               >
-                {!openPassword
-                  ? (<img src="/eye-off.svg" alt="" />)
-                  : (<img src="/eye.svg" alt="" />)}
+                {!openPassword ? (
+                  <img
+                    src="/eye-off.svg"
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    src="/eye.svg"
+                    alt=""
+                  />
+                )}
               </ButtonWithIcon>
             )}
 
@@ -99,6 +106,7 @@ export const Login: React.FC = () => {
           to=""
           btnClass="auth__btn"
           onClick={onLogin}
+          isLoading={isLoading}
         >
           Log in
         </Button>

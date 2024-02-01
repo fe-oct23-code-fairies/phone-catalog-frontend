@@ -14,6 +14,7 @@ export const Signup: React.FC = () => {
     repeatedPasswordError,
     passwordError,
     emailError,
+    isLoading,
     onSignup,
     onBlurEmail,
     onBlurPassword,
@@ -52,9 +53,7 @@ export const Signup: React.FC = () => {
           </NavLink>
         </div>
         <div className="auth__welcome">
-          <p className="h2">
-            Welcome to
-          </p>
+          <p className="h2">Welcome to</p>
           <Logo />
         </div>
         <div className="auth__inputs">
@@ -90,9 +89,17 @@ export const Signup: React.FC = () => {
                 additionalClass="auth__password-icon"
                 onClick={() => setOpenPassword(!openPassword)}
               >
-                {!openPassword
-                  ? (<img src="/eye-off.svg" alt="" />)
-                  : (<img src="/eye.svg" alt="" />)}
+                {!openPassword ? (
+                  <img
+                    src="/eye-off.svg"
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    src="/eye.svg"
+                    alt=""
+                  />
+                )}
               </ButtonWithIcon>
             )}
 
@@ -117,14 +124,25 @@ export const Signup: React.FC = () => {
                 additionalClass="auth__password-icon"
                 onClick={() => setOpenRepeatedPassword(!openRepeatedPassword)}
               >
-                {!openRepeatedPassword
-                  ? (<img src="/eye-off.svg" alt="" />)
-                  : (<img src="/eye.svg" alt="" />)}
+                {!openRepeatedPassword ? (
+                  <img
+                    src="/eye-off.svg"
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    src="/eye.svg"
+                    alt=""
+                  />
+                )}
               </ButtonWithIcon>
             )}
 
-            {repeatedPasswordError
-              && <p className="text-error">{repeatedPasswordError}</p>}
+            {repeatedPasswordError && (
+              <p className="text-error">
+                {repeatedPasswordError}
+              </p>
+            )}
           </div>
         </div>
 
@@ -132,6 +150,7 @@ export const Signup: React.FC = () => {
           to=""
           btnClass="auth__btn"
           onClick={onSignup}
+          isLoading={isLoading}
         >
           Sign up
         </Button>
