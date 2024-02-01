@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { CardLayout } from '../../components/CardLayout';
 import { Loader } from '../../components/Loader/Loader';
 import { ErrorNotification } from '../../components/ErrorNotification';
-import { getPhones } from '../../api/phones';
+import { getPhones, getPhonesByQuery } from '../../api/phones';
 import { Pagination } from '../../ui/Pagination';
 import { useCatalogContext } from '../../context/CatalogContext';
 import { Product } from '../../types/Product';
@@ -17,27 +17,36 @@ export const Phones: React.FC = () => {
     setTotalItems,
     handleError,
     error,
-    prepareProductForPage,
     itemsPerPage,
     selectItemsPerPage,
     sortBy,
     selectSortBy,
+    params,
+    parsedItemsPerPage,
+    parsedSortBy,
   } = useCatalogContext();
 
+  const paramsPage = params.get('page') || '1';
+  const paramsPerPage = params.get('perPage') || parsedItemsPerPage.toString();
+  const paramsSortBy = params.get('sort') || parsedSortBy;
+
   useEffect(() => {
-    getPhones()
-      .then((data) => {
-        setTotalItems(data.length);
-        setPhones(data);
+    const sortOrder = paramsSortBy === 'year' ? 'DESC' : 'ASC';
+
+    Promise.all([
+      getPhonesByQuery(paramsPage, paramsPerPage, paramsSortBy, sortOrder),
+      getPhones(),
+    ])
+      .then(([queryPhones, allPhones]) => {
+        setTotalItems(allPhones.length);
+        setPhones(queryPhones);
       })
       .catch(() => handleError(`Unable to load mobile phones!
       Try to reload this page.`))
       .finally(() => {
         setTimeout(() => setIsLoading(false), 500);
       });
-  });
-
-  const visiblePhones = prepareProductForPage(phones, sortBy);
+  }, [paramsPage, paramsPerPage, paramsSortBy]);
 
   return (
     <>
@@ -71,7 +80,7 @@ export const Phones: React.FC = () => {
                 />
               </div>
               <div className="grid__container">
-                {visiblePhones.map((phone) => (
+                {phones.map((phone) => (
                   <CardLayout key={phone.id} product={phone} />
                 ))}
               </div>

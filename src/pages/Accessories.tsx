@@ -4,7 +4,7 @@ import { ErrorNotification } from '../components/ErrorNotification';
 import { Loader } from '../components/Loader/Loader';
 import { useCatalogContext } from '../context/CatalogContext';
 import { Pagination } from '../ui/Pagination';
-import { getAccessories } from '../api/accessories';
+import { getAccessories, getAccessoriesByQuery } from '../api/accessories';
 import { Product } from '../types/Product';
 import { Dropdown } from '../ui/Dropdown';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
@@ -17,27 +17,36 @@ export const Accessories: React.FC = () => {
     setTotalItems,
     handleError,
     error,
-    prepareProductForPage,
     itemsPerPage,
     selectItemsPerPage,
     sortBy,
     selectSortBy,
+    params,
+    parsedItemsPerPage,
+    parsedSortBy,
   } = useCatalogContext();
 
+  const paramsPage = params.get('page') || '1';
+  const paramsPerPage = params.get('perPage') || parsedItemsPerPage.toString();
+  const paramsSortBy = params.get('sort') || parsedSortBy;
+
   useEffect(() => {
-    getAccessories()
-      .then((data) => {
-        setTotalItems(data.length);
-        setAccessories(data);
+    const sortOrder = paramsSortBy === 'year' ? 'DESC' : 'ASC';
+
+    Promise.all([
+      getAccessoriesByQuery(paramsPage, paramsPerPage, paramsSortBy, sortOrder),
+      getAccessories(),
+    ])
+      .then(([queryAccessories, allAccessories]) => {
+        setTotalItems(allAccessories.length);
+        setAccessories(queryAccessories);
       })
       .catch(() => handleError(`Unable to load accessories!
       Try to reload this page.`))
       .finally(() => {
         setTimeout(() => setIsLoading(false), 500);
       });
-  });
-
-  const visibleAccessories = prepareProductForPage(accessories, sortBy);
+  }, [paramsPage, paramsPerPage, paramsSortBy]);
 
   return (
     <>
@@ -73,8 +82,8 @@ export const Accessories: React.FC = () => {
               </div>
 
               <div className="grid__container">
-                {visibleAccessories.map((accessorie) => (
-                  <CardLayout key={accessorie.id} product={accessorie} />
+                {accessories.map((accessory) => (
+                  <CardLayout key={accessory.id} product={accessory} />
                 ))}
               </div>
 

@@ -16,6 +16,12 @@
     gap: 36px;
   }
 
+  &__wrapper {
+    @include grid;
+    height: 100%;
+    align-items: center;
+  }
+
   &__text-container {
     display: flex;
     flex-direction: column;

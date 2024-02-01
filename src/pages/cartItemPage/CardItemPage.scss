@@ -14,3 +14,11 @@
     gap: 40px;
   }
 }
+
+.photo-and-sections__title {
+  margin-bottom: 32px;
+
+  @include onTablet {
+    margin-bottom: 40px;
+  }
+}

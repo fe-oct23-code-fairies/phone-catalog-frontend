@@ -1,47 +1,106 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import {
+  getDetailedById,
+  getDetailedRecommended,
+} from '../../api/detailedProducts';
+import { getProducts } from '../../api/products';
 import { ColorsAndGbVariants } from '../../components/ColorsAndGB';
+import { ErrorNotification } from '../../components/ErrorNotification';
+import { Loader } from '../../components/Loader/Loader';
+import {
+  PhonesSection,
+} from '../../components/Sections/PhonesSection/PhoneSection';
 import { PhotoBlock } from '../../components/photoBlock';
 import { Sections } from '../../components/sectionsForCartItemPage';
-import './CardItemPage.scss';
 import { Item } from '../../types/Item';
+import { Product } from '../../types/Product';
+import './CardItemPage.scss';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
 export const CardItemPage: React.FC = () => {
   const { itemId } = useParams();
-  const [phone, setPhone] = useState<Item | null>(null);
+
+  const [
+    selectedProduct,
+    setSelectedProduct,
+  ] = useState<Item | undefined>(undefined);
+  const [
+    nonDetailedProduct,
+    setNonDetailedProduct,
+  ] = useState<Product | undefined>(undefined);
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  const getInfo = (newItemId: string) => {
+    return Promise.all([
+      getProducts(),
+      getDetailedById(newItemId || ''),
+    ])
+      .then(([allProducts, detailedProduct]) => {
+        const thisProduct = allProducts
+          .find(product => product.itemId === detailedProduct.id);
+
+        setSelectedProduct(detailedProduct);
+        setNonDetailedProduct(thisProduct);
+      })
+      .catch(() => setError(
+        'Could not load information about this product! Please try again',
+      ));
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`https://fe-oct23-code-fairies-backend.onrender.com/products-detailed/${itemId}`);
-        const data = await response.json();
+    setIsLoading(true);
 
-        setPhone(data);
-      } catch (error) {
-        // console.error('Error fetching phone data:', error);
-      }
-    };
-
-    fetchData();
+    getInfo(itemId || '')
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [itemId]);
 
   return (
-    <div className="container">
-      <div className="photo-and-sections">
-        {phone && (
-          <>
-            <div className="photos-and-additional-info">
-              <PhotoBlock images={phone.images} />
-              <ColorsAndGbVariants
-                colors={phone.coloursAvailable}
-                availableGBs={phone.capacityAvailable}
-                phone={phone}
-              />
-            </div>
-            <Sections phone={phone} />
-          </>
-        )}
-      </div>
-    </div>
+    <>
+      {!isLoading ? (
+        <>
+          <Breadcrumbs title={selectedProduct?.name || 'Error'} />
+          {!error && selectedProduct && nonDetailedProduct ? (
+            <>
+              <div className="container">
+                <div className="photo-and-sections">
+                  <h2
+                    className="photo-and-sections__title"
+                  >
+                    {selectedProduct.name}
+                  </h2>
+                  <div className="photos-and-additional-info">
+                    <PhotoBlock product={selectedProduct} />
+                    <ColorsAndGbVariants
+                      product={selectedProduct}
+                      nonDetailedProduct={nonDetailedProduct}
+                      refreshInfo={getInfo}
+                      setError={setError}
+                    />
+                  </div>
+                  <Sections product={selectedProduct} />
+                </div>
+              </div>
+              {selectedProduct.id && (
+                <PhonesSection
+                  prefixSlider="recommended"
+                  title="You may also like"
+                  id={selectedProduct.id}
+                  getterCallback={getDetailedRecommended}
+                />
+              )}
+            </>
+          ) : (
+            <ErrorNotification error={error} />
+          )}
+        </>
+      ) : (
+        <Loader />
+      )}
+    </>
   );
 };

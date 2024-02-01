@@ -124,7 +124,13 @@ export const CatalogContextProvider = ({
 
       const urlParams = new URLSearchParams(params);
 
+      if (urlParams.get('perPage') === selectedItem.toString()) {
+        return;
+      }
+
       urlParams.set('perPage', selectedItem.toString());
+      urlParams.set('page', '1');
+
       setParams(urlParams);
     }, [params, setParams],
   );
@@ -139,7 +145,13 @@ export const CatalogContextProvider = ({
       const setSortParam = (param: string) => {
         const urlParams = new URLSearchParams(params);
 
+        if (urlParams.get('sort') === param) {
+          return;
+        }
+
         urlParams.set('sort', param);
+        urlParams.set('page', '1');
+
         setParams(urlParams);
       };
 
@@ -149,15 +161,16 @@ export const CatalogContextProvider = ({
           break;
 
         case 'Alphabetically':
-          setSortParam('title');
+          setSortParam('name');
           break;
 
         case 'Newest':
-          setSortParam('age');
+          setSortParam('year');
           break;
 
         default:
           setSortParam('');
+          break;
       }
     }, [params, setParams],
   );
