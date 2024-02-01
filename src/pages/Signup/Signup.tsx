@@ -5,6 +5,7 @@ import { Logo } from '../../ui/Logo';
 import { Button } from '../../ui/Button';
 import { useAuth } from '../../context/AuthContext';
 import { ButtonWithIcon } from '../../ui/ButtonWithIcon';
+import { Icon } from '../../ui/Icons';
 
 export const Signup: React.FC = () => {
   const {
@@ -87,19 +88,14 @@ export const Signup: React.FC = () => {
             {password && (
               <ButtonWithIcon
                 additionalClass="auth__password-icon"
-                onClick={() => setOpenPassword(!openPassword)}
+                onClick={() => {
+                  setOpenPassword(!openPassword);
+                  setOpenRepeatedPassword(!openPassword);
+                }}
               >
-                {!openPassword ? (
-                  <img
-                    src="/eye-off.svg"
-                    alt=""
-                  />
-                ) : (
-                  <img
-                    src="/eye.svg"
-                    alt=""
-                  />
-                )}
+                {!openPassword
+                  ? <Icon iconName="eye" />
+                  : <Icon iconName="eyeshut" />}
               </ButtonWithIcon>
             )}
 
@@ -119,29 +115,8 @@ export const Signup: React.FC = () => {
               onBlur={onBlurRepeatedPassword}
             />
 
-            {repeatedPassword && (
-              <ButtonWithIcon
-                additionalClass="auth__password-icon"
-                onClick={() => setOpenRepeatedPassword(!openRepeatedPassword)}
-              >
-                {!openRepeatedPassword ? (
-                  <img
-                    src="/eye-off.svg"
-                    alt=""
-                  />
-                ) : (
-                  <img
-                    src="/eye.svg"
-                    alt=""
-                  />
-                )}
-              </ButtonWithIcon>
-            )}
-
             {repeatedPasswordError && (
-              <p className="text-error">
-                {repeatedPasswordError}
-              </p>
+              <p className="text-error">{repeatedPasswordError}</p>
             )}
           </div>
         </div>

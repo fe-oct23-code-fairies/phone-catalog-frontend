@@ -6,6 +6,7 @@ import { Logo } from '../../ui/Logo';
 import { Button } from '../../ui/Button';
 import { useAuth } from '../../context/AuthContext';
 import { ButtonWithIcon } from '../../ui/ButtonWithIcon';
+import { Icon } from '../../ui/Icons';
 
 export const Login: React.FC = () => {
   const {
@@ -85,17 +86,9 @@ export const Login: React.FC = () => {
                 additionalClass="auth__password-icon"
                 onClick={() => setOpenPassword(!openPassword)}
               >
-                {!openPassword ? (
-                  <img
-                    src="/eye-off.svg"
-                    alt=""
-                  />
-                ) : (
-                  <img
-                    src="/eye.svg"
-                    alt=""
-                  />
-                )}
+                {!openPassword
+                  ? <Icon iconName="eye" />
+                  : <Icon iconName="eyeshut" />}
               </ButtonWithIcon>
             )}
 
