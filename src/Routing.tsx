@@ -83,7 +83,7 @@ export const Routing = () => (
           </Route>
 
           <Route path="favorites" element={<Favorites />} />
-          <Route path="authorization/">
+          <Route path="auth/">
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
           </Route>
