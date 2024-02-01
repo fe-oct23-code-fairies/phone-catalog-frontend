@@ -8,6 +8,7 @@ type Props = {
   onClick?: () => void;
   to: string;
   isActive?: boolean;
+  isLoading?: boolean;
 };
 
 export const Button: React.FC<Props> = ({
@@ -16,11 +17,15 @@ export const Button: React.FC<Props> = ({
   onClick,
   to,
   isActive = false,
+  isLoading = false,
 }) => {
   return (
     <Link
       to={`${to}`}
-      className={cn(`button ${btnClass}`, { 'button--active': isActive })}
+      className={cn(`button ${btnClass}`, {
+        'button--active': isActive,
+        'button--loading': isLoading,
+      })}
       onClick={onClick}
     >
       {children}

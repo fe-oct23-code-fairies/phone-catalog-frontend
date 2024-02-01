@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext';
 import { CardLayout } from '../../components/CardLayout';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
@@ -10,9 +11,17 @@ export const Favorites: React.FC = () => {
     parsedFavoriteProducts,
   } = useAppContext();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
+    const user = localStorage.getItem('login');
+
+    if (!user) {
+      navigate('/auth/signin', { replace: true });
+    }
+
     setAddedToFavoriteProducts(parsedFavoriteProducts);
-  }, []);
+  }, [navigate]);
 
   const favoritesIsntEmpty = addedToFavoriteProducts
     && addedToFavoriteProducts.length > 0;

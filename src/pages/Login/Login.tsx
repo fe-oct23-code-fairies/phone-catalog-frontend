@@ -6,6 +6,7 @@ import { Logo } from '../../ui/Logo';
 import { Button } from '../../ui/Button';
 import { useAuth } from '../../context/AuthContext';
 import { ButtonWithIcon } from '../../ui/ButtonWithIcon';
+import { Icon } from '../../ui/Icons';
 
 export const Login: React.FC = () => {
   const {
@@ -15,11 +16,11 @@ export const Login: React.FC = () => {
     emailError,
     onLogin,
     onBlurEmail,
-    onBlurPassword,
     onPasswordChange,
     onEmailChange,
     reset,
     resetErrors,
+    isLoading,
   } = useAuth();
 
   const [openPassword, setOpenPassword] = useState(false);
@@ -48,9 +49,7 @@ export const Login: React.FC = () => {
           </NavLink>
         </div>
         <div className="auth__welcome">
-          <p className="h2">
-            Welcome to
-          </p>
+          <p className="h2">Welcome to</p>
           <Logo />
         </div>
         <div className="auth__inputs">
@@ -64,6 +63,7 @@ export const Login: React.FC = () => {
               value={email}
               onChange={onEmailChange}
               onBlur={onBlurEmail}
+              disabled={isLoading}
             />
 
             {emailError && <p className="text-error">{emailError}</p>}
@@ -78,7 +78,7 @@ export const Login: React.FC = () => {
               placeholder="Password"
               value={password}
               onChange={onPasswordChange}
-              onBlur={onBlurPassword}
+              disabled={isLoading}
             />
 
             {password && (
@@ -87,8 +87,8 @@ export const Login: React.FC = () => {
                 onClick={() => setOpenPassword(!openPassword)}
               >
                 {!openPassword
-                  ? (<img src="/eye-off.svg" alt="" />)
-                  : (<img src="/eye.svg" alt="" />)}
+                  ? <Icon iconName="eye" />
+                  : <Icon iconName="eyeshut" />}
               </ButtonWithIcon>
             )}
 
@@ -99,6 +99,7 @@ export const Login: React.FC = () => {
           to=""
           btnClass="auth__btn"
           onClick={onLogin}
+          isLoading={isLoading}
         >
           Log in
         </Button>
