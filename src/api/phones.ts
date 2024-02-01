@@ -6,4 +6,5 @@ export const getPhonesByQuery = (
   page: string,
   limit: string,
   sortBy: string,
-) => client.getPhonesByQuery<Product[]>(page, limit, sortBy);
+  sortOrder = 'ASC',
+) => client.getPhonesByQuery<Product[]>(page, limit, sortBy, sortOrder);

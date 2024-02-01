@@ -10,13 +10,13 @@
   justify-content: space-between;
 
   &__title {
-    color: $c-secondary-grey;
+    color: var(--c-secondary);
     font-size: 12px;
     font-weight: 600;
   }
 
   &__productId {
-    color: $c-icons-mid-grey;
+    color: var(--c-icons);
     font-size: 12px;
     font-weight: 700;
   }
@@ -30,8 +30,8 @@
 }
 
 .colors__underline {
-  color: $c-elements-light-grey;
-  border-top: 1px solid $c-elements-light-grey;
+  color: var(--c-elements);
+  border-top: 1px solid var(--c-elements);
 }
 
 .capacities__title {
@@ -52,13 +52,13 @@
 
 
   &__newPrice {
-    color: $c-primary-black;
+    color: var(--c-primary);
     font-size: 32px;
     font-weight: 800;
   }
 
   &__oldPrice {
-    color: $c-secondary-grey;
+    color: var(--c-secondary);
     font-size: 22px;
     font-weight: 500;
     text-decoration: line-through;
@@ -81,12 +81,12 @@
     font-size: 12px;
 
     &-title {
-      color: $c-secondary-grey;
+      color: var(--c-secondary);
       font-weight: 600;
     }
 
     &-value {
-      color: $c-primary-black;
+      color: var(--c-primary);
 
       font-weight: 700;
     }

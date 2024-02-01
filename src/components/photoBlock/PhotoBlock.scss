@@ -36,7 +36,7 @@
     height: 50px;
     width: 50px;
 
-    border: 1px solid $c-elements-light-grey;
+    border: 1px solid var(--c-elements);
 
     transition-duration: 0.3s;
     transition-property: border-color;
@@ -54,14 +54,14 @@
     &:hover {
       cursor: pointer;
 
-      border-color: $c-icons-mid-grey;
+      border-color: var(--c-icons);
     }
 
     &--selected {
-      border-color: $c-primary-black;
+      border-color: var(--c-primary);;
 
       &:hover {
-        border-color: $c-primary-black;
+        border-color: var(--c-primary);;
       }
     }
   }

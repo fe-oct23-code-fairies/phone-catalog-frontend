@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useCatalogContext } from '../../context/CatalogContext/CatalogContext';
 import { getNumbers } from '../../helpers/getNumbers';
-import { CircleButton } from '../CircleButtonWithIcon';
+import { CircleButton, CircleButtonWithIcon } from '../CircleButtonWithIcon';
 import { Icon } from '../Icons';
 import { scrollTop } from '../../components/Footer';
 
@@ -85,12 +85,12 @@ export const Pagination = () => {
   return (
     <ul className="pagination">
       <li className="pagination__item">
-        <CircleButton
+        <CircleButtonWithIcon
           onClick={backToPreviousPage}
           additionalClass={isFirstPage ? 'button-circle-icon--disabled' : ''}
         >
           <Icon iconName="arrow-left" />
-        </CircleButton>
+        </CircleButtonWithIcon>
       </li>
 
       <div className="pagination__pages">
@@ -109,12 +109,12 @@ export const Pagination = () => {
       </div>
 
       <li className="pagination__item">
-        <CircleButton
+        <CircleButtonWithIcon
           onClick={goToNextPage}
           additionalClass={isLastPage ? 'button-circle-icon--disabled' : ''}
         >
           <Icon iconName="arrow-right" />
-        </CircleButton>
+        </CircleButtonWithIcon>
       </li>
     </ul>
   );

@@ -6,9 +6,9 @@
 
   padding: 16px;
 
-  background-color: $c-white;
+  background-color: var(--c-surface-1);
   border-radius: 16px;
-  border: 1px solid $c-elements-light-grey;
+  border: 1px solid var(--c-elements);
 
   @include onTablet {
     grid-column: span 12;

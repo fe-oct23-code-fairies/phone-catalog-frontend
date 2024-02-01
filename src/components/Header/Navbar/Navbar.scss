@@ -39,8 +39,11 @@
     display: none;
     box-sizing: border-box;
 
+    transition-property: background-color;
+    transition-duration: $effect-duration;
+
     &>* {
-      fill: $c-primary-black;
+      fill: var(--c-primary);
     }
 
     justify-content: center;
@@ -55,9 +58,11 @@
       height: $header-height-desktop;
     }
 
-    box-shadow: -1px 0px 0px 0px $c-elements-light-grey;
+    box-shadow: -1px 0px 0px 0px var(--c-elements);
 
-    @include hover(background-color, #00000005);
+    &:hover {
+      background-color: var(--c-hover);
+    }
 
     &-main {
       @include onTablet {
@@ -78,34 +83,47 @@
     }
   }
 
+  &__theme-mode {
+    display: flex;
+
+    & > svg {
+      transition-property: transform, fill;
+      transition-duration: $effect-duration;
+    }
+
+    &:active {
+      & > svg {
+        transform: scale(1.2);
+      }
+    }
+  }
+
   &__text-amount-of-products {
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 8px;
 
     display: block;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
 
-    font-size: 7px;
+    font-size: 9px;
     font-weight: 700;
-    color: $c-white;
+    color: var(--c-products-counter);
 
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--c-background);
     border-radius: 48px;
-    background-color: $c-accent-blue;
+    background-color: var(--c-products-counter-bg);
 
     @include onDesktop1200 {
-      top: 14px;
+      top: 16px;
       right: 14px;
-
-      width: 16px;
-      height: 16px;
-
-      font-size: 9px;
     }
   }
 }

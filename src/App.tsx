@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import cn from 'classnames';
 import './App.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -12,14 +12,19 @@ export const App: React.FC = () => {
     parsedCartProductsAmount,
     setFavoriteProductsAmount,
     parsedFavoriteProductsAmount,
+    pageTheme,
+    parsedPageTheme,
+    setPageTheme,
   } = useAppContext();
 
   const { pathname } = useLocation();
   const page = document.querySelector('#app-page');
+  const isThemeDark = pageTheme === 'Dark';
 
   useEffect(() => {
     setCartProductsAmount(parsedCartProductsAmount);
     setFavoriteProductsAmount(parsedFavoriteProductsAmount);
+    setPageTheme(parsedPageTheme);
   });
 
   useEffect(() => {
@@ -30,12 +35,12 @@ export const App: React.FC = () => {
     }
   }, [page, pathname]);
 
-  const location = useLocation();
-
   return (
-    <div className={classNames('App', {
-      'App--blue-bg': location.pathname.includes('authorization'),
-    })}
+    <div
+      className={cn('App', {
+        'theme--light': !isThemeDark,
+        'theme--dark': isThemeDark,
+      })}
     >
       <Header />
 

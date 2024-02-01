@@ -2,14 +2,14 @@
   display: flex;
   flex-direction: column;
   border-radius: 8px;
-  border: 1px solid $c-elements-light-grey;
-  background: $c-white;
+  border: 1px solid var(--c-elements);
+  background: var(--c-surface-1);
   padding: 32px;
   gap: 8px;
 
   min-height: 440px;
 
-  @include hover (box-shadow, 0px 2px 16px 0px #0000001A);
+  @include hover (box-shadow, 0px 2px 16px 0px var(--c-hover));
 
   &__img {
     flex-shrink: 1;
@@ -33,7 +33,7 @@
 
   &__title {
     padding-top: 16px;
-    color: $c-primary-black;
+    color: var(--c-primary);
     font-size: 12px;
     font-weight: 500;
     line-height: 18px;
@@ -57,8 +57,8 @@
   }
 
   &__line {
-    color: $c-elements-light-grey;
-    border-top: 1px solid $c-elements-light-grey;
+    color: var(--c-elements);
+    border-top: 1px solid var(--c-elements);
   }
 
   &__additional {
@@ -79,11 +79,11 @@
       justify-content: space-between;
 
       &-title {
-        color: $c-secondary-grey;
+        color: var(--c-secondary);
       }
 
       &-value {
-        color: $c-primary-black;
+        color: var(--c-primary);
       }
     }
   }

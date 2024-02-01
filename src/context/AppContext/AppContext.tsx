@@ -10,6 +10,7 @@ import { parseDataFromStorage } from '../../helpers/parseDataFromStorage';
 import { Product } from '../../types/Product';
 import { addProductToPage } from '../../helpers/addProductToPage';
 import { FavoriteProduct } from '../../types/FavoriteProduct';
+import { PageTheme } from '../../types/PageTheme';
 
 interface AppContextType {
   addedToCartProducts: CartProduct[],
@@ -29,6 +30,9 @@ interface AppContextType {
   parsedFavorites: number[],
   areFavorites: number[],
   setAreFavorites: (ids: number[]) => void,
+  parsedPageTheme: PageTheme,
+  pageTheme: PageTheme,
+  setPageTheme: (theme: PageTheme) => void,
 }
 
 const AppContext = createContext<AppContextType>({
@@ -49,6 +53,9 @@ const AppContext = createContext<AppContextType>({
   parsedFavorites: [],
   areFavorites: [],
   setAreFavorites: () => { },
+  parsedPageTheme: 'Light',
+  pageTheme: 'Light',
+  setPageTheme: () => { },
 });
 
 type AppContextProviderType = {
@@ -64,6 +71,10 @@ export const AppContextProvider: React.FC<AppContextProviderType>
       = useState<FavoriteProduct[]>([]);
     const [favoriteProductsAmount, setFavoriteProductsAmount] = useState(0);
     const [areFavorites, setAreFavorites] = useState<number[]>([]);
+    const [pageTheme, setPageTheme] = useState<PageTheme>('Light');
+
+    const parsedPageTheme
+      = (localStorage.getItem('pageTheme') || 'Light') as PageTheme;
 
     const parsedCartProducts
       = parseDataFromStorage<CartProduct[], object>('addedToCartProducts', []);
@@ -126,6 +137,9 @@ export const AppContextProvider: React.FC<AppContextProviderType>
       parsedFavorites,
       areFavorites,
       setAreFavorites,
+      parsedPageTheme,
+      pageTheme,
+      setPageTheme,
     }), [
       addedToCartProducts,
       cartProductsAmount,
@@ -139,6 +153,8 @@ export const AppContextProvider: React.FC<AppContextProviderType>
       addProductToFavorites,
       parsedFavorites,
       areFavorites,
+      parsedPageTheme,
+      pageTheme,
     ]);
 
     return (

@@ -33,7 +33,8 @@
 }
 
 @mixin hover($property, $toVAlue) {
-  transition: #{$property} $effect-duration;
+  transition-property: #{$property};
+  transition-duration: $effect-duration;
   &:hover {
     #{$property}: #{$toVAlue};
   }
@@ -133,13 +134,13 @@
   text-transform: uppercase;
   text-decoration: none;
 
-  color: $c-secondary-grey;
+  color: var(--c-secondary);
 
   &:active {
-    color: $c-primary-black;
+    color: var(--c-primary);
   }
 
-  @include hover(color, $c-primary-black);
+  @include hover(color, var(--c-primary));
 }
 
 @mixin grid {
@@ -168,29 +169,44 @@
 
   height: 40px;
 
-  background-color: $c-accent-blue;
+  background-color: var(--c-accent);
+
+  border: 1px solid transparent;
   border-radius: 48px;
 
   @include text-button;
 
-  color: $c-white;
+  color: var(--c-products-counter);
 
-  @include hover(box-shadow, 0px 3px 13px 0px rgba(23, 32, 49, 0.4));
+  transition-property: background-color, color, border, box-shadow, background-color;
+  transition-duration: $effect-duration;
 
-  transition: $effect-duration;
+  box-shadow: 0px 3px 13px 0px transparent;
+
+  &:hover{
+    box-shadow: 0px 3px 13px 0px var(--c-button-hover);
+
+    background-color: var(--c-accent-hover);
+  }
 
   &:active {
-    transition: $effect-duration;
-    background-color: $c-white;
-    color: $c-accent-blue;
-    border: 1px solid $c-elements-light-grey;
+    background-color: var(--c-surface-2);
+    color: var(--c-accent);
+    border: 1px solid var(--c-elements);
+
+    &:hover{
+      background-color: var(--c-surface-2);
+    }
   }
 
   &--active {
-    transition: $effect-duration;
-    background-color: $c-white;
-    color: $c-accent-blue;
-    border: 1px solid $c-elements-light-grey;
+    background-color: var(--c-surface-2);
+    color: var(--c-accent);
+    border: 1px solid var(--c-elements);
+
+    &:hover{
+      background-color: var(--c-surface-2);
+    }
   }
 
 
@@ -211,7 +227,7 @@
   height: 32px;
 
   border-radius: 48px;
-  border: 1px solid $c-elements-light-grey;
+  border: 1px solid var(--c-elements);
 
   &::after {
     content: "";
@@ -224,9 +240,9 @@
 
   cursor: pointer;
 
-  @include hover(border-color, $c-icons-mid-grey);
+  @include hover(border-color, var(--c-icons));
 
   &:active {
-    border-color: $c-primary-black;
+    border-color: var(--c-primary);
   }
 }
