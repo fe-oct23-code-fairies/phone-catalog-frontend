@@ -86,7 +86,9 @@ export const Login: React.FC = () => {
                 additionalClass="auth__password-icon"
                 onClick={() => setOpenPassword(!openPassword)}
               >
-                {!openPassword ? <Icon iconName="eye" /> : <Icon iconName="eyeshut" />}
+                {!openPassword
+                  ? <Icon iconName="eye" />
+                  : <Icon iconName="eyeshut" />}
               </ButtonWithIcon>
             )}
 

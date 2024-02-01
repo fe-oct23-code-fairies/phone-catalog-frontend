@@ -69,10 +69,10 @@
 
     @include text-body;
 
-    color: var(--c-secondary);
+    color: #292929;
 
     &:focus {
-      color: var(--c-background);
+      color: #000;
     }
 
     @include hover(border-color, var(--c-icons));
