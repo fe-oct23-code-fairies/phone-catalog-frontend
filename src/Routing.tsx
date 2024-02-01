@@ -84,7 +84,7 @@ export const Routing = () => (
 
           <Route path="favorites" element={<Favorites />} />
           <Route path="auth/">
-            <Route path="login" element={<Login />} />
+            <Route path="signin" element={<Login />} />
             <Route path="signup" element={<Signup />} />
           </Route>
 

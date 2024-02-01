@@ -38,7 +38,7 @@ export const Signup: React.FC = () => {
       <div className="auth">
         <div className="auth__subSection">
           <NavLink
-            to="../login"
+            to="../signin"
             className="auth__link"
           >
             Log in
