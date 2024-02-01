@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import { Icon } from '../../../ui/Icons';
 import { getLinkClass } from '../helper';
@@ -17,6 +17,18 @@ export const Navmenu: React.FC<Props> = ({
   setIsMenuOpen,
 }: Props) => {
   const { cartProductsAmount, favoriteProductsAmount } = useAppContext();
+  const user = localStorage.getItem('login');
+
+  const handleLogout = () => {
+    localStorage.removeItem('login');
+    localStorage.removeItem('favoriteProductsAmount');
+    localStorage.removeItem('favorites');
+    localStorage.removeItem('addedToFavoriteProducts');
+    localStorage.removeItem('addedToCartProducts');
+    localStorage.removeItem('cartProductsAmount');
+
+    setIsMenuOpen((prev) => !prev);
+  };
 
   return (
     <aside className={cn('navmenu', { 'navmenu--open': isMenuOpen })}>
@@ -68,6 +80,27 @@ export const Navmenu: React.FC<Props> = ({
             )}
           </div>
         </NavLink>
+        {user ? (
+          <Link
+            to="/"
+            onClick={handleLogout}
+            className="header__link text-link"
+          >
+            <div className="navmenu__button">
+              <Icon iconName="logout" />
+            </div>
+          </Link>
+        ) : (
+          <Link
+            to="/auth/signin"
+            className="header__link text-link"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+          >
+            <div className="navmenu__button">
+              <Icon iconName="user" />
+            </div>
+          </Link>
+        )}
       </div>
     </aside>
   );

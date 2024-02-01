@@ -17,7 +17,6 @@ export const Login: React.FC = () => {
     onLogin,
     onBlurEmail,
     onPasswordChange,
-    onBlurPassword,
     onEmailChange,
     reset,
     resetErrors,
@@ -80,7 +79,6 @@ export const Login: React.FC = () => {
               value={password}
               onChange={onPasswordChange}
               disabled={isLoading}
-              onBlur={onBlurPassword}
             />
 
             {password && (
@@ -88,9 +86,7 @@ export const Login: React.FC = () => {
                 additionalClass="auth__password-icon"
                 onClick={() => setOpenPassword(!openPassword)}
               >
-                {!openPassword
-                  ? <Icon iconName="eye" />
-                  : <Icon iconName="eyeshut" />}
+                {!openPassword ? <Icon iconName="eye" /> : <Icon iconName="eyeshut" />}
               </ButtonWithIcon>
             )}
 
