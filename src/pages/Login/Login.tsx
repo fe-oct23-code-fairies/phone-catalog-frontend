@@ -17,6 +17,7 @@ export const Login: React.FC = () => {
     onLogin,
     onBlurEmail,
     onPasswordChange,
+    onBlurPassword,
     onEmailChange,
     reset,
     resetErrors,
@@ -79,6 +80,7 @@ export const Login: React.FC = () => {
               value={password}
               onChange={onPasswordChange}
               disabled={isLoading}
+              onBlur={onBlurPassword}
             />
 
             {password && (
